@@ -15,7 +15,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <div className="pt-20">
+      <div className="pt-28">
         <ServicesSection />
       </div>
       <Footer />
