@@ -32,47 +32,70 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/">
-            <a
-              className={`font-serif text-2xl font-bold transition-colors ${
-                isScrolled || location !== '/' ? 'text-primary' : 'text-primary-foreground'
-              }`}
-              data-testid="button-logo"
-            >
-              J Penn Planning
-            </a>
+          <Link 
+            href="/"
+            className={`font-serif text-2xl font-bold transition-colors ${
+              isScrolled || location !== '/' ? 'text-primary' : 'text-primary-foreground'
+            }`}
+            data-testid="button-logo"
+          >
+            J Penn Planning
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/about">
-              <a
-                className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
-                  isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-                } ${isActive('/about') ? 'font-semibold' : ''}`}
-                data-testid="link-about"
-              >
-                About
-              </a>
+          <div className="hidden md:flex items-center gap-6">
+            <Link 
+              href="/about"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/about') ? 'font-semibold' : ''}`}
+              data-testid="link-about"
+            >
+              About
             </Link>
-            <Link href="/services">
-              <a
-                className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
-                  isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-                } ${isActive('/services') ? 'font-semibold' : ''}`}
-                data-testid="link-services"
-              >
-                Services
-              </a>
+            <Link 
+              href="/services"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/services') ? 'font-semibold' : ''}`}
+              data-testid="link-services"
+            >
+              Services
             </Link>
-            <Link href="/gallery">
-              <a
-                className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
-                  isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-                } ${isActive('/gallery') ? 'font-semibold' : ''}`}
-                data-testid="link-gallery"
-              >
-                Gallery
-              </a>
+            <Link 
+              href="/events"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/events') ? 'font-semibold' : ''}`}
+              data-testid="link-events"
+            >
+              Events
+            </Link>
+            <Link 
+              href="/gallery"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/gallery') ? 'font-semibold' : ''}`}
+              data-testid="link-gallery"
+            >
+              Gallery
+            </Link>
+            <Link 
+              href="/quiz"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/quiz') ? 'font-semibold' : ''}`}
+              data-testid="link-quiz"
+            >
+              Quiz
+            </Link>
+            <Link 
+              href="/book"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/book') ? 'font-semibold' : ''}`}
+              data-testid="link-book"
+            >
+              Book
             </Link>
             <Button
               asChild
@@ -80,9 +103,7 @@ export default function Navigation() {
               className={isScrolled || location !== '/' ? '' : 'bg-background/20 backdrop-blur-sm border-primary-foreground text-primary-foreground'}
               data-testid="button-contact"
             >
-              <Link href="/contact">
-                <a>Contact</a>
-              </Link>
+              <Link href="/contact">Contact</Link>
             </Button>
           </div>
 
@@ -99,38 +120,54 @@ export default function Navigation() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background border-t border-border">
           <div className="px-4 py-6 space-y-4">
-            <Link href="/about">
-              <a
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/about') ? 'font-semibold' : ''}`}
-                data-testid="link-about-mobile"
-              >
-                About
-              </a>
+            <Link 
+              href="/about"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/about') ? 'font-semibold' : ''}`}
+              data-testid="link-about-mobile"
+            >
+              About
             </Link>
-            <Link href="/services">
-              <a
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/services') ? 'font-semibold' : ''}`}
-                data-testid="link-services-mobile"
-              >
-                Services
-              </a>
+            <Link 
+              href="/services"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/services') ? 'font-semibold' : ''}`}
+              data-testid="link-services-mobile"
+            >
+              Services
             </Link>
-            <Link href="/gallery">
-              <a
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/gallery') ? 'font-semibold' : ''}`}
-                data-testid="link-gallery-mobile"
-              >
-                Gallery
-              </a>
+            <Link 
+              href="/events"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/events') ? 'font-semibold' : ''}`}
+              data-testid="link-events-mobile"
+            >
+              Events
+            </Link>
+            <Link 
+              href="/gallery"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/gallery') ? 'font-semibold' : ''}`}
+              data-testid="link-gallery-mobile"
+            >
+              Gallery
+            </Link>
+            <Link 
+              href="/quiz"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/quiz') ? 'font-semibold' : ''}`}
+              data-testid="link-quiz-mobile"
+            >
+              Quiz
+            </Link>
+            <Link 
+              href="/book"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/book') ? 'font-semibold' : ''}`}
+              data-testid="link-book-mobile"
+            >
+              Book
             </Link>
             <Button
               asChild
               className="w-full"
               data-testid="button-contact-mobile"
             >
-              <Link href="/contact">
-                <a>Contact</a>
-              </Link>
+              <Link href="/contact">Contact</Link>
             </Button>
           </div>
         </div>

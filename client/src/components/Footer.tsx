@@ -21,43 +21,66 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-4 text-ring">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/about">
-                  <a
-                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
-                    data-testid="link-footer-about"
-                  >
-                    About Jessica
-                  </a>
+                <Link
+                  href="/about"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-about"
+                >
+                  About Jessica
                 </Link>
               </li>
               <li>
-                <Link href="/services">
-                  <a
-                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
-                    data-testid="link-footer-services"
-                  >
-                    Services
-                  </a>
+                <Link
+                  href="/services"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-services"
+                >
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="/gallery">
-                  <a
-                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
-                    data-testid="link-footer-gallery"
-                  >
-                    Gallery
-                  </a>
+                <Link
+                  href="/events"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-events"
+                >
+                  Events
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
-                  <a
-                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
-                    data-testid="link-footer-contact"
-                  >
-                    Contact
-                  </a>
+                <Link
+                  href="/gallery"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-gallery"
+                >
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/quiz"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-quiz"
+                >
+                  Connections Quiz
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/book"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-book"
+                >
+                  Book
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-contact"
+                >
+                  Contact
                 </Link>
               </li>
             </ul>
