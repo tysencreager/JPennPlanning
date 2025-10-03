@@ -32,7 +32,7 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-28">
           <Link 
             href="/"
             className="transition-opacity hover:opacity-80 py-3"
@@ -41,7 +41,7 @@ export default function Navigation() {
             <img 
               src={logo} 
               alt="J Penn Planning" 
-              className="h-20 w-auto"
+              className="h-24 w-auto"
             />
           </Link>
 
