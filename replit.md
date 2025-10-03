@@ -34,6 +34,7 @@ Preferred communication style: Simple, everyday language.
 - Modular component architecture allowing section reuse across pages
 - Responsive design with mobile-first approach
 - /testimonials route redirects to /gallery for unified content experience
+- Navigation logo: 128px height in 144px navbar for prominent branding
 
 **Key Architectural Decisions:**
 - Single Page Application (SPA) architecture for smooth navigation
