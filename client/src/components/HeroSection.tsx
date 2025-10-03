@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Mail } from 'lucide-react';
-import heroImage from '@assets/generated_images/Hero_background_elegant_dinner_party_d5d7aae2.png';
+import heroImage from '@assets/stock_images/elegant_event_setup__215e7024.jpg';
 
 export default function HeroSection() {
   const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
