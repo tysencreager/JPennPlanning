@@ -1,13 +1,9 @@
 import { Button } from '@/components/ui/button';
+import { Mail } from 'lucide-react';
 import heroImage from '@assets/generated_images/Hero_background_elegant_dinner_party_d5d7aae2.png';
 
 export default function HeroSection() {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
 
   return (
     <section id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center">
@@ -30,11 +26,14 @@ export default function HeroSection() {
         
         <Button
           size="lg"
-          onClick={scrollToContact}
+          asChild
           className="bg-primary text-primary-foreground border-2 border-primary-border text-lg px-8"
           data-testid="button-start-planning"
         >
-          Start Planning Your Event
+          <a href={`mailto:${email}`}>
+            <Mail className="w-5 h-5 mr-2" />
+            Start Planning Your Event
+          </a>
         </Button>
       </div>
     </section>

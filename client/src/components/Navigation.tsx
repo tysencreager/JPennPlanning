@@ -71,13 +71,15 @@ export default function Navigation() {
               Gallery
             </button>
             <Button
-              onClick={() => scrollToSection('contact')}
-              variant={isScrolled ? 'default' : 'outline'}
-              className={!isScrolled ? 'bg-background/20 backdrop-blur-sm border-primary-foreground text-primary-foreground' : ''}
-              data-testid="button-contact"
-            >
+            asChild
+            variant={isScrolled ? 'default' : 'outline'}
+            className={!isScrolled ? 'bg-background/20 backdrop-blur-sm border-primary-foreground text-primary-foreground' : ''}
+            data-testid="button-contact"
+          >
+            <a href="mailto:Jessica_Pennington@InOmniaParatusEvents.com">
               Contact
-            </Button>
+            </a>
+          </Button>
           </div>
 
           <button
@@ -115,11 +117,13 @@ export default function Navigation() {
               Gallery
             </button>
             <Button
-              onClick={() => scrollToSection('contact')}
+              asChild
               className="w-full"
               data-testid="button-contact-mobile"
             >
-              Contact
+              <a href="mailto:Jessica_Pennington@InOmniaParatusEvents.com">
+                Contact
+              </a>
             </Button>
           </div>
         </div>

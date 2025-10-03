@@ -83,7 +83,7 @@ export default function Footer() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:hello@jpennplanning.com"
+                href="mailto:Jessica_Pennington@InOmniaParatusEvents.com"
                 className="w-10 h-10 rounded-md bg-primary-foreground/10 flex items-center justify-center hover-elevate transition-all"
                 data-testid="link-email"
               >
@@ -91,7 +91,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-primary-foreground/90 text-sm">
-              hello@jpennplanning.com<br />
+              Jessica_Pennington@InOmniaParatusEvents.com<br />
               (555) PLAN-JPP
             </p>
           </div>
