@@ -29,9 +29,11 @@ Preferred communication style: Simple, everyday language.
 
 **Page Structure:**
 - Home page with hero section featuring inspirational quote
-- Dedicated About, Services, Gallery, and Contact pages
+- Dedicated About, Services, Events, Quiz, Book, and Contact pages
+- Gallery page combines gallery images and testimonials in a single view
 - Modular component architecture allowing section reuse across pages
 - Responsive design with mobile-first approach
+- /testimonials route redirects to /gallery for unified content experience
 
 **Key Architectural Decisions:**
 - Single Page Application (SPA) architecture for smooth navigation
