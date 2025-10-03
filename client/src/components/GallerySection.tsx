@@ -1,21 +1,17 @@
-import { Button } from '@/components/ui/button';
-import weddingImage from '@assets/generated_images/Wedding_ceremony_outdoor_setup_f12e9e81.png';
-import cafeImage from '@assets/generated_images/Cozy_cafe_gathering_friends_75270dd9.png';
-import tableImage from '@assets/generated_images/Elegant_formal_dinner_table_setting_ba822982.png';
-import cocktailImage from '@assets/generated_images/Community_cocktail_reception_gathering_0a1dcc09.png';
-import gardenImage from '@assets/generated_images/Garden_party_golden_hour_92300e17.png';
-import corporateImage from '@assets/generated_images/Corporate_team_building_event_44a6a57c.png';
-import toastImage from '@assets/generated_images/Champagne_toast_celebration_moment_971b5c8a.png';
-
 export default function GallerySection() {
   const images = [
-    { src: weddingImage, alt: 'Elegant wedding ceremony' },
-    { src: cafeImage, alt: 'Intimate cafe gathering' },
-    { src: tableImage, alt: 'Formal dinner table setting' },
-    { src: cocktailImage, alt: 'Community cocktail reception' },
-    { src: gardenImage, alt: 'Garden party at golden hour' },
-    { src: corporateImage, alt: 'Corporate team building' },
-    { src: toastImage, alt: 'Celebration toast' }
+    { 
+      src: 'https://static.wixstatic.com/media/f59058_23a3107b9fba41baa492560ce352d5e1~mv2.jpg/v1/fill/w_588,h_888,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f59058_23a3107b9fba41baa492560ce352d5e1~mv2.jpg', 
+      alt: 'Event celebration moment'
+    },
+    { 
+      src: 'https://static.wixstatic.com/media/f59058_56602cc2fcba4e1f99c5b8544bbd290c~mv2.jpg/v1/fill/w_1332,h_888,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f59058_56602cc2fcba4e1f99c5b8544bbd290c~mv2.jpg', 
+      alt: 'Event gathering'
+    },
+    { 
+      src: 'https://static.wixstatic.com/media/f59058_e003abffade541e9b733c82661f337e7~mv2.jpg/v1/fill/w_1960,h_1308,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/f59058_e003abffade541e9b733c82661f337e7~mv2.jpg', 
+      alt: 'Event details and decoration'
+    }
   ];
 
   return (
@@ -23,10 +19,10 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl font-semibold text-primary mb-6" data-testid="text-gallery-heading">
-            Curated Moments of Connection
+            Where Connection Comes to Life & Moments Become Memories
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A glimpse into the beautiful experiences we've crafted
+          <p className="text-lg md:text-xl text-foreground leading-relaxed max-w-3xl mx-auto">
+            A look behind the curtain at how imagination, creativity, and connection come alive. Each image captures the heart of our work—transforming simple ideas into unforgettable experiences. From intimate gatherings to large-scale celebrations, these moments reflect not just events, but stories of joy, laughter, and meaningful connection. Step inside and see how we bring dreams to life, one detail at a time.
           </p>
         </div>
 
