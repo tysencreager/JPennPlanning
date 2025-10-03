@@ -42,7 +42,7 @@ export default function Navigation() {
             J Penn Planning
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             <Link 
               href="/about"
               className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
@@ -96,6 +96,15 @@ export default function Navigation() {
               data-testid="link-book"
             >
               Book
+            </Link>
+            <Link 
+              href="/testimonials"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/testimonials') ? 'font-semibold' : ''}`}
+              data-testid="link-testimonials"
+            >
+              Testimonials
             </Link>
             <Button
               asChild
@@ -161,6 +170,13 @@ export default function Navigation() {
               data-testid="link-book-mobile"
             >
               Book
+            </Link>
+            <Link 
+              href="/testimonials"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/testimonials') ? 'font-semibold' : ''}`}
+              data-testid="link-testimonials-mobile"
+            >
+              Testimonials
             </Link>
             <Button
               asChild
