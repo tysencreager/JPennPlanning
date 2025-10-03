@@ -1,4 +1,4 @@
-import jessicaImage from '@assets/generated_images/Jessica_Pennington_professional_headshot_e532fbc2.png';
+import jessicaImage from '@assets/IMG_4461_1759499784524.jpeg';
 
 export default function AboutSection() {
   return (
@@ -10,7 +10,7 @@ export default function AboutSection() {
               <img
                 src={jessicaImage}
                 alt="Jessica Pennington"
-                className="rounded-md w-full h-auto border-4 border-ring shadow-lg"
+                className="rounded-md w-full h-auto object-cover border-4 border-ring shadow-lg"
                 data-testid="img-jessica"
               />
             </div>
