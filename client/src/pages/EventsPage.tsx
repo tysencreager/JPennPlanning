@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, MapPin, ExternalLink } from 'lucide-react';
+import teaPartyImage from '@assets/b0220067d6c11c56ab7402ac4bd92c06_1759533682929.jpg';
 
 export default function EventsPage() {
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function EventsPage() {
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-64 md:h-auto overflow-hidden">
                   <img
-                    src="https://static.wixstatic.com/media/f59058_d813cda5c4df4f57847f0d4b92723358~mv2.jpg/v1/crop/x_0,y_1037,w_1080,h_441/fill/w_980,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Barton%20Mad%20Hatter%20Tea%20Party!.jpg"
+                    src={teaPartyImage}
                     alt="Burton Mad Hatter Tea Party"
                     className="w-full h-full object-cover"
                     data-testid="img-event-featured"
