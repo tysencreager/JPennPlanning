@@ -35,14 +35,14 @@ export default function EventsPage() {
                 <div className="relative h-64 md:h-auto overflow-hidden">
                   <img
                     src="https://static.wixstatic.com/media/f59058_d813cda5c4df4f57847f0d4b92723358~mv2.jpg/v1/crop/x_0,y_1037,w_1080,h_441/fill/w_980,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Barton%20Mad%20Hatter%20Tea%20Party!.jpg"
-                    alt="Barton Mad Hatter Tea Party"
+                    alt="Burton Mad Hatter Tea Party"
                     className="w-full h-full object-cover"
                     data-testid="img-event-featured"
                   />
                 </div>
                 <div className="p-8 md:p-10">
                   <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-6" data-testid="text-event-featured-title">
-                    Barton Mad Hatter Tea Party
+                    Burton Mad Hatter Tea Party
                   </h2>
                   
                   <div className="space-y-3 mb-6">
