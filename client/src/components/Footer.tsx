@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { Facebook, Instagram, Mail } from 'lucide-react';
+import logo from '@assets/2_1759530633522.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,9 +10,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-12 mb-8">
           <div>
-            <h3 className="font-serif text-2xl font-bold mb-4" data-testid="text-footer-brand">
-              J Penn Planning
-            </h3>
+            <img 
+              src={logo} 
+              alt="J Penn Planning" 
+              className="h-16 w-auto mb-4" 
+              data-testid="img-footer-logo"
+            />
             <p className="text-primary-foreground/90 leading-relaxed">
               Creating meaningful connections through beautifully curated events and transformational community experiences.
             </p>
