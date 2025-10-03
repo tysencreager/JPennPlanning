@@ -30,7 +30,7 @@ export default function GallerySection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((image, index) => (
             <div
               key={index}
@@ -45,18 +45,6 @@ export default function GallerySection() {
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 border-2 border-transparent group-hover:border-ring/50" />
             </div>
           ))}
-        </div>
-
-        <div className="text-center">
-          <Button
-            size="lg"
-            variant="outline"
-            className="text-lg"
-            onClick={() => console.log('View full gallery')}
-            data-testid="button-view-gallery"
-          >
-            View Full Gallery
-          </Button>
         </div>
       </div>
     </section>

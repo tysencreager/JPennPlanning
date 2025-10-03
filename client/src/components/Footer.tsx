@@ -1,3 +1,4 @@
+import { Link } from 'wouter';
 import { Facebook, Instagram, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
@@ -20,40 +21,44 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-4 text-ring">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <button
-                  onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors"
-                  data-testid="link-footer-about"
-                >
-                  About Jessica
-                </button>
+                <Link href="/about">
+                  <a
+                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                    data-testid="link-footer-about"
+                  >
+                    About Jessica
+                  </a>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors"
-                  data-testid="link-footer-services"
-                >
-                  Services
-                </button>
+                <Link href="/services">
+                  <a
+                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                    data-testid="link-footer-services"
+                  >
+                    Services
+                  </a>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors"
-                  data-testid="link-footer-gallery"
-                >
-                  Gallery
-                </button>
+                <Link href="/gallery">
+                  <a
+                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                    data-testid="link-footer-gallery"
+                  >
+                    Gallery
+                  </a>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors"
-                  data-testid="link-footer-contact"
-                >
-                  Contact
-                </button>
+                <Link href="/contact">
+                  <a
+                    className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                    data-testid="link-footer-contact"
+                  >
+                    Contact
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
