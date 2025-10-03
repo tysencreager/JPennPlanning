@@ -51,7 +51,12 @@ export default function ContactSection() {
               </div>
               <div>
                 <p className="font-medium text-foreground mb-1">Phone</p>
-                <p className="text-muted-foreground text-sm">(555) PLAN-JPP</p>
+                <a 
+                  href="tel:801-837-6303"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  801-837-6303
+                </a>
               </div>
             </div>
 

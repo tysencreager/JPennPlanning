@@ -92,7 +92,9 @@ export default function Footer() {
             </div>
             <p className="text-primary-foreground/90 text-sm">
               Jessica_Pennington@InOmniaParatusEvents.com<br />
-              (555) PLAN-JPP
+              <a href="tel:801-837-6303" className="hover:text-ring transition-colors">
+                801-837-6303
+              </a>
             </p>
           </div>
         </div>
