@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@assets/2_1759530723887.png';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,12 +35,14 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           <Link 
             href="/"
-            className={`font-serif text-2xl font-bold transition-colors ${
-              isScrolled || location !== '/' ? 'text-primary' : 'text-primary-foreground'
-            }`}
+            className="transition-opacity hover:opacity-80"
             data-testid="button-logo"
           >
-            J Penn Planning
+            <img 
+              src={logo} 
+              alt="J Penn Planning" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           <div className="hidden md:flex items-center gap-4">
