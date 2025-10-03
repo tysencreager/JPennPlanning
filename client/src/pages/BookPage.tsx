@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ExternalLink, Heart, DollarSign, Sparkles, Users } from 'lucide-react';
 import bookCoverPath from '@assets/IMG_4464_1759500798005.jpeg';
+import jessicaPhoto from '@assets/IBL_0055-Edit_1759532571142.jpg';
 
 export default function BookPage() {
   useEffect(() => {
@@ -122,16 +123,26 @@ export default function BookPage() {
             </div>
 
             <Card className="bg-muted/30 p-8 md:p-12">
-              <div className="max-w-3xl mx-auto text-center">
-                <h3 className="font-serif text-3xl font-bold text-primary mb-4">
-                  About the Author
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Jessica Pennington is the founder of J Penn Planning, a luxury event planning and community building service. With years of experience creating transformational experiences that foster deep human connection, Jessica has mastered the art of crafting meaningful celebrations that prioritize authentic moments over lavish budgets.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Her approach combines professional expertise with practical wisdom, proving that the most memorable gatherings stem from intentionality, creativity, and heart—not from hefty price tags.
-                </p>
+              <h3 className="font-serif text-3xl font-bold text-primary mb-8 text-center">
+                About the Author
+              </h3>
+              <div className="grid md:grid-cols-3 gap-8 items-center">
+                <div className="md:col-span-1">
+                  <img
+                    src={jessicaPhoto}
+                    alt="Jessica Pennington, author and founder of J Penn Planning"
+                    className="w-full h-auto rounded-md shadow-lg"
+                    data-testid="img-author-photo"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                    Jessica Pennington is the founder of J Penn Planning, a luxury event planning and community building service. With years of experience creating transformational experiences that foster deep human connection, Jessica has mastered the art of crafting meaningful celebrations that prioritize authentic moments over lavish budgets.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Her approach combines professional expertise with practical wisdom, proving that the most memorable gatherings stem from intentionality, creativity, and heart—not from hefty price tags.
+                  </p>
+                </div>
               </div>
             </Card>
           </div>
