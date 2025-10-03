@@ -41,7 +41,7 @@ export default function Navigation() {
             <img 
               src={logo} 
               alt="J Penn Planning" 
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 
