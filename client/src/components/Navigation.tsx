@@ -100,15 +100,6 @@ export default function Navigation() {
             >
               Book
             </Link>
-            <Link 
-              href="/testimonials"
-              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
-                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-              } ${isActive('/testimonials') ? 'font-semibold' : ''}`}
-              data-testid="link-testimonials"
-            >
-              Testimonials
-            </Link>
             <Button
               asChild
               variant={isScrolled || location !== '/' ? 'default' : 'outline'}
@@ -173,13 +164,6 @@ export default function Navigation() {
               data-testid="link-book-mobile"
             >
               Book
-            </Link>
-            <Link 
-              href="/testimonials"
-              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/testimonials') ? 'font-semibold' : ''}`}
-              data-testid="link-testimonials-mobile"
-            >
-              Testimonials
             </Link>
             <Button
               asChild

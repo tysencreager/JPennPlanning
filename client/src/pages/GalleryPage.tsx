@@ -5,10 +5,10 @@ import Footer from '@/components/Footer';
 
 export default function GalleryPage() {
   useEffect(() => {
-    document.title = 'Gallery - Curated Moments of Connection | J Penn Planning';
+    document.title = 'Gallery & Testimonials - Curated Moments & Client Stories | J Penn Planning';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'View our gallery of beautifully curated events, from elegant weddings to intimate gatherings, showcasing moments of genuine human connection and celebration.');
+      metaDescription.setAttribute('content', 'View our gallery of beautifully curated events and read testimonials from satisfied clients. From elegant weddings to intimate gatherings, see how we create meaningful connections and unforgettable celebrations.');
     }
   }, []);
 

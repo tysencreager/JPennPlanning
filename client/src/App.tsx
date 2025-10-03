@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Redirect } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -10,7 +10,6 @@ import EventsPage from "@/pages/EventsPage";
 import GalleryPage from "@/pages/GalleryPage";
 import QuizPage from "@/pages/QuizPage";
 import BookPage from "@/pages/BookPage";
-import TestimonialsPage from "@/pages/TestimonialsPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
 
@@ -24,7 +23,9 @@ function Router() {
       <Route path="/gallery" component={GalleryPage} />
       <Route path="/quiz" component={QuizPage} />
       <Route path="/book" component={BookPage} />
-      <Route path="/testimonials" component={TestimonialsPage} />
+      <Route path="/testimonials">
+        <Redirect to="/gallery" />
+      </Route>
       <Route path="/contact" component={ContactPage} />
       <Route component={NotFound} />
     </Switch>
