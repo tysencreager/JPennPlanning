@@ -13,7 +13,7 @@ export default function Footer() {
             <img 
               src={logo} 
               alt="J Penn Planning" 
-              className="h-16 w-auto mb-4" 
+              className="h-24 w-auto mb-4" 
               data-testid="img-footer-logo"
             />
             <p className="text-primary-foreground/90 leading-relaxed">
