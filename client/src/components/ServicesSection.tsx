@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Calendar, Users, Sparkles } from 'lucide-react';
-import servicesImage from '@assets/stock_images/elegant_people_gathe_95d8aed7.jpg';
+import servicesImage from '@assets/stock_images/elegant_gala_event_p_49727f12.jpg';
 
 export default function ServicesSection() {
   const services = [
