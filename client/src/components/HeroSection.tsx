@@ -1,19 +1,19 @@
 import { Button } from '@/components/ui/button';
 import { Mail } from 'lucide-react';
-import heroImage from '@assets/connect page pic_1759663763148.png';
+import heroImage from '@assets/2_1759664539031.png';
 
 export default function HeroSection() {
   const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
 
   return (
-    <section id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center">
+    <section id="hero" className="relative h-screen min-h-[600px] flex items-center justify-end">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/50 to-primary/70" />
       
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-8 lg:px-12 max-w-2xl mr-0 lg:mr-16">
         <div className="w-16 h-0.5 bg-ring mx-auto mb-8" data-testid="decorative-line" />
         
         <blockquote 
