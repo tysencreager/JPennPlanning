@@ -20,7 +20,7 @@ export default function HeroSection() {
           className="font-serif text-2xl md:text-4xl italic text-primary-foreground leading-relaxed mb-6"
           style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.9), 0px 0px 12px rgba(0,0,0,0.7)' }}
         >
-          "In a world of algorithms, hashtags & followers, know the true importance of Human Connection."
+          "Empowering Connection Through Experience, Story, and Soul."
         </blockquote>
         
         <p 
