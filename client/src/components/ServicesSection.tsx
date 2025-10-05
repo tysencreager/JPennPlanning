@@ -1,8 +1,10 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Calendar, Users, MessageCircle, Mic } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Calendar, Users, MessageCircle, Mic, Mail } from 'lucide-react';
 import servicesImage from '@assets/stock_images/elegant_gala_event_p_49727f12.jpg';
 
 export default function ServicesSection() {
+  const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
   const services = [
     {
       icon: Calendar,
@@ -74,6 +76,20 @@ export default function ServicesSection() {
               </Card>
             );
           })}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Button
+            size="lg"
+            asChild
+            className="bg-primary text-primary-foreground border-2 border-primary-border text-lg px-8"
+            data-testid="button-contact-services"
+          >
+            <a href={`mailto:${email}`}>
+              <Mail className="w-5 h-5 mr-2" />
+              Get Started Today
+            </a>
+          </Button>
         </div>
       </div>
     </section>
