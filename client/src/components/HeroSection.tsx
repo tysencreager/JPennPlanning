@@ -17,19 +17,11 @@ export default function HeroSection() {
         <div className="w-16 h-0.5 bg-ring mx-auto mb-8" data-testid="decorative-line" />
         
         <blockquote 
-          className="font-serif text-2xl md:text-4xl italic text-primary-foreground leading-relaxed mb-6"
+          className="font-serif text-2xl md:text-4xl italic text-primary-foreground leading-relaxed mb-12"
           style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.9), 0px 0px 12px rgba(0,0,0,0.7)' }}
         >
-          "Empowering Connection Through Experience, Story, and Soul."
+          Empowering Connection Through Experience, Story, and Soul.
         </blockquote>
-        
-        <p 
-          className="text-primary-foreground/90 text-lg mb-12" 
-          data-testid="text-author"
-          style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0px 0px 10px rgba(0,0,0,0.7)' }}
-        >
-          - Simi Fromen
-        </p>
         
         <Button
           size="lg"
