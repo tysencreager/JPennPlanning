@@ -5,7 +5,7 @@ import HeroSection from '@/components/HeroSection';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Users, Sparkles, Heart, ArrowRight } from 'lucide-react';
+import { Calendar, MessageCircle, Heart, ArrowRight } from 'lucide-react';
 
 export default function HomePage() {
   useEffect(() => {
@@ -23,14 +23,9 @@ export default function HomePage() {
       description: 'From intimate gatherings to grand celebrations, we craft unforgettable experiences that bring people together in meaningful ways.'
     },
     {
-      icon: Users,
-      title: 'Community Building',
-      description: 'Strengthen bonds and foster genuine connections through carefully curated community events and engagement strategies.'
-    },
-    {
-      icon: Sparkles,
-      title: 'Transformational Experiences',
-      description: 'Create lasting impact through events designed to inspire, connect, and transform how people relate to one another.'
+      icon: MessageCircle,
+      title: 'Connection Coaching and Consulting',
+      description: 'Personalized guidance to help individuals and organizations build deeper, more meaningful relationships and connections.'
     }
   ];
 
@@ -106,7 +101,7 @@ export default function HomePage() {
               Elevating connections through thoughtfully designed experiences
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
