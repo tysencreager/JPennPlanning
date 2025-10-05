@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Calendar, Users, Sparkles } from 'lucide-react';
+import { Calendar, Users, MessageCircle, Mic } from 'lucide-react';
 import servicesImage from '@assets/stock_images/elegant_gala_event_p_49727f12.jpg';
 
 export default function ServicesSection() {
@@ -15,9 +15,14 @@ export default function ServicesSection() {
       description: 'Strengthen bonds and foster genuine connections through carefully curated community events and engagement strategies.'
     },
     {
-      icon: Sparkles,
-      title: 'Transformational Experiences',
-      description: 'Create lasting impact through events designed to inspire, connect, and transform how people relate to one another.'
+      icon: MessageCircle,
+      title: 'Connection Coaching and Consulting',
+      description: 'Personalized guidance to help individuals and organizations build deeper, more meaningful relationships and connections.'
+    },
+    {
+      icon: Mic,
+      title: 'Public Speaking',
+      description: 'Inspiring presentations and keynotes that engage audiences and spark meaningful conversations about human connection.'
     }
   ];
 
@@ -50,7 +55,7 @@ export default function ServicesSection() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-32">
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
