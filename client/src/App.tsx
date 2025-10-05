@@ -11,6 +11,8 @@ import GalleryPage from "@/pages/GalleryPage";
 import QuizPage from "@/pages/QuizPage";
 import BookPage from "@/pages/BookPage";
 import ContactPage from "@/pages/ContactPage";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import CancellationPolicy from "@/pages/CancellationPolicy";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -27,6 +29,8 @@ function Router() {
         <Redirect to="/gallery" />
       </Route>
       <Route path="/contact" component={ContactPage} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/cancellation-policy" component={CancellationPolicy} />
       <Route component={NotFound} />
     </Switch>
   );

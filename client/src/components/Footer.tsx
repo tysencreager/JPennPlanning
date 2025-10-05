@@ -125,6 +125,23 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-primary-foreground/20 text-center">
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <Link
+              href="/privacy-policy"
+              className="text-primary-foreground/80 hover:text-ring text-sm transition-colors"
+              data-testid="link-footer-privacy"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-primary-foreground/40">|</span>
+            <Link
+              href="/cancellation-policy"
+              className="text-primary-foreground/80 hover:text-ring text-sm transition-colors"
+              data-testid="link-footer-cancellation"
+            >
+              Cancellation Policy
+            </Link>
+          </div>
           <p className="text-primary-foreground/80 text-sm" data-testid="text-copyright">
             © {currentYear} J Penn Planning. All rights reserved.
           </p>
