@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, Users, MessageCircle, Mic, Mail } from 'lucide-react';
-import servicesImage from '@assets/stock_images/elegant_gala_event_p_49727f12.jpg';
+import servicesImage from '@assets/stock_images/people_smiling_laugh_cc2d328d.jpg';
 
 export default function ServicesSection() {
   const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
