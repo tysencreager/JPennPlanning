@@ -98,7 +98,7 @@ export default function Navigation() {
               } ${isActive('/book') ? 'font-semibold' : ''}`}
               data-testid="link-book"
             >
-              Book
+              My Book
             </Link>
             <Button
               asChild
@@ -163,7 +163,7 @@ export default function Navigation() {
               className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/book') ? 'font-semibold' : ''}`}
               data-testid="link-book-mobile"
             >
-              Book
+              My Book
             </Link>
             <Button
               asChild
