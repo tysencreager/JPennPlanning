@@ -63,6 +63,9 @@ export default function HomePage() {
           <p className="text-lg text-muted-foreground leading-relaxed">
             Led by Jessica Pennington, a published author, public speaker, and experienced event planner, we guide you every step of the way — turning ordinary moments into extraordinary ones.
           </p>
+          <p className="text-base italic text-muted-foreground mt-8 leading-relaxed">
+            "In a world of algorithms, hashtags & followers, know the true importance of Human Connection." - Simi Fromen
+          </p>
         </div>
       </section>
 
