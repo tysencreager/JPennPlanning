@@ -47,6 +47,15 @@ export default function Navigation() {
 
           <div className="hidden md:flex items-center gap-3">
             <Link 
+              href="/"
+              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
+                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+              } ${isActive('/') ? 'font-semibold' : ''}`}
+              data-testid="link-home"
+            >
+              Home
+            </Link>
+            <Link 
               href="/about"
               className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
                 isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
@@ -123,6 +132,13 @@ export default function Navigation() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background border-t border-border">
           <div className="px-4 py-6 space-y-4">
+            <Link 
+              href="/"
+              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/') ? 'font-semibold' : ''}`}
+              data-testid="link-home-mobile"
+            >
+              Home
+            </Link>
             <Link 
               href="/about"
               className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/about') ? 'font-semibold' : ''}`}
