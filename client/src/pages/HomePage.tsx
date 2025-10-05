@@ -5,7 +5,7 @@ import HeroSection from '@/components/HeroSection';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, MessageCircle, Heart, ArrowRight } from 'lucide-react';
+import { Calendar, MessageCircle, Heart, ArrowRight, Sparkles, Users } from 'lucide-react';
 
 export default function HomePage() {
   useEffect(() => {
@@ -31,14 +31,17 @@ export default function HomePage() {
 
   const values = [
     {
+      icon: Heart,
       title: 'Connection First',
       description: 'Every event is designed with human connection at its core, creating spaces where authentic relationships flourish.'
     },
     {
+      icon: Sparkles,
       title: 'Intentional Design',
       description: 'Thoughtful details and curated experiences transform ordinary moments into extraordinary memories.'
     },
     {
+      icon: Users,
       title: 'Community Focused',
       description: 'Building lasting communities through events that bring people together and foster genuine belonging.'
     }
@@ -74,19 +77,22 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="text-center space-y-4" data-testid={`card-value-${index}`}>
-                <div className="w-16 h-16 rounded-full bg-ring/10 flex items-center justify-center mx-auto">
-                  <Heart className="w-8 h-8 text-ring" />
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <div key={index} className="text-center space-y-4" data-testid={`card-value-${index}`}>
+                  <div className="w-16 h-16 rounded-full bg-ring/10 flex items-center justify-center mx-auto">
+                    <Icon className="w-8 h-8 text-ring" />
+                  </div>
+                  <h3 className="font-serif text-xl font-medium text-primary" data-testid={`text-value-title-${index}`}>
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed" data-testid={`text-value-description-${index}`}>
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="font-serif text-xl font-medium text-primary" data-testid={`text-value-title-${index}`}>
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed" data-testid={`text-value-description-${index}`}>
-                  {value.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
