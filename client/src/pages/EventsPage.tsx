@@ -46,7 +46,7 @@ export default function EventsPage() {
                   </p>
                   
                   <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                    We're cooking up something extraordinary (think: whimsy meets wonder, with a dash of delightful chaos). While we put the finishing touches on our next unforgettable experience, why not reach out and be the first to know when the curtain rises?
+                    We're cooking up something extraordinary. While we put the finishing touches on our next unforgettable experience, why not reach out and be the first to know when the curtain rises?
                   </p>
 
                   <div className="bg-muted/30 rounded-lg p-6">
