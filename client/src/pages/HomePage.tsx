@@ -9,10 +9,10 @@ import { Calendar, MessageCircle, Heart, ArrowRight, Sparkles, Users } from 'luc
 
 export default function HomePage() {
   useEffect(() => {
-    document.title = 'J Penn Planning - Elegant Event Planning & Community Building';
+    document.title = 'J Penn Planning - Themed Events & Community Building';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'J Penn Planning creates curated moments of connection through elegant event planning and community building. Led by Jessica Pennington, published author and experienced event planner.');
+      metaDescription.setAttribute('content', 'J Penn Planning specializes in themed events infused with creativity and connection. Led by Jessica Pennington, we create experiences that help you celebrate loved ones, feel belonging, and thrive in this chaotic world.');
     }
   }, []);
 
@@ -58,7 +58,7 @@ export default function HomePage() {
             Creating Moments That Matter
           </h2>
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-            At J Penn Planning, we believe the magic of life lies in our connections — to ourselves, to each other, and to our communities. We specialize in creating elegant, meaningful experiences that foster deep relationships and lasting memories.
+            At J Penn Planning, we believe the magic of life lies in our connections — to ourselves, to each other, and to our communities. We specialize in themed events infused with creativity and connection, creating experiences where people feel like they belong, celebrate their loved ones, and thrive in this chaotic world.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Led by Jessica Pennington, a published author, public speaker, and experienced event planner, we guide you every step of the way — turning ordinary moments into extraordinary ones.

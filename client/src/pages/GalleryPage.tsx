@@ -8,7 +8,7 @@ export default function GalleryPage() {
     document.title = 'Gallery & Testimonials - Curated Moments & Client Stories | J Penn Planning';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'View our gallery of beautifully curated events and read testimonials from satisfied clients. From elegant weddings to intimate gatherings, see how we create meaningful connections and unforgettable celebrations.');
+      metaDescription.setAttribute('content', 'View our gallery of themed events and read testimonials from satisfied clients. From creative celebrations to intimate gatherings, see how we create meaningful connections and unforgettable experiences.');
     }
   }, []);
 

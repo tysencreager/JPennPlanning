@@ -17,7 +17,7 @@ export default function Footer() {
               data-testid="img-footer-logo"
             />
             <p className="text-primary-foreground/90 leading-relaxed">
-              Creating meaningful connections through beautifully curated events and transformational community experiences.
+              Creating meaningful connections through themed events infused with creativity, connection, and belonging.
             </p>
           </div>
 
