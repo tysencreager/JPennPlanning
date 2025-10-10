@@ -31,106 +31,40 @@ export default function EventsPage() {
               </p>
             </div>
 
-            <Card className="overflow-hidden mb-16" data-testid="card-featured-event">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-64 md:h-auto overflow-hidden">
-                  <img
-                    src={teaPartyImage}
-                    alt="Burton Mad Hatter Tea Party"
-                    className="w-full h-full object-cover"
-                    data-testid="img-event-featured"
-                  />
-                </div>
-                <div className="p-8 md:p-10">
-                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-6" data-testid="text-event-featured-title">
-                    Burton Mad Hatter Tea Party
-                  </h2>
-                  
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center gap-3 text-lg">
-                      <Calendar className="w-5 h-5 text-ring" />
-                      <span className="font-semibold" data-testid="text-event-featured-date">October 5th, 2025</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <Clock className="w-5 h-5 text-ring" />
-                      <div>
-                        <div>VIP starts at Noon</div>
-                        <div>Tea at 2 P.M.</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <MapPin className="w-5 h-5 text-ring" />
-                      <span>Hazel Hall, Layton, UT</span>
-                    </div>
+            <Card className="overflow-hidden mb-16" data-testid="card-upcoming-placeholder">
+              <div className="p-12 md:p-16 text-center">
+                <div className="max-w-3xl mx-auto">
+                  <div className="mb-8">
+                    <Calendar className="w-16 h-16 text-ring mx-auto mb-6" />
+                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-6" data-testid="text-placeholder-title">
+                      The Plot Thickens...
+                    </h2>
                   </div>
-
-                  <p className="text-foreground leading-relaxed mb-6">
-                    Step out of the ordinary and tumble straight into Wonderland… but with a delightfully dark Tim Burton twist. This isn't your dainty, proper Bridgerton tea — this is a celebration of chaos and curiosity to kick off the Halloween season in true Mad Hatter style!
+                  
+                  <p className="text-xl md:text-2xl text-foreground leading-relaxed mb-6">
+                    Our next adventure is brewing behind the scenes, and trust us — it's going to be worth the wait!
+                  </p>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                    We're cooking up something extraordinary (think: whimsy meets wonder, with a dash of delightful chaos). While we put the finishing touches on our next unforgettable experience, why not reach out and be the first to know when the curtain rises?
                   </p>
 
-                  <div className="space-y-4">
-                    <div className="bg-muted/30 rounded-lg p-4">
-                      <h3 className="font-semibold text-lg mb-2">General Admission</h3>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Sip on enchanting teas, savor decadent bites, and mingle with your favorite Wonderland characters. This ticket is perfect for those ready to launch the Halloween season with whimsy, spook, and fun!
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <Button
-                          asChild
-                          size="sm"
-                          variant="outline"
-                          data-testid="button-ticket-ga-adult"
-                        >
-                          <a
-                            href="https://buy.stripe.com/4gM8wP9We002fZ24g21oI0o"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2"
-                          >
-                            GA Adult Tickets
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        </Button>
-                        <Button
-                          asChild
-                          size="sm"
-                          variant="outline"
-                          data-testid="button-ticket-ga-youth"
-                        >
-                          <a
-                            href="https://buy.stripe.com/bJe5kD9We0028wA6oa1oI0s"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2"
-                          >
-                            GA Youth Tickets
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="bg-ring/5 border border-ring/20 rounded-lg p-4">
-                      <h3 className="font-semibold text-lg mb-2">VIP Experience</h3>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Unlock a DIY Mad Hat Workshop before the tea! Design your own custom hat with antique keys, aged playing cards, black lace, feathers, and more. Wear your masterpiece into the party as a true "guest of honor" and take home a one-of-a-kind keepsake.
-                      </p>
-                      <Button
-                        asChild
-                        size="sm"
-                        data-testid="button-ticket-vip"
-                      >
-                        <a
-                          href="https://buy.stripe.com/fZueVdecucMOdQU9Am1oI0p"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2"
-                        >
-                          VIP Tickets
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      </Button>
-                    </div>
+                  <div className="bg-muted/30 rounded-lg p-6">
+                    <p className="text-lg font-medium text-primary mb-4">
+                      ✨ Psst... Want the inside scoop? ✨
+                    </p>
+                    <p className="text-muted-foreground mb-6">
+                      Drop us a line and we'll make sure you're on the VIP list for event announcements, sneak peeks, and all the magical details!
+                    </p>
+                    <Button
+                      asChild
+                      size="lg"
+                      data-testid="button-get-notified"
+                    >
+                      <a href="mailto:Jessica_Pennington@InOmniaParatusEvents.com">
+                        Yes, Keep Me in the Loop!
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </div>
