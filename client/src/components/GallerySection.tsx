@@ -5,6 +5,18 @@ import image2 from '@assets/Screenshot 2025-10-03 155842_1759532489034.jpg';
 import image3 from '@assets/Screenshot 2025-10-03 155818_1759532489035.jpg';
 import image4 from '@assets/Screenshot 2025-10-03 155754_1759532489035.jpg';
 import image5 from '@assets/Screenshot 2025-10-03 155728_1759532489036.jpg';
+import newImage1 from '@assets/att.7TenUxuLEcTgTu2E7w6X7I6f7NuarZ4iAT9DVXQ4pLg_1760104715531.jpeg';
+import newImage2 from '@assets/att.kwSDtXCMSD1X7wvvRPlyjTVrOPnRVXLD0V186qVh2a0_1760104715531.jpeg';
+import newImage3 from '@assets/att.VqQlT47thOP_7dA65Za8SDIYTYHSweZQrr6vt1fpcRU_1760104715531.jpeg';
+import newImage4 from '@assets/att.YF06gY-tsr2WYk_B_YTZ4GyDuZQSL8TytYT1UzFEnMU_1760104715531.jpeg';
+import newImage5 from '@assets/att.a6NV39PYVcDkFDp07-FEaYRrMMFTI_0U341L3gtiulc_1760104715531.jpeg';
+import newImage6 from '@assets/att.1F1-c96wdUFPY54LT4AFe9vaRFT340nVHmQ-htmqqIs_1760104715531.jpeg';
+import newImage7 from '@assets/att.0VlHnj7-5OnxNOf3JwKD0dviegOgByx7iTXjXs9MBK4_1760104715532.jpeg';
+import newImage8 from '@assets/att.fGH8IHQ28_-N2f0Jf73YS2TuRnqBsX-b-XyFJUZc0zM_1760104715532.jpeg';
+import newImage9 from '@assets/att.y20vdSk9gopp9LH3s3yAVFLWwywrbNJaYSyxpY_nzXI_1760104715532.jpeg';
+import newImage10 from '@assets/att.9VXv0OWcNfxDGp57LdtzQBwPGTucGexThY9vEYEIanc_1760104715532.jpeg';
+import newImage11 from '@assets/att.UYHFA8VaPusbnfzRy3hcWRxETOQHMR1XY5TGauWUSWQ_1760104715532.jpeg';
+import newImage12 from '@assets/att.rXHPNCzY0xZ9pz04-hQXrCFCt30VSZMD0ajdqpCT9ug_1760104715532.jpeg';
 
 export default function GallerySection() {
   const images = [
@@ -39,6 +51,54 @@ export default function GallerySection() {
     { 
       src: image5, 
       alt: 'Event planners at celebration'
+    },
+    { 
+      src: newImage1, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage2, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage3, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage4, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage5, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage6, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage7, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage8, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage9, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage10, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage11, 
+      alt: 'Event gallery photo'
+    },
+    { 
+      src: newImage12, 
+      alt: 'Event gallery photo'
     }
   ];
 
