@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import contactImage from '@assets/1_1759665371808.png';
+import contactImage from '@assets/home page pic_1760106677865.png';
 
 export default function ContactSection() {
   const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
@@ -30,62 +30,59 @@ export default function ContactSection() {
         </div>
 
         <div className="mt-16 pt-12 border-t border-border">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
+          <div className="space-y-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="flex flex-col items-center gap-3" data-testid="contact-email">
+                <div className="w-12 h-12 rounded-md bg-ring/10 flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-ring" />
+                </div>
+                <div className="text-center">
+                  <p className="font-medium text-foreground mb-1">Email</p>
+                  <a 
+                    href={`mailto:${email}`}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  >
+                    {email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center gap-3" data-testid="contact-phone">
+                <div className="w-12 h-12 rounded-md bg-ring/10 flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-ring" />
+                </div>
+                <div className="text-center">
+                  <p className="font-medium text-foreground mb-1">Phone</p>
+                  <a 
+                    href="tel:801-837-6303"
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  >
+                    801-837-6303
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center gap-3 sm:col-span-2 lg:col-span-1" data-testid="contact-location">
+                <div className="w-12 h-12 rounded-md bg-ring/10 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-ring" />
+                </div>
+                <div className="text-center">
+                  <p className="font-medium text-foreground mb-1">Location</p>
+                  <p className="text-muted-foreground text-sm">Serving clients nationwide</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
               <img 
                 src={contactImage} 
-                alt="Friends celebrating together at dinner" 
+                alt="Group celebrating with sparklers" 
                 className="w-full h-auto rounded-md"
                 data-testid="img-contact"
               />
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <div className="grid gap-8">
-                <div className="flex flex-col items-center lg:items-start gap-3" data-testid="contact-email">
-                  <div className="w-12 h-12 rounded-md bg-ring/10 flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-ring" />
-                  </div>
-                  <div className="text-center lg:text-left">
-                    <p className="font-medium text-foreground mb-1">Email</p>
-                    <a 
-                      href={`mailto:${email}`}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                    >
-                      {email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center lg:items-start gap-3" data-testid="contact-phone">
-                  <div className="w-12 h-12 rounded-md bg-ring/10 flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-ring" />
-                  </div>
-                  <div className="text-center lg:text-left">
-                    <p className="font-medium text-foreground mb-1">Phone</p>
-                    <a 
-                      href="tel:801-837-6303"
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                    >
-                      801-837-6303
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center lg:items-start gap-3" data-testid="contact-location">
-                  <div className="w-12 h-12 rounded-md bg-ring/10 flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-ring" />
-                  </div>
-                  <div className="text-center lg:text-left">
-                    <p className="font-medium text-foreground mb-1">Location</p>
-                    <p className="text-muted-foreground text-sm">Serving clients nationwide</p>
-                  </div>
-                </div>
-
-                <p className="text-sm text-muted-foreground text-center lg:text-left">
-                  Typical response time: Within 24 hours
-                </p>
-              </div>
+              <p className="text-sm text-muted-foreground text-center mt-6">
+                Typical response time: Within 24 hours
+              </p>
             </div>
           </div>
         </div>
