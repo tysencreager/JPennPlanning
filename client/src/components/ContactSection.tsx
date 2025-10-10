@@ -73,6 +73,10 @@ export default function ContactSection() {
               </div>
             </div>
 
+            <p className="text-sm text-muted-foreground text-center">
+              Typical response time: Within 24 hours
+            </p>
+
             <div>
               <img 
                 src={contactImage} 
@@ -80,9 +84,6 @@ export default function ContactSection() {
                 className="w-full h-auto rounded-md"
                 data-testid="img-contact"
               />
-              <p className="text-sm text-muted-foreground text-center mt-6">
-                Typical response time: Within 24 hours
-              </p>
             </div>
           </div>
         </div>
