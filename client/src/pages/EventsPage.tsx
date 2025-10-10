@@ -69,24 +69,6 @@ export default function EventsPage() {
                 </div>
               </div>
             </Card>
-
-            <div className="mt-16 text-center">
-              <div className="bg-muted/30 rounded-lg p-8 max-w-2xl mx-auto">
-                <h3 className="font-serif text-2xl font-bold text-primary mb-4">
-                  Stay Updated on Future Events
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Want to be notified about upcoming events and experiences? Reach out to learn more about our community gatherings and how you can participate.
-                </p>
-                <a
-                  href="mailto:Jessica_Pennington@InOmniaParatusEvents.com"
-                  className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-md hover-elevate active-elevate-2 transition-all"
-                  data-testid="button-notify-events"
-                >
-                  Get Notified
-                </a>
-              </div>
-            </div>
           </div>
         </section>
       </main>
