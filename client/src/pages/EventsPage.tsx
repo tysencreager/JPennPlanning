@@ -61,7 +61,7 @@ export default function EventsPage() {
                       size="lg"
                       data-testid="button-get-notified"
                     >
-                      <a href="mailto:Jessica_Pennington@InOmniaParatusEvents.com">
+                      <a href="mailto:jp@jpennplanning.com">
                         Yes, Keep Me in the Loop!
                       </a>
                     </Button>

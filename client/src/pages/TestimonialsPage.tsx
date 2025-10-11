@@ -108,7 +108,7 @@ Her prices are reasonable, and everything was done so professionally. The person
                   Join our community of satisfied clients who have experienced stress-free, beautifully executed events. Let's make your next celebration unforgettable.
                 </p>
                 <a
-                  href="mailto:Jessica_Pennington@InOmniaParatusEvents.com"
+                  href="mailto:jp@jpennplanning.com"
                   className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-md hover-elevate active-elevate-2 transition-all"
                   data-testid="button-contact-testimonials"
                 >

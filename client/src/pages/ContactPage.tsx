@@ -8,7 +8,7 @@ export default function ContactPage() {
     document.title = 'Contact Us - Start Planning Your Event | J Penn Planning';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Contact Jessica Pennington at J Penn Planning to start creating your extraordinary event. Email Jessica_Pennington@InOmniaParatusEvents.com or call 801-837-6303.');
+      metaDescription.setAttribute('content', 'Contact Jessica Pennington at J Penn Planning to start creating your extraordinary event. Email jp@jpennplanning.com or call 801-837-6303.');
     }
   }, []);
 

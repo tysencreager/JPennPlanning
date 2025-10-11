@@ -3,7 +3,7 @@ import { Mail } from 'lucide-react';
 import heroImage from '@assets/2_1759664539031.png';
 
 export default function HeroSection() {
-  const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
+  const email = 'jp@jpennplanning.com';
 
   return (
     <section id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center md:justify-end">

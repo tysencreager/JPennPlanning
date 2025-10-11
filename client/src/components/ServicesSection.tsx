@@ -4,7 +4,7 @@ import { Calendar, Users, MessageCircle, Mic, Mail } from 'lucide-react';
 import servicesImage from '@assets/Blog Banner for Website Content_1759661187692.png';
 
 export default function ServicesSection() {
-  const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
+  const email = 'jp@jpennplanning.com';
   const services = [
     {
       icon: Calendar,

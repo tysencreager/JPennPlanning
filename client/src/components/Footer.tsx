@@ -108,7 +108,7 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="mailto:Jessica_Pennington@InOmniaParatusEvents.com"
+                href="mailto:jp@jpennplanning.com"
                 className="w-10 h-10 rounded-md bg-primary-foreground/10 flex items-center justify-center hover-elevate transition-all"
                 data-testid="link-email"
               >
@@ -116,7 +116,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-primary-foreground/90 text-sm">
-              Jessica_Pennington@InOmniaParatusEvents.com<br />
+              jp@jpennplanning.com<br />
               <a href="tel:801-837-6303" className="hover:text-ring transition-colors">
                 801-837-6303
               </a>

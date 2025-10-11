@@ -130,7 +130,7 @@ export default function QuizPage() {
                 size="lg"
                 data-testid="button-contact-quiz"
               >
-                <a href="mailto:Jessica_Pennington@InOmniaParatusEvents.com">
+                <a href="mailto:jp@jpennplanning.com">
                   Get in Touch
                 </a>
               </Button>

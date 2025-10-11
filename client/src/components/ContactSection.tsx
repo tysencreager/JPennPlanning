@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import contactImage from '@assets/home page pic_1760106677865.png';
 
 export default function ContactSection() {
-  const email = 'Jessica_Pennington@InOmniaParatusEvents.com';
+  const email = 'jp@jpennplanning.com';
 
   return (
     <section id="contact" className="py-20 md:py-32 bg-background">
