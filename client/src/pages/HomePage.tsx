@@ -1,20 +1,13 @@
-import { useEffect } from 'react';
 import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, MessageCircle, Heart, ArrowRight, Sparkles, Users } from 'lucide-react';
 
 export default function HomePage() {
-  useEffect(() => {
-    document.title = 'J Penn Planning - Themed Events & Community Building';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'J Penn Planning specializes in themed events infused with creativity and connection. Led by Jessica Pennington, we create experiences that help you celebrate loved ones, feel belonging, and thrive in this chaotic world.');
-    }
-  }, []);
 
   const services = [
     {
@@ -49,6 +42,12 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="J Penn Planning - Themed Events & Community Building"
+        description="J Penn Planning specializes in themed events infused with creativity and connection. Led by Jessica Pennington, we create experiences that help you celebrate loved ones, feel belonging, and thrive in this chaotic world."
+        path="/"
+        keywords="event planning, themed events, community building, Jessica Pennington, Utah event planner, party planning, connection coaching"
+      />
       <Navigation />
       <HeroSection />
       

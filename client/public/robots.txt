@@ -1,0 +1,9 @@
+# robots.txt for J Penn Planning
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jpennplanning.com/sitemap.xml
+
+# Crawl-delay (optional, be friendly to servers)
+Crawl-delay: 1
