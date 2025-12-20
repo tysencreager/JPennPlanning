@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, MapPin, ExternalLink } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import teaPartyImage from '@assets/b0220067d6c11c56ab7402ac4bd92c06_1759533682929.jpg';
 
 export default function EventsPage() {
@@ -61,9 +62,9 @@ export default function EventsPage() {
                       size="lg"
                       data-testid="button-get-notified"
                     >
-                      <a href="mailto:jp@jpennplanning.com">
+                      <Link href="/contact">
                         Yes, Keep Me in the Loop!
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </div>

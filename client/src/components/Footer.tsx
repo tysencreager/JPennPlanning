@@ -1,9 +1,39 @@
+import { useState } from 'react';
 import { Link } from 'wouter';
-import { Facebook, Instagram, Mail } from 'lucide-react';
+import { Facebook, Instagram, Mail, Send } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import logo from '@assets/2_1759530633522.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubscribeStatus('submitting');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mojaezzw', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubscribeStatus('success');
+        setEmail('');
+      } else {
+        setSubscribeStatus('error');
+      }
+    } catch {
+      setSubscribeStatus('error');
+    }
+  };
 
   return (
     <footer className="bg-primary text-primary-foreground py-12">
@@ -107,13 +137,13 @@ export default function Footer() {
               >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a
-                href="mailto:jp@jpennplanning.com"
+              <Link
+                href="/contact"
                 className="w-10 h-10 rounded-md bg-primary-foreground/10 flex items-center justify-center hover-elevate transition-all"
                 data-testid="link-email"
               >
                 <Mail className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
             <p className="text-primary-foreground/90 text-sm">
               jp@jpennplanning.com<br />
@@ -121,6 +151,41 @@ export default function Footer() {
                 801-837-6303
               </a>
             </p>
+          </div>
+        </div>
+
+        <div className="py-8 border-t border-primary-foreground/20">
+          <div className="max-w-md mx-auto text-center">
+            <h4 className="font-semibold text-lg mb-2 text-ring">Stay in the Loop</h4>
+            <p className="text-primary-foreground/80 text-sm mb-4">
+              Subscribe for upcoming events, event trends, and newsletters.
+            </p>
+            {subscribeStatus === 'success' ? (
+              <p className="text-ring font-medium">Thanks for subscribing!</p>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex gap-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={subscribeStatus === 'submitting'}
+                  className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50"
+                />
+                <Button
+                  type="submit"
+                  variant="secondary"
+                  disabled={subscribeStatus === 'submitting'}
+                  className="shrink-0"
+                >
+                  <Send className="w-4 h-4" />
+                </Button>
+              </form>
+            )}
+            {subscribeStatus === 'error' && (
+              <p className="text-red-300 text-sm mt-2">Something went wrong. Please try again.</p>
+            )}
           </div>
         </div>
 

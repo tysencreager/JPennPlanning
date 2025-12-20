@@ -1,3 +1,4 @@
+import { Link } from 'wouter';
 import { Card } from '@/components/ui/card';
 import { Quote } from 'lucide-react';
 import image1 from '@assets/Screenshot 2025-10-03 155925_1759532489033.jpg';
@@ -223,13 +224,13 @@ Her prices are reasonable, and everything was done so professionally. The person
               <p className="text-muted-foreground mb-6">
                 Join our community of satisfied clients who have experienced stress-free, beautifully executed events. Let's make your next celebration unforgettable.
               </p>
-              <a
-                href="mailto:jp@jpennplanning.com"
+              <Link
+                href="/contact"
                 className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-md hover-elevate active-elevate-2 transition-all"
                 data-testid="button-contact-testimonials"
               >
                 Get in Touch
-              </a>
+              </Link>
             </div>
           </div>
         </div>

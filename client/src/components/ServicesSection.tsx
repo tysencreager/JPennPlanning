@@ -1,10 +1,10 @@
+import { Link } from 'wouter';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, Users, MessageCircle, Mic, Mail } from 'lucide-react';
+import { Calendar, Users, MessageCircle, Mic, ArrowRight } from 'lucide-react';
 import servicesImage from '@assets/Blog Banner for Website Content_1759661187692.png';
 
 export default function ServicesSection() {
-  const email = 'jp@jpennplanning.com';
   const services = [
     {
       icon: Calendar,
@@ -85,10 +85,10 @@ export default function ServicesSection() {
             className="bg-primary text-primary-foreground border-2 border-primary-border text-lg px-8"
             data-testid="button-contact-services"
           >
-            <a href={`mailto:${email}`}>
-              <Mail className="w-5 h-5 mr-2" />
+            <Link href="/contact">
+              <ArrowRight className="w-5 h-5 mr-2" />
               Get Started Today
-            </a>
+            </Link>
           </Button>
         </div>
       </div>

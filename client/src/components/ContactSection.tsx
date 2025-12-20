@@ -1,9 +1,41 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import contactImage from '@assets/home page pic_1760106677865.png';
 
 export default function ContactSection() {
   const email = 'jp@jpennplanning.com';
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/meejawrz', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        form.reset();
+      } else {
+        setFormStatus('error');
+      }
+    } catch {
+      setFormStatus('error');
+    }
+  };
 
   return (
     <section id="contact" className="py-20 md:py-32 bg-background">
@@ -13,20 +45,91 @@ export default function ContactSection() {
             Let's Connect
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Ready to create something extraordinary together? Reach out and let's start the conversation.
+            Ready to create something extraordinary together? Fill out the form below and let's start the conversation.
           </p>
-          
-          <Button 
-            size="lg" 
-            asChild
-            className="text-lg px-8"
-            data-testid="button-email-contact"
-          >
-            <a href={`mailto:${email}`}>
-              <Mail className="w-5 h-5 mr-2" />
-              Email Jessica
-            </a>
-          </Button>
+        </div>
+
+        <div className="max-w-2xl mx-auto mb-16">
+          {formStatus === 'success' ? (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
+              <h3 className="font-serif text-2xl font-semibold text-green-800 mb-2">Thank You!</h3>
+              <p className="text-green-700">Your message has been sent successfully. Jessica will get back to you soon!</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your name"
+                    required
+                    disabled={formStatus === 'submitting'}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                    disabled={formStatus === 'submitting'}
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone">Phone (optional)</Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  disabled={formStatus === 'submitting'}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="subject">Subject</Label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  placeholder="What's this about?"
+                  required
+                  disabled={formStatus === 'submitting'}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Message</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell me about your event or how I can help..."
+                  rows={5}
+                  required
+                  disabled={formStatus === 'submitting'}
+                />
+              </div>
+              {formStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                  <p className="text-red-700">Something went wrong. Please try again or email directly at {email}</p>
+                </div>
+              )}
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full text-lg"
+                disabled={formStatus === 'submitting'}
+                data-testid="button-submit-contact"
+              >
+                <Send className="w-5 h-5 mr-2" />
+                {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+              </Button>
+            </form>
+          )}
         </div>
 
         <div className="mt-16 pt-12 border-t border-border">

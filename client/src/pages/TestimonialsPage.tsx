@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
@@ -107,13 +108,13 @@ Her prices are reasonable, and everything was done so professionally. The person
                 <p className="text-muted-foreground mb-6">
                   Join our community of satisfied clients who have experienced stress-free, beautifully executed events. Let's make your next celebration unforgettable.
                 </p>
-                <a
-                  href="mailto:jp@jpennplanning.com"
+                <Link
+                  href="/contact"
                   className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-md hover-elevate active-elevate-2 transition-all"
                   data-testid="button-contact-testimonials"
                 >
                   Get in Touch
-                </a>
+                </Link>
               </div>
             </div>
           </div>

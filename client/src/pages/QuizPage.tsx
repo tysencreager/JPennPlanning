@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -130,9 +131,9 @@ export default function QuizPage() {
                 size="lg"
                 data-testid="button-contact-quiz"
               >
-                <a href="mailto:jp@jpennplanning.com">
+                <Link href="/contact">
                   Get in Touch
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
