@@ -15,6 +15,9 @@ import BookPage from "@/pages/BookPage";
 import ContactPage from "@/pages/ContactPage";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import CancellationPolicy from "@/pages/CancellationPolicy";
+import SaltLakeCityPage from "@/pages/SaltLakeCityPage";
+import OgdenPage from "@/pages/OgdenPage";
+import TestimonialsPage from "@/pages/TestimonialsPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -33,12 +36,12 @@ function Router() {
       <Route path="/gallery" component={GalleryPage} />
       <Route path="/quiz" component={QuizPage} />
       <Route path="/book" component={BookPage} />
-      <Route path="/testimonials">
-        <Redirect to="/gallery" />
-      </Route>
+      <Route path="/testimonials" component={TestimonialsPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/cancellation-policy" component={CancellationPolicy} />
+      <Route path="/salt-lake-city" component={SaltLakeCityPage} />
+      <Route path="/ogden" component={OgdenPage} />
       <Route component={NotFound} />
     </Switch>
   );

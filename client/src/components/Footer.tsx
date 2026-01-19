@@ -92,11 +92,20 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/testimonials"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-testimonials"
+                >
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/quiz"
                   className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
                   data-testid="link-footer-quiz"
                 >
-                  Connections Quiz
+                  Connection Quiz
                 </Link>
               </li>
               <li>
@@ -115,6 +124,27 @@ export default function Footer() {
                   data-testid="link-footer-contact"
                 >
                   Contact
+                </Link>
+              </li>
+            </ul>
+            <h4 className="font-semibold text-lg mb-4 mt-6 text-ring">Service Areas</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/salt-lake-city"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-salt-lake-city"
+                >
+                  Salt Lake City, UT
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/ogden"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-ogden"
+                >
+                  Ogden, UT
                 </Link>
               </li>
             </ul>
