@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import logo from '@assets/2_1759530723887.png';
 
 export default function Navigation() {
@@ -64,7 +70,7 @@ export default function Navigation() {
             >
               About
             </Link>
-            <Link 
+            <Link
               href="/services"
               className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
                 isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
@@ -73,7 +79,31 @@ export default function Navigation() {
             >
               Services
             </Link>
-            <Link 
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={`flex items-center gap-1 transition-colors hover-elevate px-3 py-2 rounded-md ${
+                  isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
+                } ${isActive('/salt-lake-city') || isActive('/ogden') ? 'font-semibold' : ''}`}
+                data-testid="dropdown-locations"
+              >
+                <MapPin className="w-4 h-4" />
+                Locations
+                <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-48">
+                <DropdownMenuItem asChild>
+                  <Link href="/salt-lake-city" className="w-full cursor-pointer">
+                    Salt Lake City, UT
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/ogden" className="w-full cursor-pointer">
+                    Ogden, UT
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Link
               href="/events"
               className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
                 isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
@@ -146,14 +176,34 @@ export default function Navigation() {
             >
               About
             </Link>
-            <Link 
+            <Link
               href="/services"
               className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/services') ? 'font-semibold' : ''}`}
               data-testid="link-services-mobile"
             >
               Services
             </Link>
-            <Link 
+            <div className="pl-3">
+              <p className="text-sm text-muted-foreground py-1 flex items-center gap-1">
+                <MapPin className="w-3 h-3" />
+                Service Areas
+              </p>
+              <Link
+                href="/salt-lake-city"
+                className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md text-sm ${isActive('/salt-lake-city') ? 'font-semibold' : ''}`}
+                data-testid="link-salt-lake-city-mobile"
+              >
+                Salt Lake City, UT
+              </Link>
+              <Link
+                href="/ogden"
+                className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md text-sm ${isActive('/ogden') ? 'font-semibold' : ''}`}
+                data-testid="link-ogden-mobile"
+              >
+                Ogden, UT
+              </Link>
+            </div>
+            <Link
               href="/events"
               className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/events') ? 'font-semibold' : ''}`}
               data-testid="link-events-mobile"

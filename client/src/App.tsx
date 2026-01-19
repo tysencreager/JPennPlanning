@@ -15,6 +15,8 @@ import BookPage from "@/pages/BookPage";
 import ContactPage from "@/pages/ContactPage";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import CancellationPolicy from "@/pages/CancellationPolicy";
+import SaltLakeCityPage from "@/pages/SaltLakeCityPage";
+import OgdenPage from "@/pages/OgdenPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -39,6 +41,8 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/cancellation-policy" component={CancellationPolicy} />
+      <Route path="/salt-lake-city" component={SaltLakeCityPage} />
+      <Route path="/ogden" component={OgdenPage} />
       <Route component={NotFound} />
     </Switch>
   );
