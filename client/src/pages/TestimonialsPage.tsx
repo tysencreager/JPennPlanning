@@ -69,7 +69,7 @@ export default function TestimonialsPage() {
 
             <div className="space-y-8">
               {testimonials.map((testimonial, index) => (
-                <Card key={testimonial.id} className="p-8 md:p-10" data-testid={\`card-testimonial-\${index}\`}>
+                <Card key={testimonial.id} className="p-8 md:p-10" data-testid={`card-testimonial-${index}`}>
                   <div className="flex gap-4 mb-6">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-ring/10 rounded-full flex items-center justify-center">
@@ -77,7 +77,7 @@ export default function TestimonialsPage() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-4" data-testid={\`text-testimonial-title-\${index}\`}>
+                      <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary mb-4" data-testid={`text-testimonial-title-${index}`}>
                         {testimonial.title}
                       </h2>
                     </div>
@@ -92,7 +92,7 @@ export default function TestimonialsPage() {
                   </div>
 
                   <div className="border-t border-border pt-4 mt-6">
-                    <p className="font-semibold text-lg text-primary" data-testid={\`text-testimonial-author-\${index}\`}>
+                    <p className="font-semibold text-lg text-primary" data-testid={`text-testimonial-author-${index}`}>
                       ~ {testimonial.author}
                       {testimonial.company && (
                         <>
