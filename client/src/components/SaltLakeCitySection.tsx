@@ -19,9 +19,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { getTestimonialById } from '@/data/testimonials';
 import servicesImage from '@assets/Blog Banner for Website Content_1759661187692.png';
 
 export default function SaltLakeCitySection() {
+  const brookeTestimonial = getTestimonialById('brooke');
+
   const services = [
     {
       icon: Calendar,
@@ -247,16 +250,18 @@ export default function SaltLakeCitySection() {
       </div>
 
       {/* Testimonial */}
-      <div className="bg-primary py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Star className="w-8 h-8 text-ring mx-auto mb-4" />
-          <blockquote className="font-serif text-2xl md:text-3xl italic text-primary-foreground mb-6">
-            "J Penn Planning transformed our company retreat into an unforgettable experience.
-            Their understanding of Salt Lake City's unique venues and culture made all the difference."
-          </blockquote>
-          <p className="text-primary-foreground/80">— Salt Lake City Business Owner</p>
+      {brookeTestimonial && (
+        <div className="bg-primary py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <Star className="w-8 h-8 text-ring mx-auto mb-4" />
+            <h3 className="font-serif text-xl text-ring mb-4">"{brookeTestimonial.title}"</h3>
+            <blockquote className="font-serif text-lg md:text-xl italic text-primary-foreground mb-6 leading-relaxed">
+              "{brookeTestimonial.content.split('\n\n')[0]}"
+            </blockquote>
+            <p className="text-primary-foreground/80">— {brookeTestimonial.author}</p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* FAQ Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">

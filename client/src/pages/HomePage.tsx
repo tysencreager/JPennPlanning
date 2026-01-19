@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import { Card, CardContent } from '@/components/ui/card';
@@ -139,6 +140,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TestimonialsCarousel />
 
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary/5">
         <div className="max-w-3xl mx-auto text-center">

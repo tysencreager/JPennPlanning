@@ -20,9 +20,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { getTestimonialById } from '@/data/testimonials';
 import servicesImage from '@assets/Blog Banner for Website Content_1759661187692.png';
 
 export default function OgdenSection() {
+  const nicoleTestimonial = getTestimonialById('nicole');
+
   const services = [
     {
       icon: Calendar,
@@ -299,16 +302,21 @@ export default function OgdenSection() {
       </div>
 
       {/* Testimonial */}
-      <div className="bg-primary py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Star className="w-8 h-8 text-ring mx-auto mb-4" />
-          <blockquote className="font-serif text-2xl md:text-3xl italic text-primary-foreground mb-6">
-            "Our mountain wedding in Ogden was everything we dreamed of. J Penn Planning
-            understood the outdoor vibe we wanted and executed it perfectly."
-          </blockquote>
-          <p className="text-primary-foreground/80">— Ogden Wedding Couple</p>
+      {nicoleTestimonial && (
+        <div className="bg-primary py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <Star className="w-8 h-8 text-ring mx-auto mb-4" />
+            <h3 className="font-serif text-xl text-ring mb-4">"{nicoleTestimonial.title}"</h3>
+            <blockquote className="font-serif text-lg md:text-xl italic text-primary-foreground mb-6 leading-relaxed">
+              "{nicoleTestimonial.content.split('\n\n')[0]}"
+            </blockquote>
+            <p className="text-primary-foreground/80">
+              — {nicoleTestimonial.author}
+              {nicoleTestimonial.company && <span className="block text-sm mt-1">{nicoleTestimonial.company}</span>}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* FAQ Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">

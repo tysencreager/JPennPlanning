@@ -92,11 +92,20 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/testimonials"
+                  className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
+                  data-testid="link-footer-testimonials"
+                >
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/quiz"
                   className="text-primary-foreground/90 hover-elevate px-2 py-1 rounded transition-colors block"
                   data-testid="link-footer-quiz"
                 >
-                  Connections Quiz
+                  Connection Quiz
                 </Link>
               </li>
               <li>
