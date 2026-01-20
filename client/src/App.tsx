@@ -18,6 +18,8 @@ import CancellationPolicy from "@/pages/CancellationPolicy";
 import SaltLakeCityPage from "@/pages/SaltLakeCityPage";
 import OgdenPage from "@/pages/OgdenPage";
 import TestimonialsPage from "@/pages/TestimonialsPage";
+import BlogPage from "@/pages/BlogPage";
+import BlogPostPage from "@/pages/BlogPostPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -42,6 +44,8 @@ function Router() {
       <Route path="/cancellation-policy" component={CancellationPolicy} />
       <Route path="/salt-lake-city" component={SaltLakeCityPage} />
       <Route path="/ogden" component={OgdenPage} />
+      <Route path="/blog" component={BlogPage} />
+      <Route path="/blog/:slug" component={BlogPostPage} />
       <Route component={NotFound} />
     </Switch>
   );
