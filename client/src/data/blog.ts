@@ -1,4 +1,6 @@
 // Blog posts data for J Penn Planning
+import valentinesImage from '@assets/Blog Banner for Website Content_1759661187692.png';
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -147,7 +149,7 @@ This Valentine's Day, consider what would make your loved ones feel truly seen a
       "relationship building",
       "community events"
     ],
-    featuredImage: "/attached_assets/valentines-celebration.png",
+    featuredImage: valentinesImage,
     imageAlt: "Elegant Valentine's Day dinner table setting with candles and roses",
     readingTime: 8,
     keywords: "valentine's day event planning, romantic dinner party ideas, galentines party planning, valentine's day celebration ideas, february event planning, romantic event planner, valentine's party themes, intimate dinner planning, couples celebration ideas, valentine's day 2026"
