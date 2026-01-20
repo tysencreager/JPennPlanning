@@ -133,7 +133,7 @@ This Valentine's Day, consider what would make your loved ones feel truly seen a
 
 ---
 
-*Ready to create a Valentine's celebration that brings people together? Contact J Penn Planning to discuss how we can help you design an event focused on what matters most: meaningful connection.*`,
+*Ready to create a Valentine's celebration that brings people together? [Contact J Penn Planning](/contact) to discuss how we can help you design an event focused on what matters most: meaningful connection.*`,
     author: "Jessica Pennington",
     publishedDate: "2026-01-20",
     category: "Event Planning Tips",

@@ -64,13 +64,46 @@ function MarkdownContent({ content }: { content: string }) {
     };
 
     const renderInlineFormatting = (text: string): React.ReactNode => {
-      // Handle bold text
-      const parts = text.split(/(\*\*[^*]+\*\*)/g);
-      return parts.map((part, i) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={i} className="font-semibold text-foreground">{part.slice(2, -2)}</strong>;
+      // Handle links and bold text
+      // First split by links [text](url)
+      const linkPattern = /(\[[^\]]+\]\([^)]+\))/g;
+      const linkParts = text.split(linkPattern);
+
+      return linkParts.map((part, i) => {
+        // Check if this is a link
+        const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (linkMatch) {
+          const [, linkText, url] = linkMatch;
+          // Check if it's an internal link or external
+          if (url.startsWith('/')) {
+            return (
+              <Link key={i} href={url} className="text-primary underline hover:text-primary/80 transition-colors">
+                {linkText}
+              </Link>
+            );
+          } else if (url.startsWith('mailto:')) {
+            return (
+              <a key={i} href={url} className="text-primary underline hover:text-primary/80 transition-colors">
+                {linkText}
+              </a>
+            );
+          } else {
+            return (
+              <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80 transition-colors">
+                {linkText}
+              </a>
+            );
+          }
         }
-        return part;
+
+        // Handle bold text within non-link parts
+        const boldParts = part.split(/(\*\*[^*]+\*\*)/g);
+        return boldParts.map((boldPart, j) => {
+          if (boldPart.startsWith('**') && boldPart.endsWith('**')) {
+            return <strong key={`${i}-${j}`} className="font-semibold text-foreground">{boldPart.slice(2, -2)}</strong>;
+          }
+          return boldPart;
+        });
       });
     };
 
