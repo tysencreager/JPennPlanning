@@ -147,7 +147,7 @@ This Valentine's Day, consider what would make your loved ones feel truly seen a
       "relationship building",
       "community events"
     ],
-    featuredImage: "/attached_assets/valentines-celebration.jpg",
+    featuredImage: "/attached_assets/valentines-celebration.png",
     imageAlt: "Elegant Valentine's Day dinner table setting with candles and roses",
     readingTime: 8,
     keywords: "valentine's day event planning, romantic dinner party ideas, galentines party planning, valentine's day celebration ideas, february event planning, romantic event planner, valentine's party themes, intimate dinner planning, couples celebration ideas, valentine's day 2026"
