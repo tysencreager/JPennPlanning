@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, ChevronDown, Compass, Briefcase } from 'lucide-react';
+import { Menu, X, ChevronDown, Compass, Briefcase, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -70,7 +70,7 @@ export default function Navigation() {
               <DropdownMenuTrigger
                 className={`flex items-center gap-1 transition-colors hover-elevate px-3 py-2 rounded-md ${
                   isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-                } ${['/about', '/gallery', '/quiz', '/book', '/testimonials', '/salt-lake-city', '/ogden'].some(p => isActive(p)) ? 'font-semibold' : ''}`}
+                } ${['/about', '/gallery', '/quiz', '/book', '/testimonials', '/salt-lake-city', '/ogden', '/blog'].some(p => isActive(p) || location.startsWith('/blog')) ? 'font-semibold' : ''}`}
                 data-testid="dropdown-explore"
               >
                 <Compass className="w-4 h-4" />
@@ -104,6 +104,12 @@ export default function Navigation() {
                 <DropdownMenuItem asChild>
                   <Link href="/testimonials" className="w-full cursor-pointer">
                     Testimonials
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/blog" className="w-full cursor-pointer flex items-center gap-2">
+                    <BookOpen className="w-4 h-4" />
+                    Blog
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
@@ -219,6 +225,14 @@ export default function Navigation() {
                 data-testid="link-testimonials-mobile"
               >
                 Testimonials
+              </Link>
+              <Link
+                href="/blog"
+                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm flex items-center gap-2 ${isActive('/blog') || location.startsWith('/blog') ? 'font-semibold' : ''}`}
+                data-testid="link-blog-mobile"
+              >
+                <BookOpen className="w-4 h-4" />
+                Blog
               </Link>
               <Link
                 href="/quiz"
