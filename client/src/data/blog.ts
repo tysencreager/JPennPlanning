@@ -1,5 +1,5 @@
 // Blog posts data for J Penn Planning
-import valentinesImage from '@assets/Blog Banner for Website Content_1759661187692.png';
+import valentinesImage from '@assets/valentines-celebration.png';
 
 export interface BlogPost {
   id: string;
