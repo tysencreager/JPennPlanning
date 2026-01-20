@@ -26,13 +26,13 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Valentine's Day Event Planning Ideas 2026 | Romantic Party Planning Guide",
     excerpt: "Discover how to transform Valentine's Day from a commercial holiday into a meaningful celebration that fosters genuine connection. Expert tips for planning romantic dinners, Galentine's parties, and community events.",
     metaDescription: "Planning a Valentine's Day event? Get expert tips for romantic dinners, Galentine's parties & meaningful celebrations. Professional event planning ideas that create lasting connections.",
-    content: `Valentine's Day is more than roses and chocolates—it's an opportunity to create meaningful moments that strengthen the bonds we share with those we love. Whether you're planning an intimate dinner for two, a lively Galentine's gathering, or a community celebration, thoughtful event planning can transform February 14th into an unforgettable experience.
+    content: `Valentine's Day is more than roses and chocolates-it's an opportunity to create meaningful moments that strengthen the bonds we share with those we love. Whether you're planning an intimate dinner for two, a lively Galentine's gathering, or a community celebration, thoughtful event planning can transform February 14th into an unforgettable experience.
 
 ## Why Meaningful Valentine's Day Events Matter
 
 In our increasingly digital world, opportunities for genuine face-to-face connection have become precious. Valentine's Day offers the perfect occasion to step away from screens and create shared experiences that nurture relationships. Studies show that couples who engage in novel activities together report higher relationship satisfaction, and the same principle applies to friendships and community bonds.
 
-When we invest time in planning a thoughtful Valentine's celebration, we're not just organizing an event—we're creating a space for authentic connection to flourish.
+When we invest time in planning a thoughtful Valentine's celebration, we're not just organizing an event-we're creating a space for authentic connection to flourish.
 
 ## Romantic Dinner Party Planning
 
@@ -42,7 +42,7 @@ The ambiance of your Valentine's dinner sets the tone for the entire evening. Co
 
 **Lighting**: Soft, warm lighting creates intimacy. Candles remain the gold standard, but fairy lights and dimmed fixtures work beautifully too. Aim for enough light to see your partner's face clearly while maintaining a cozy atmosphere.
 
-**Table Setting**: Elevate your tablescape with luxurious textures. A velvet table runner, linen napkins, and quality dinnerware communicate that this meal is special. Fresh flowers—whether traditional red roses or unexpected choices like ranunculus or garden roses—add natural elegance.
+**Table Setting**: Elevate your tablescape with luxurious textures. A velvet table runner, linen napkins, and quality dinnerware communicate that this meal is special. Fresh flowers-whether traditional red roses or unexpected choices like ranunculus or garden roses-add natural elegance.
 
 **Music**: Create a playlist that flows naturally through the evening. Start with softer background music during dinner and gradually transition to slightly more upbeat selections if you plan to dance or linger over dessert.
 
@@ -121,7 +121,7 @@ Valentine's Day events aren't limited to couples or close friend groups. Communi
 
 ## Professional Event Planning Support
 
-Sometimes the most meaningful Valentine's gift is the gift of a stress-free celebration. Professional event planners handle the logistics—from concept development to day-of coordination—so you can be fully present with your loved ones.
+Sometimes the most meaningful Valentine's gift is the gift of a stress-free celebration. Professional event planners handle the logistics-from concept development to day-of coordination-so you can be fully present with your loved ones.
 
 At J Penn Planning, we specialize in creating intimate gatherings that foster genuine connection. Whether you envision an elegant dinner party, a cozy Galentine's brunch, or a community celebration, we bring your vision to life while you enjoy the moments that matter most.
 
@@ -129,7 +129,7 @@ At J Penn Planning, we specialize in creating intimate gatherings that foster ge
 
 Regardless of the scale or style of your Valentine's event, the most important element is intentionality. When we approach celebration planning with the goal of fostering connection rather than impressing guests, something magical happens: people relax, open up, and create memories together.
 
-This Valentine's Day, consider what would make your loved ones feel truly seen and celebrated. Start there, and let the details follow. The most memorable events aren't always the most elaborate—they're the ones where everyone leaves feeling more connected than when they arrived.
+This Valentine's Day, consider what would make your loved ones feel truly seen and celebrated. Start there, and let the details follow. The most memorable events aren't always the most elaborate-they're the ones where everyone leaves feeling more connected than when they arrived.
 
 ---
 
