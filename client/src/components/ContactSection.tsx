@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import contactImage from '@assets/home page pic_1760106677865.png';
 
 export default function ContactSection() {
-  const email = 'jp@jpennplanning.com';
+  const email = 'JPennPlanning@gmail.com';
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -11,7 +11,7 @@ interface SEOProps {
 }
 
 const BASE_URL = 'https://jpennplanning.com';
-const DEFAULT_IMAGE = `${BASE_URL}/attached_assets/sociallink%20sharing%20image_1759665808396.png`;
+const DEFAULT_IMAGE = `${BASE_URL}/attached_assets/JPP-SOCIAL-SHARING.png`;
 
 export default function SEO({
   title,
