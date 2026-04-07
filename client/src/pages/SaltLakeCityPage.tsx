@@ -12,7 +12,7 @@ const createLocalBusinessSchema = () => ({
   "description": "Professional event planning and connection coaching services in Salt Lake City, Utah. We create meaningful experiences through themed events, community building, and public speaking.",
   "url": "https://jpennplanning.com/salt-lake-city",
   "telephone": "801-837-6303",
-  "email": "jp@jpennplanning.com",
+  "email": "JPennPlanning@gmail.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Salt Lake City",

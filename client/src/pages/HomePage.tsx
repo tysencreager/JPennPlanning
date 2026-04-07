@@ -7,6 +7,7 @@ import SEO from '@/components/SEO';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, MessageCircle, Heart, ArrowRight, Sparkles, Users } from 'lucide-react';
+const featuredEventImage = '/attached_assets/taking-sexy-back-event/Group Coaching.jpg';
 
 export default function HomePage() {
 
@@ -66,6 +67,44 @@ export default function HomePage() {
           <p className="text-base italic text-muted-foreground mt-8 leading-relaxed">
             "In a world of algorithms, hashtags & followers, know the true importance of Human Connection." - Simi Fromen
           </p>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary mb-4" data-testid="text-featured-event-heading">
+              Featured Event
+            </h2>
+            <p className="text-lg text-muted-foreground">Women's History Month 2026</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src={featuredEventImage}
+                alt="Group coaching session at the Taking Sexy Back event"
+                className="w-full h-auto object-cover"
+                data-testid="img-featured-event"
+              />
+            </div>
+            <div className="space-y-6">
+              <h3 className="font-serif text-2xl md:text-3xl font-medium text-primary">
+                Taking Sexy Back
+              </h3>
+              <p className="text-lg text-foreground leading-relaxed">
+                Taking Sexy Back invited women to step outside their comfort zones and into their confidence through Connection Coaching and a guided photoshoot experience — creating not just stunning images, but real, lasting transformation.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Through a guided blend of photoshoot experiences and Connection Coaching, each woman was seen, celebrated, and supported. They didn't just leave with beautiful photos — they left with deeper confidence, meaningful connections, and a renewed sense of self.
+              </p>
+              <Button asChild size="lg">
+                <Link href="/blog/taking-sexy-back-womens-history-month-2026" className="inline-flex items-center gap-2">
+                  Read More
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 

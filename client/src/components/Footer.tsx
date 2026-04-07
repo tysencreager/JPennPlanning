@@ -176,7 +176,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-primary-foreground/90 text-sm">
-              jp@jpennplanning.com<br />
+              JPennPlanning@gmail.com<br />
               <a href="tel:801-837-6303" className="hover:text-ring transition-colors">
                 801-837-6303
               </a>

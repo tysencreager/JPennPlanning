@@ -13,7 +13,7 @@ export default function ContactPage() {
     <div className="min-h-screen">
       <SEO
         title="Contact Us - Start Planning Your Event"
-        description="Contact Jessica Pennington at J Penn Planning to start creating your extraordinary event. Email jp@jpennplanning.com or call 801-837-6303."
+        description="Contact Jessica Pennington at J Penn Planning to start creating your extraordinary event. Email JPennPlanning@gmail.com or call 801-837-6303."
         path="/contact"
         keywords="contact event planner, hire event planner, Utah event planning, book event planner, event consultation"
         schema={breadcrumbSchema}

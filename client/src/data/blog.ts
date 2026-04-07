@@ -1,5 +1,6 @@
 // Blog posts data for J Penn Planning
 import valentinesImage from '@assets/valentines-celebration.png';
+const takingSexyBackImage = '/attached_assets/taking-sexy-back-event/Group Coaching.jpg';
 
 export interface BlogPost {
   id: string;
@@ -21,6 +22,55 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: 'taking-sexy-back-2026',
+    slug: 'taking-sexy-back-womens-history-month-2026',
+    title: "Taking Sexy Back: Reclaiming Confidence Through Connection",
+    metaTitle: "Taking Sexy Back Event | Women's History Month 2026 | J Penn Planning",
+    excerpt: "Taking Sexy Back invited women to step outside their comfort zones and into their confidence through Connection Coaching and a guided photoshoot experience — creating not just stunning images, but real, lasting transformation.",
+    metaDescription: "Taking Sexy Back was an immersive Women's History Month experience helping women reclaim confidence through Connection Coaching and guided photoshoot experiences. See how J Penn Planning creates transformative events.",
+    content: `Taking Sexy Back was an immersive experience created for Women's History Month 2026. It was designed to help women reclaim "sexy" and reconnect with who they are, at their core.
+
+## The Experience
+
+These women were given a very simple set of instructions:
+
+- **Bring two outfits** — one that makes you feel pretty, and one that makes you feel sexy
+- **Be ready to step into a space** built for self-expression, vulnerability, and transformation
+
+Through a guided blend of photoshoot experiences and Connection Coaching, each woman was seen, celebrated, and supported.
+
+## What Made It Special
+
+What made the event was this: they didn't just leave with beautiful photos. They left with deeper confidence, meaningful connections, and a renewed sense of self.
+
+Taking Sexy Back invited women to step outside their comfort zones and into their confidence through Connection Coaching and a guided photoshoot experience — creating not just stunning images, but real, lasting transformation.
+
+## More Than a Photoshoot
+
+This wasn't just about capturing moments — it was about creating them. Each participant walked into the space as themselves and walked out feeling more connected to who they truly are. The combination of professional photography and intentional coaching created an environment where vulnerability was celebrated and confidence was built from the inside out.
+
+---
+
+*Interested in experiences like this? [Contact J Penn Planning](/contact) to learn about upcoming events designed to foster connection, confidence, and community.*`,
+    author: "Jessica Pennington",
+    publishedDate: "2026-03-28",
+    category: "Events",
+    tags: [
+      "womens history month",
+      "connection coaching",
+      "empowerment",
+      "photoshoot",
+      "self-expression",
+      "community events",
+      "transformation",
+      "confidence"
+    ],
+    featuredImage: takingSexyBackImage,
+    imageAlt: "Group coaching session at the Taking Sexy Back event during Women's History Month 2026",
+    readingTime: 4,
+    keywords: "taking sexy back event, women's history month 2026, connection coaching, empowerment photoshoot, women's confidence event, J Penn Planning events, transformative experiences, community building"
+  },
   {
     id: 'valentines-event-planning-2026',
     slug: 'valentines-day-event-planning-ideas-memorable-celebrations',

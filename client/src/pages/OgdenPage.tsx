@@ -12,7 +12,7 @@ const createLocalBusinessSchema = () => ({
   "description": "Professional event planning and connection coaching services in Ogden, Utah. We create meaningful experiences through themed events, outdoor celebrations, community building, and public speaking in Northern Utah.",
   "url": "https://jpennplanning.com/ogden",
   "telephone": "801-837-6303",
-  "email": "jp@jpennplanning.com",
+  "email": "JPennPlanning@gmail.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Ogden",

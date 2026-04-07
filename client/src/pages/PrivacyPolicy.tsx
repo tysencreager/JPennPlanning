@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
               Contact Us
             </h2>
             <p className="text-muted-foreground">
-              If you have any questions about this Privacy Policy, please contact us at jp@jpennplanning.com
+              If you have any questions about this Privacy Policy, please contact us at JPennPlanning@gmail.com
             </p>
           </div>
         </div>
