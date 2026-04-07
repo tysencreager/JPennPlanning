@@ -1,6 +1,6 @@
 // Blog posts data for J Penn Planning
 import valentinesImage from '@assets/valentines-celebration.png';
-const takingSexyBackImage = '/attached_assets/taking-sexy-back-event/Group Coaching.jpg';
+import takingSexyBackImage from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
 
 export interface BlogPost {
   id: string;

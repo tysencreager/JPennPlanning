@@ -7,7 +7,7 @@ import SEO from '@/components/SEO';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, MessageCircle, Heart, ArrowRight, Sparkles, Users } from 'lucide-react';
-const featuredEventImage = '/attached_assets/taking-sexy-back-event/Group Coaching.jpg';
+import featuredEventImage from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
 
 export default function HomePage() {
 
