@@ -1,6 +1,12 @@
 // Blog posts data for J Penn Planning
 import valentinesImage from '@assets/valentines-celebration.png';
 import takingSexyBackImage from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
+import tsbAshley from '@assets/Taking-Sexy-Back-Event/Ashley.jpg';
+import tsbBrooke from '@assets/Taking-Sexy-Back-Event/Brooke.jpg';
+import tsbJenna from '@assets/Taking-Sexy-Back-Event/Jenna.jpg';
+import tsbMichelle from '@assets/Taking-Sexy-Back-Event/Michelle.jpg';
+import tsbSister from '@assets/Taking-Sexy-Back-Event/Sister.jpg';
+import tsbStarr from '@assets/Taking-Sexy-Back-Event/Starr.jpg';
 
 export interface BlogPost {
   id: string;
@@ -40,15 +46,27 @@ These women were given a very simple set of instructions:
 
 Through a guided blend of photoshoot experiences and Connection Coaching, each woman was seen, celebrated, and supported.
 
+![Participant portrait from Taking Sexy Back](${tsbAshley})
+
 ## What Made It Special
 
 What made the event was this: they didn't just leave with beautiful photos. They left with deeper confidence, meaningful connections, and a renewed sense of self.
 
+![Stepping into confidence at Taking Sexy Back](${tsbBrooke})
+
 Taking Sexy Back invited women to step outside their comfort zones and into their confidence through Connection Coaching and a guided photoshoot experience — creating not just stunning images, but real, lasting transformation.
+
+![Empowerment through self-expression](${tsbJenna})
 
 ## More Than a Photoshoot
 
 This wasn't just about capturing moments — it was about creating them. Each participant walked into the space as themselves and walked out feeling more connected to who they truly are. The combination of professional photography and intentional coaching created an environment where vulnerability was celebrated and confidence was built from the inside out.
+
+![Celebrating confidence and vulnerability](${tsbMichelle})
+
+![Connection and sisterhood at Taking Sexy Back](${tsbSister})
+
+![Transformation through connection](${tsbStarr})
 
 ---
 

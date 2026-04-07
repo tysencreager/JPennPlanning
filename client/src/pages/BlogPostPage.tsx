@@ -64,6 +64,33 @@ function MarkdownContent({ content }: { content: string }) {
     };
 
     const renderInlineFormatting = (text: string): React.ReactNode => {
+      // Handle images ![alt](src)
+      const imagePattern = /(!\[[^\]]*\]\([^)]+\))/g;
+      const imageParts = text.split(imagePattern);
+
+      if (imageParts.some(p => p.startsWith('!['))) {
+        return imageParts.map((part, i) => {
+          const imgMatch = part.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+          if (imgMatch) {
+            const [, alt, src] = imgMatch;
+            return (
+              <img
+                key={i}
+                src={src}
+                alt={alt}
+                className="w-full rounded-lg shadow-md my-2"
+              />
+            );
+          }
+          if (!part) return null;
+          return <span key={i}>{renderLinksAndBold(part)}</span>;
+        });
+      }
+
+      return renderLinksAndBold(text);
+    };
+
+    const renderLinksAndBold = (text: string): React.ReactNode => {
       // Handle links and bold text
       // First split by links [text](url)
       const linkPattern = /(\[[^\]]+\]\([^)]+\))/g;
@@ -139,6 +166,24 @@ function MarkdownContent({ content }: { content: string }) {
         flushList();
         elements.push(
           <hr key={elements.length} className="my-12 border-t border-gray-200" />
+        );
+        return;
+      }
+
+      // Handle images on their own line
+      const imageLineMatch = trimmedLine.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (imageLineMatch) {
+        flushParagraph();
+        flushList();
+        const [, alt, src] = imageLineMatch;
+        elements.push(
+          <div key={elements.length} className="my-8">
+            <img
+              src={src}
+              alt={alt}
+              className="w-full rounded-lg shadow-md"
+            />
+          </div>
         );
         return;
       }

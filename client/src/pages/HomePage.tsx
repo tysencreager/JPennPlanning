@@ -70,39 +70,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary/5">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary mb-4" data-testid="text-featured-event-heading">
-              Featured Event
-            </h2>
-            <p className="text-lg text-muted-foreground">Women's History Month 2026</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <img
-                src={featuredEventImage}
-                alt="Group coaching session at the Taking Sexy Back event"
-                className="w-full h-auto object-cover"
-                data-testid="img-featured-event"
-              />
-            </div>
-            <div className="space-y-6">
-              <h3 className="font-serif text-2xl md:text-3xl font-medium text-primary">
-                Taking Sexy Back
-              </h3>
-              <p className="text-lg text-foreground leading-relaxed">
-                Taking Sexy Back invited women to step outside their comfort zones and into their confidence through Connection Coaching and a guided photoshoot experience — creating not just stunning images, but real, lasting transformation.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Through a guided blend of photoshoot experiences and Connection Coaching, each woman was seen, celebrated, and supported. They didn't just leave with beautiful photos — they left with deeper confidence, meaningful connections, and a renewed sense of self.
-              </p>
-              <Button asChild size="lg">
-                <Link href="/blog/taking-sexy-back-womens-history-month-2026" className="inline-flex items-center gap-2">
-                  Read More
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-primary rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid md:grid-cols-2 gap-0 items-stretch">
+              <div className="p-10 md:p-12 flex flex-col justify-center space-y-6">
+                <p className="text-ring text-sm font-medium uppercase tracking-wider">Featured Event</p>
+                <h3 className="font-serif text-2xl md:text-3xl font-medium text-primary-foreground">
+                  Taking Sexy Back
+                </h3>
+                <p className="text-sm text-primary-foreground/70">Women's History Month 2026</p>
+                <p className="text-primary-foreground/90 leading-relaxed">
+                  Taking Sexy Back invited women to step outside their comfort zones and into their confidence through Connection Coaching and a guided photoshoot experience — creating not just stunning images, but real, lasting transformation.
+                </p>
+                <p className="text-primary-foreground/70 leading-relaxed text-sm">
+                  Through a guided blend of photoshoot experiences and Connection Coaching, each woman was seen, celebrated, and supported. They didn't just leave with beautiful photos — they left with deeper confidence, meaningful connections, and a renewed sense of self.
+                </p>
+                <div>
+                  <Button asChild size="lg" variant="secondary">
+                    <Link href="/blog/taking-sexy-back-womens-history-month-2026" className="inline-flex items-center gap-2">
+                      Read More
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="relative min-h-[300px] md:min-h-0">
+                <img
+                  src={featuredEventImage}
+                  alt="Group coaching session at the Taking Sexy Back event"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  data-testid="img-featured-event"
+                />
+              </div>
             </div>
           </div>
         </div>
