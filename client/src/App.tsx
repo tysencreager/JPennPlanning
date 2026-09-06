@@ -19,8 +19,6 @@ import ContactPage from '@/pages/ContactPage';
 import BookPage from '@/pages/BookPage';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import CancellationPolicy from '@/pages/CancellationPolicy';
-import SaltLakeCityPage from '@/pages/SaltLakeCityPage';
-import OgdenPage from '@/pages/OgdenPage';
 import NotFound from '@/pages/not-found';
 
 /** Old blog URLs keep working: /blog/:slug -> /journal/:slug */
@@ -54,8 +52,6 @@ function Router() {
       <Route path="/book" component={BookPage} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/cancellation-policy" component={CancellationPolicy} />
-      <Route path="/salt-lake-city" component={SaltLakeCityPage} />
-      <Route path="/ogden" component={OgdenPage} />
 
       {/* Redirects from the previous site's URLs */}
       <Route path="/services">{() => <Redirect to="/coaching" replace />}</Route>
@@ -64,6 +60,9 @@ function Router() {
       <Route path="/testimonials">{() => <Redirect to="/connections" replace />}</Route>
       <Route path="/blog">{() => <Redirect to="/journal" replace />}</Route>
       <Route path="/blog/:slug" component={BlogPostRedirect} />
+      {/* Retired event-planning location pages; any future location pages will be coaching-based */}
+      <Route path="/salt-lake-city">{() => <Redirect to="/coaching" replace />}</Route>
+      <Route path="/ogden">{() => <Redirect to="/coaching" replace />}</Route>
 
       <Route component={NotFound} />
     </Switch>

@@ -25,12 +25,21 @@ What makes a build "staging":
   when built with `VITE_STAGING=true`. The live domain never matches, so
   Google can't index or confuse the preview with the real site.
 
-### Optional: a friendlier URL
+### staging.jpennplanning.com (needs Cloudflare dashboard access)
 
-If Jessica would rather have `staging.jpennplanning.com`: in the Cloudflare
-dashboard for the `jpennplanning.com` zone, add a **CNAME** record
-`staging` → `claude-site-revamp-staging-8.jpennplanning.pages.dev` (proxied).
-The badge and `noindex` still apply because the hostname starts with `staging.`.
+The app already treats any `staging.*` hostname as staging (badge + noindex),
+so this is DNS only:
+
+1. Cloudflare dashboard → **jpennplanning.com** zone → **DNS → Records → Add record**.
+2. Type **CNAME**, Name `staging`, Target
+   `claude-site-revamp-staging-8.jpennplanning.pages.dev`, Proxy status **Proxied**. Save.
+3. Wait a minute, then open https://staging.jpennplanning.com. If Cloudflare
+   returns a 522/530 error, also add the domain under **Workers & Pages →
+   jpennplanning → Custom domains → Set up a custom domain** (`staging.jpennplanning.com`)
+   so the Pages project accepts the hostname; Cloudflare will point it at the
+   branch alias.
+
+The plain `pages.dev` branch URL keeps working either way.
 
 ### Optional: password
 
@@ -46,11 +55,20 @@ be hosted anywhere static with an SPA fallback.
 
 ## Collecting Jessica's feedback
 
-Tysen already has a review tool that lets Jessica scroll the site, drop
-comments, and record video (Markup.io, Ruttl, Pastel, BugHerd and Userback all
-work by pasting the preview URL). Nothing in the code needs to change for that.
-If a tool needs a script tag injected, add it to `client/index.html` guarded by
-`isStaging` and it will only run on previews.
+**Feedbucket** is wired in, staging-only. Take the values from the Feedbucket
+install snippet and set `feedbackWidget` in `client/src/data/site.ts`:
+
+```ts
+export const feedbackWidget = {
+  src: 'https://cdn.feedbucket.app/assets/feedbucket.js',
+  attrs: { 'data-feedbucket': 'YOUR_PROJECT_ID' },
+};
+```
+
+`StagingBanner` injects that script only when `isStaging` is true, so the
+widget never appears on jpennplanning.com. Jessica can then click any element
+on the staging site, leave a comment, or record a video, and it lands in
+Feedbucket.
 
 ## Iterating
 
@@ -80,8 +98,19 @@ publish without touching code, in order of effort:
 2. **Substack / Medium RSS** (small build): Jessica writes on Substack, the
    Journal page pulls her RSS feed and renders it, and Substack doubles as her
    email list. Best fit for "RSS feed" from the meeting.
-3. **Tiny admin page + database** (bigger build): a password-protected `/admin`
-   page with a text editor that saves to a database (Cloudflare D1 or the Neon
-   Postgres already configured). Fully hers, fully on-brand.
+3. **Tiny admin page + database** (bigger build, the plan): the same shape as
+   the `dresslerGBP` post-approval dashboard, in reverse. Jessica logs in to a
+   password-protected `/admin`, writes an entry (title, category, body, an
+   optional image upload), and hits Publish; the Journal page reads entries
+   from the database instead of `journal.ts`. Tysen keeps a review toggle if
+   he wants a look before something goes live.
 
-Recommendation: start with 1 for launch, add 2 or 3 in the first month.
+   Because this site is static on Cloudflare Pages, the "backend" is Cloudflare
+   Pages Functions in a `functions/` folder (`/api/journal`, `/api/auth`,
+   `/api/upload`), storing entries in Cloudflare D1 (or the existing Neon
+   Postgres over HTTP) and images in Cloudflare R2. No separate server to run.
+   `ADMIN_PASSWORD` lives in the Pages project's environment variables, exactly
+   like the dresslerGBP setup on Vercel. Markdown in, rendered with the same
+   `MarkdownContent` the Journal already uses.
+
+Decision (Sept 6): launch with 1, build 3 once the site is approved.

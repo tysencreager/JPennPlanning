@@ -41,6 +41,16 @@ export const site = {
 } as const;
 
 /**
+ * Visual feedback widget for staging (Feedbucket). Loaded only on staging
+ * hosts so it never appears on the live site. Paste the values from the
+ * Feedbucket install snippet here:
+ *   <script src="https://cdn.feedbucket.app/assets/feedbucket.js" data-feedbucket="XXXX"></script>
+ *   -> src: 'https://cdn.feedbucket.app/assets/feedbucket.js', attrs: { 'data-feedbucket': 'XXXX' }
+ * Leave `null` to disable.
+ */
+export const feedbackWidget: { src: string; attrs?: Record<string, string> } | null = null;
+
+/**
  * Staging detection. True when built with VITE_STAGING=true, or when served
  * from a preview host (Cloudflare Pages *.pages.dev, Netlify, Vercel, or a
  * staging.* subdomain). The live domain never matches.

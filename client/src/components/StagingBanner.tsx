@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isStaging } from '@/data/site';
+import { isStaging, feedbackWidget } from '@/data/site';
 
 /**
  * Shown only on the staging build (VITE_STAGING=true). Also tells search
@@ -12,8 +12,20 @@ export default function StagingBanner() {
     meta.name = 'robots';
     meta.content = 'noindex, nofollow';
     document.head.appendChild(meta);
+
+    // Feedback widget (Feedbucket etc.) — staging only.
+    let script: HTMLScriptElement | null = null;
+    if (feedbackWidget && !document.querySelector(`script[src="${feedbackWidget.src}"]`)) {
+      script = document.createElement('script');
+      script.src = feedbackWidget.src;
+      script.async = true;
+      for (const [k, v] of Object.entries(feedbackWidget.attrs ?? {})) script.setAttribute(k, v);
+      document.body.appendChild(script);
+    }
+
     return () => {
       meta.remove();
+      // keep the widget script; removing it mid-session would break its UI
     };
   }, []);
 

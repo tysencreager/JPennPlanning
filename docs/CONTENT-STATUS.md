@@ -60,5 +60,6 @@ review · ⬜ waiting on Jessica · 🔧 Tysen to configure
   to MailerLite or the newsletter list
 
 ## Kept as-is (light restyle)
-- Privacy Policy, Cancellation Policy, Book page, Salt Lake City & Ogden SEO
-  pages (not in nav; kept for search traffic — decide whether to retire them)
+- Privacy Policy, Cancellation Policy, Book page
+- Salt Lake City & Ogden event-planning pages are retired (redirect to /coaching).
+  Any future location pages will be coaching-based.

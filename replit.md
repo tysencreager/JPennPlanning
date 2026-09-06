@@ -27,8 +27,8 @@ Preferred communication style: Simple, everyday language.
 - Shared layout: `Layout` (nav + footer + staging badge), `PageHero`, `Section` helpers (`Reveal`, `Eyebrow`, `Container`)
 
 **Page Structure:**
-- `/` Home, `/about`, `/coaching`, `/events`, `/speaking`, `/writing`, `/journal`, `/journal/:slug`, `/connections` (testimonials + moments), `/assessment` (Affinity Astron quiz, client-side scoring), `/affinity-astron`, `/contact`, `/book`, policies, and the Salt Lake City / Ogden SEO pages
-- Redirects from the old site: `/services→/coaching`, `/quiz→/assessment`, `/gallery` & `/testimonials→/connections`, `/blog→/journal`
+- `/` Home, `/about`, `/coaching`, `/events`, `/speaking`, `/writing`, `/journal`, `/journal/:slug`, `/connections` (testimonials + moments), `/assessment` (Affinity Astron quiz, client-side scoring), `/affinity-astron`, `/contact`, `/book`, and policies
+- Redirects from the old site: `/services→/coaching`, `/quiz→/assessment`, `/gallery` & `/testimonials→/connections`, `/blog→/journal`, `/salt-lake-city` & `/ogden→/coaching`
 - Content data in `client/src/data/` (site links, assessment, journal posts, quotes, testimonials)
 - `VITE_STAGING=true` builds show a "Staging preview" badge and add a noindex meta tag
 
