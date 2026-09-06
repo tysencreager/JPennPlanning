@@ -4,62 +4,69 @@ The current site at **jpennplanning.com** stays exactly as it is until Jessica
 approves the revamp. The revamp lives on the branch
 `claude/site-revamp-staging-86paqg` and is reviewed on a separate staging URL.
 
-## How the staging site works
+## The staging site already exists (Cloudflare Pages)
 
-The site is a static Vite build (React SPA). Nothing on the Express server is
-used at runtime, so the built `dist/public` folder can be hosted anywhere static.
+This repo is connected to a Cloudflare Pages project named `jpennplanning`.
+Production builds from `main` and serves the live domain. Every other branch
+gets its own preview automatically, so the revamp is already live for review at:
 
-Two things make a build "staging":
+- **Branch preview (stable, updates on every push):**
+  https://claude-site-revamp-staging-8.jpennplanning.pages.dev
+- Each commit also gets a unique URL, posted by the Cloudflare bot on the PR.
 
-- `VITE_STAGING=true` at build time shows a small **"Staging preview · not live"**
-  badge in the corner and injects `<meta name="robots" content="noindex, nofollow">`
-  so Google never indexes the preview or confuses it with the live site.
-- It is served from a different host/subdomain than the live domain.
+Nothing else needs to be set up. Push to the branch → Cloudflare rebuilds the
+preview in about a minute → Jessica refreshes.
 
-## Option A (recommended): Netlify branch deploy
+What makes a build "staging":
 
-1. Sign in to Netlify → **Add new site → Import an existing project** → pick the
-   `tysencreager/JPennPlanning` GitHub repo.
-2. Netlify reads `netlify.toml` automatically (build command, publish dir, SPA
-   redirect, staging env vars).
-3. **Site settings → Build & deploy → Branches**: set *Production branch* to
-   `main`, and add `claude/site-revamp-staging-86paqg` under *Branch deploys*.
-4. Every push to the revamp branch publishes to
-   `https://claude-site-revamp-staging-86paqg--<site-name>.netlify.app`.
-5. Optional, nicer for Jessica: **Domain management → Add domain alias**
-   `staging.jpennplanning.com`, then add a CNAME record at the DNS provider
-   pointing `staging` → `<site-name>.netlify.app`.
-6. Optional password: Netlify **Site protection** (paid tier) or leave it
-   unlisted; the page is `noindex` and the URL is unguessable.
+- The app shows a small **"Staging preview · not live"** badge and injects
+  `<meta name="robots" content="noindex, nofollow">` whenever it is served from
+  a `*.pages.dev`, `*.netlify.app`, `*.vercel.app`, or `staging.*` hostname, or
+  when built with `VITE_STAGING=true`. The live domain never matches, so
+  Google can't index or confuse the preview with the real site.
 
-Vercel works the same way (`vercel.json` is included); Cloudflare Pages too.
+### Optional: a friendlier URL
+
+If Jessica would rather have `staging.jpennplanning.com`: in the Cloudflare
+dashboard for the `jpennplanning.com` zone, add a **CNAME** record
+`staging` → `claude-site-revamp-staging-8.jpennplanning.pages.dev` (proxied).
+The badge and `noindex` still apply because the hostname starts with `staging.`.
+
+### Optional: password
+
+Cloudflare Pages previews can be locked behind **Cloudflare Access** (Pages
+project → Settings → Enable access policy), which emails a one-time code to
+allowed addresses. Otherwise the URL is simply unlisted and `noindex`.
+
+### Fallbacks
+
+`netlify.toml` and `vercel.json` are included in case hosting ever moves; the
+site is a static Vite build (`npm run build:client` → `dist/public`) so it can
+be hosted anywhere static with an SPA fallback.
 
 ## Collecting Jessica's feedback
 
-Tysen mentioned already having a review tool that lets Jessica scroll the
-site, drop comments, and record video (Markup.io, Ruttl, Pastel, BugHerd and
-Userback all work by pasting the staging URL). Nothing in the code needs to
-change for that. If a tool needs a script tag injected, add it to
-`client/index.html` guarded by `VITE_STAGING` (ask and it will be wired up).
+Tysen already has a review tool that lets Jessica scroll the site, drop
+comments, and record video (Markup.io, Ruttl, Pastel, BugHerd and Userback all
+work by pasting the preview URL). Nothing in the code needs to change for that.
+If a tool needs a script tag injected, add it to `client/index.html` guarded by
+`isStaging` and it will only run on previews.
 
 ## Iterating
 
-Push changes to the revamp branch → staging redeploys in ~1 minute. Keep
-iterating until Jessica says "this is it."
+Push changes to the revamp branch → preview redeploys. Keep iterating until
+Jessica says "this is it."
 
 ## Go-live checklist
 
 1. Fill in every item in `docs/CONTENT-STATUS.md` (social links, Bad Moms URL,
    Jessica's story, photos, pricing, spoken testimonial).
-2. Merge the PR into `main`.
-3. Point the live domain at the new build:
-   - **If staying on Replit:** the Replit deployment builds from `main`; run
-     `npm run build` and redeploy. `VITE_STAGING` is unset there, so no badge.
-   - **If moving hosting to Netlify/Vercel:** set the site's production branch
-     to `main`, add `jpennplanning.com` + `www` as the primary domain, update
-     DNS, and remove the Replit deployment once DNS has propagated.
-4. Submit the new `client/public/sitemap.xml` in Google Search Console.
-5. Redirects for old URLs are handled inside the app (see `client/src/App.tsx`):
+2. Mark the PR ready and merge it into `main`. Cloudflare Pages rebuilds
+   production from `main` and the live domain switches over automatically.
+   (If the Replit deployment is still attached to the domain, retire it; the
+   `server/` code is not needed for the static site.)
+3. Submit the new `client/public/sitemap.xml` in Google Search Console.
+4. Redirects for old URLs are handled inside the app (see `client/src/App.tsx`):
    `/services → /coaching`, `/blog → /journal`, `/gallery` & `/testimonials →
    /connections`, `/quiz → /assessment`.
 
@@ -74,7 +81,7 @@ publish without touching code, in order of effort:
    Journal page pulls her RSS feed and renders it, and Substack doubles as her
    email list. Best fit for "RSS feed" from the meeting.
 3. **Tiny admin page + database** (bigger build): a password-protected `/admin`
-   page with a text editor that saves to the Neon Postgres already configured
-   for this project. Fully hers, fully on-brand.
+   page with a text editor that saves to a database (Cloudflare D1 or the Neon
+   Postgres already configured). Fully hers, fully on-brand.
 
 Recommendation: start with 1 for launch, add 2 or 3 in the first month.

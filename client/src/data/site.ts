@@ -40,4 +40,12 @@ export const site = {
   },
 } as const;
 
-export const isStaging = import.meta.env.VITE_STAGING === 'true';
+/**
+ * Staging detection. True when built with VITE_STAGING=true, or when served
+ * from a preview host (Cloudflare Pages *.pages.dev, Netlify, Vercel, or a
+ * staging.* subdomain). The live domain never matches.
+ */
+export const isStaging =
+  import.meta.env.VITE_STAGING === 'true' ||
+  (typeof window !== 'undefined' &&
+    /(\.pages\.dev|\.netlify\.app|\.vercel\.app)$|^staging\./i.test(window.location.hostname));
