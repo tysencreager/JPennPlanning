@@ -10,7 +10,8 @@ This repo is connected to a Cloudflare Pages project named `jpennplanning`.
 Production builds from `main` and serves the live domain. Every other branch
 gets its own preview automatically, so the revamp is already live for review at:
 
-- **Branch preview (stable, updates on every push):**
+- **Staging URL for Jessica:** https://staging.jpennplanning.com (set up Sept 6)
+- **Branch preview (same build, stable, updates on every push):**
   https://claude-site-revamp-staging-8.jpennplanning.pages.dev
 - Each commit also gets a unique URL, posted by the Cloudflare bot on the PR.
 
