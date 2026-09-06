@@ -1,6 +1,5 @@
-import Navigation from '@/components/Navigation';
+import Layout from '@/components/Layout';
 import SaltLakeCitySection from '@/components/SaltLakeCitySection';
-import Footer from '@/components/Footer';
 import SEO, { createBreadcrumbSchema, createFAQSchema } from '@/components/SEO';
 
 // Local Business schema for Salt Lake City
@@ -128,7 +127,7 @@ const createCombinedSchema = () => ({
 
 export default function SaltLakeCityPage() {
   return (
-    <div className="min-h-screen">
+    <Layout>
       <SEO
         title="Event Planning Salt Lake City, UT | Event Planner & Connection Coach"
         description="Premier event planning services in Salt Lake City, Utah. J Penn Planning creates unforgettable corporate events, weddings, private parties, and community gatherings. Expert connection coaching and themed experiences. Serving Salt Lake City, Murray, Sandy & the Wasatch Front."
@@ -136,11 +135,9 @@ export default function SaltLakeCityPage() {
         keywords="event planning Salt Lake City, Salt Lake City event planner, party planner SLC, wedding planner Salt Lake City, corporate event planning Utah, themed events Salt Lake City, community events SLC, connection coach Utah, event coordinator Salt Lake City, private party planner Utah"
         schema={createCombinedSchema()}
       />
-      <Navigation />
-      <div className="pt-28">
+      <div>
         <SaltLakeCitySection />
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 }

@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ExternalLink, Heart, DollarSign, Sparkles, Users, Star } from 'lucide-react';
 import bookCoverPath from '@assets/IMG_4464_1759500798005.jpeg';
-import jessicaPhoto from '@assets/IBL_0055-Edit_1759532571142.jpg';
+import jessicaPhoto from '@assets/IMG_4461_1759499784524.jpeg';
 import review1 from '@assets/jpenplanning book review 1.png';
 import review2 from '@assets/jpenplanning book review 2.png';
 import review3 from '@assets/jpenplanning book review 3.png';
@@ -20,10 +19,9 @@ export default function BookPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navigation />
+    <Layout>
       
-      <main className="flex-1 pt-20">
+      <main className="flex-1">
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
@@ -31,7 +29,7 @@ export default function BookPage() {
                 <div className="inline-block bg-ring/10 text-ring px-4 py-2 rounded-full text-sm font-semibold mb-6">
                   Now Available
                 </div>
-                <h1 className="font-serif text-5xl md:text-6xl font-bold text-primary mb-6" data-testid="text-book-title">
+                <h1 className="font-display text-5xl md:text-6xl font-bold text-primary mb-6" data-testid="text-book-title">
                   Poor Girls Party Planning
                 </h1>
                 <h2 className="text-2xl text-muted-foreground mb-8 font-light">
@@ -133,7 +131,7 @@ export default function BookPage() {
                     <Star key={i} className="w-6 h-6 fill-ring text-ring" />
                   ))}
                 </div>
-                <h3 className="font-serif text-3xl font-bold text-primary mb-4">
+                <h3 className="font-display text-3xl font-bold text-primary mb-4">
                   What Readers Are Saying
                 </h3>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -186,7 +184,7 @@ export default function BookPage() {
             </div>
 
             <Card className="bg-muted/30 p-8 md:p-12">
-              <h3 className="font-serif text-3xl font-bold text-primary mb-8 text-center">
+              <h3 className="font-display text-3xl font-bold text-primary mb-8 text-center">
                 About the Author
               </h3>
               <div className="grid md:grid-cols-3 gap-8 items-center">
@@ -211,8 +209,6 @@ export default function BookPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }

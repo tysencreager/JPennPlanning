@@ -1,6 +1,5 @@
-import Navigation from '@/components/Navigation';
+import Layout from '@/components/Layout';
 import OgdenSection from '@/components/OgdenSection';
-import Footer from '@/components/Footer';
 import SEO, { createBreadcrumbSchema, createFAQSchema } from '@/components/SEO';
 
 // Local Business schema for Ogden
@@ -136,7 +135,7 @@ const createCombinedSchema = () => ({
 
 export default function OgdenPage() {
   return (
-    <div className="min-h-screen">
+    <Layout>
       <SEO
         title="Event Planning Ogden, UT | Event Planner & Outdoor Events"
         description="Premier event planning services in Ogden, Utah. J Penn Planning creates unforgettable mountain weddings, outdoor corporate retreats, and themed celebrations. Expert event coordination for Historic 25th Street, Snowbasin, and Northern Utah. Serving Ogden, Layton, Roy & Weber County."
@@ -144,11 +143,9 @@ export default function OgdenPage() {
         keywords="event planning Ogden, Ogden event planner, party planner Ogden Utah, wedding planner Ogden, mountain wedding Utah, corporate event planning Ogden, outdoor events Northern Utah, Historic 25th Street events, Snowbasin wedding, connection coach Ogden, Weber County event planner"
         schema={createCombinedSchema()}
       />
-      <Navigation />
-      <div className="pt-28">
+      <div>
         <OgdenSection />
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 }

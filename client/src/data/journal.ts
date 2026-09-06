@@ -1,4 +1,10 @@
-// Blog posts data for J Penn Planning
+/**
+ * The Journal — Jessica's writing (reflections, stories, connection advice, speaking topics,
+ * event ideas, book updates, community conversations, H.O.P.E., Untouchable).
+ *
+ * Posts live here as data for now. See docs/STAGING.md for the plan to let Jessica
+ * publish without touching code.
+ */
 import valentinesImage from '@assets/valentines-celebration.png';
 import takingSexyBackImage from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
 import tsbAshley from '@assets/Taking-Sexy-Back-Event/Ashley.jpg';
@@ -8,7 +14,30 @@ import tsbMichelle from '@assets/Taking-Sexy-Back-Event/Michelle.jpg';
 import tsbSister from '@assets/Taking-Sexy-Back-Event/Sister.jpg';
 import tsbStarr from '@assets/Taking-Sexy-Back-Event/Starr.jpg';
 
-export interface BlogPost {
+export type JournalCategory =
+  | 'Reflections'
+  | 'Stories'
+  | 'Connection Advice'
+  | 'Speaking Topics'
+  | 'Event Ideas'
+  | 'Book Updates'
+  | 'Community Conversations'
+  | 'H.O.P.E.'
+  | 'Untouchable';
+
+export const journalCategories: JournalCategory[] = [
+  'Reflections',
+  'Stories',
+  'Connection Advice',
+  'Speaking Topics',
+  'Event Ideas',
+  'Book Updates',
+  'Community Conversations',
+  'H.O.P.E.',
+  'Untouchable',
+];
+
+export interface JournalPost {
   id: string;
   slug: string;
   title: string;
@@ -19,7 +48,7 @@ export interface BlogPost {
   author: string;
   publishedDate: string;
   updatedDate?: string;
-  category: string;
+  category: JournalCategory;
   tags: string[];
   featuredImage?: string;
   imageAlt?: string;
@@ -27,7 +56,7 @@ export interface BlogPost {
   keywords: string;
 }
 
-export const blogPosts: BlogPost[] = [
+export const journalPosts: JournalPost[] = [
   {
     id: 'taking-sexy-back-2026',
     slug: 'taking-sexy-back-womens-history-month-2026',
@@ -70,10 +99,10 @@ This wasn't just about capturing moments — it was about creating them. Each pa
 
 ---
 
-*Interested in experiences like this? [Contact J Penn Planning](/contact) to learn about upcoming events designed to foster connection, confidence, and community.*`,
+*Interested in experiences like this? [Let's connect](/contact) to learn about upcoming events designed to foster connection, confidence, and community.*`,
     author: "Jessica Pennington",
     publishedDate: "2026-03-28",
-    category: "Events",
+    category: "Stories",
     tags: [
       "womens history month",
       "connection coaching",
@@ -203,10 +232,10 @@ This Valentine's Day, consider what would make your loved ones feel truly seen a
 
 ---
 
-*Ready to create a Valentine's celebration that brings people together? [Contact J Penn Planning](/contact) to discuss how we can help you design an event focused on what matters most: meaningful connection.*`,
+*Ready to create a Valentine's celebration that brings people together? [Let's connect](/contact) to discuss how we can help you design an event focused on what matters most: meaningful connection.*`,
     author: "Jessica Pennington",
     publishedDate: "2026-01-20",
-    category: "Event Planning Tips",
+    category: "Event Ideas",
     tags: [
       "valentines day",
       "event planning",
@@ -225,35 +254,35 @@ This Valentine's Day, consider what would make your loved ones feel truly seen a
 ];
 
 // Helper function to get blog post by slug
-export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogPosts.find(post => post.slug === slug);
+export const getJournalPostBySlug = (slug: string): JournalPost | undefined => {
+  return journalPosts.find(post => post.slug === slug);
 };
 
 // Helper function to get all blog posts sorted by date
-export const getAllBlogPosts = (): BlogPost[] => {
-  return [...blogPosts].sort((a, b) =>
+export const getAllJournalPosts = (): JournalPost[] => {
+  return [...journalPosts].sort((a, b) =>
     new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
   );
 };
 
 // Helper function to get blog posts by category
-export const getBlogPostsByCategory = (category: string): BlogPost[] => {
-  return blogPosts.filter(post => post.category === category);
+export const getJournalPostsByCategory = (category: string): JournalPost[] => {
+  return journalPosts.filter(post => post.category === category);
 };
 
 // Helper function to get blog posts by tag
-export const getBlogPostsByTag = (tag: string): BlogPost[] => {
-  return blogPosts.filter(post =>
+export const getJournalPostsByTag = (tag: string): JournalPost[] => {
+  return journalPosts.filter(post =>
     post.tags.some(t => t.toLowerCase() === tag.toLowerCase())
   );
 };
 
 // Helper function to get related posts (by shared tags)
-export const getRelatedPosts = (currentSlug: string, limit: number = 3): BlogPost[] => {
-  const currentPost = getBlogPostBySlug(currentSlug);
+export const getRelatedPosts = (currentSlug: string, limit: number = 3): JournalPost[] => {
+  const currentPost = getJournalPostBySlug(currentSlug);
   if (!currentPost) return [];
 
-  const otherPosts = blogPosts.filter(post => post.slug !== currentSlug);
+  const otherPosts = journalPosts.filter(post => post.slug !== currentSlug);
 
   // Score posts by number of shared tags
   const scoredPosts = otherPosts.map(post => ({
@@ -268,7 +297,7 @@ export const getRelatedPosts = (currentSlug: string, limit: number = 3): BlogPos
 };
 
 // Create Article schema for SEO
-export const createBlogPostSchema = (post: BlogPost) => ({
+export const createJournalPostSchema = (post: JournalPost) => ({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": post.title,
@@ -286,7 +315,7 @@ export const createBlogPostSchema = (post: BlogPost) => ({
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://jpennplanning.com/blog/${post.slug}`
+    "@id": `https://jpennplanning.com/journal/${post.slug}`
   },
   "keywords": post.keywords,
   "articleSection": post.category,

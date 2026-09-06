@@ -1,0 +1,37 @@
+# Netlify config for the STAGING site (branch deploys) and, later, production.
+#
+# The site is a static Vite build (no server routes are used), so it can be
+# hosted anywhere static. Netlify branch deploys give every pushed branch its
+# own URL, which is how Jessica reviews the draft while the current site stays
+# live elsewhere. See docs/STAGING.md.
+
+[build]
+  command = "npm run build:client"
+  publish = "dist/public"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Anything that isn't a real file is the SPA — serve index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Branch deploys and deploy previews are staging: badge + noindex.
+[context.branch-deploy.environment]
+  VITE_STAGING = "true"
+
+[context.deploy-preview.environment]
+  VITE_STAGING = "true"
+
+# Production (once the revamp is approved and the domain is pointed here).
+[context.production.environment]
+  VITE_STAGING = "false"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

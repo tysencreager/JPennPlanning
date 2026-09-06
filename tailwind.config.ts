@@ -75,6 +75,21 @@ export default {
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
           border: "var(--sidebar-accent-border)"
         },
+        gold: {
+          DEFAULT: "hsl(var(--gold) / <alpha-value>)",
+          soft: "hsl(var(--gold-soft) / <alpha-value>)",
+        },
+        sage: {
+          DEFAULT: "hsl(var(--sage) / <alpha-value>)",
+          soft: "hsl(var(--sage-soft) / <alpha-value>)",
+        },
+        forest: "hsl(var(--forest) / <alpha-value>)",
+        midnight: "hsl(var(--midnight) / <alpha-value>)",
+        sky: {
+          DEFAULT: "hsl(var(--sky) / <alpha-value>)",
+          2: "hsl(var(--sky-2) / <alpha-value>)",
+        },
+        ivory: "hsl(var(--ivory) / <alpha-value>)",
         status: {
           online: "rgb(34 197 94)",
           away: "rgb(245 158 11)",
@@ -86,6 +101,8 @@ export default {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+        display: ["var(--font-serif)"],
+        label: ["var(--font-label)"],
       },
       keyframes: {
         "accordion-down": {
