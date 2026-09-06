@@ -27,17 +27,23 @@ What makes a build "staging":
 
 ### staging.jpennplanning.com (needs Cloudflare dashboard access)
 
-The app already treats any `staging.*` hostname as staging (badge + noindex),
-so this is DNS only:
+The app already treats any `staging.*` hostname as staging (badge + noindex).
+Cloudflare custom domains always point at the *production* deployment (`main`),
+so a branch preview domain takes two steps, in this order (Cloudflare's
+"custom branch aliases" procedure):
 
-1. Cloudflare dashboard → **jpennplanning.com** zone → **DNS → Records → Add record**.
-2. Type **CNAME**, Name `staging`, Target
-   `claude-site-revamp-staging-8.jpennplanning.pages.dev`, Proxy status **Proxied**. Save.
-3. Wait a minute, then open https://staging.jpennplanning.com. If Cloudflare
-   returns a 522/530 error, also add the domain under **Workers & Pages →
-   jpennplanning → Custom domains → Set up a custom domain** (`staging.jpennplanning.com`)
-   so the Pages project accepts the hostname; Cloudflare will point it at the
-   branch alias.
+1. **Workers & Pages → jpennplanning → Custom domains → Set up a custom domain**
+   → `staging.jpennplanning.com` → **Activate domain**. Cloudflare creates or
+   rewrites a CNAME `staging` → `jpennplanning.pages.dev`. At this moment the
+   hostname shows the live site; that is expected.
+2. **DNS → Records** for jpennplanning.com → edit the `staging` CNAME → change
+   the target to `claude-site-revamp-staging-8.jpennplanning.pages.dev`. Keep it
+   **Proxied** (orange cloud); an unproxied record routes to production.
+3. Wait a minute, then open https://staging.jpennplanning.com. You should see
+   "You Belong Here." with the staging badge in the corner.
+
+Adding the CNAME to the branch alias *before* step 1 gives a 522 error, because
+the project has not accepted the hostname yet.
 
 The plain `pages.dev` branch URL keeps working either way.
 
