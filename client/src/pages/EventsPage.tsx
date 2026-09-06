@@ -71,7 +71,7 @@ export default function EventsPage() {
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="h-full sky sky-gradient rounded-sm p-8 md:p-10 flex flex-col relative overflow-hidden">
+              <div className="h-full sky rounded-sm p-8 md:p-10 flex flex-col relative overflow-hidden" style={{ backgroundImage: 'linear-gradient(160deg, hsl(var(--midnight)) 0%, hsl(var(--sky)) 70%)' }}>
                 <div className="absolute -right-6 -bottom-6 w-40 text-ivory/30" aria-hidden="true">
                   <Constellation data={pleiades} mode="view" strokeWidth={0.6} />
                 </div>

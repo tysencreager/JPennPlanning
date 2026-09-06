@@ -95,7 +95,7 @@ export default function CoachingPage() {
                 </Link>
               </Button>
             </Reveal>
-            <div className="text-forest max-w-md w-full mx-auto">
+            <div className="text-midnight max-w-md w-full mx-auto">
               <Constellation data={littleDipper} mode="scroll" strokeWidth={0.45} dim={0.15} />
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function CoachingPage() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="eyebrow h-12 px-8" data-testid="button-coaching-cta-assessment">
+              <Button asChild size="lg" variant="midnight" className="eyebrow h-12 px-8" data-testid="button-coaching-cta-assessment">
                 <Link href="/assessment">Find your dimmest star</Link>
               </Button>
             </div>

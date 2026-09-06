@@ -64,7 +64,7 @@ export default function SpeakingPage() {
               <p className="mt-7 text-lg text-foreground/85 leading-relaxed">
                 I don&apos;t lecture. I tell the truth about my own life, ask the questions most people are afraid to, and let a room full of strangers turn into a room full of people who see each other. It&apos;s funny, it&apos;s honest, and people leave feeling less alone.
               </p>
-              <div className="mt-8 text-forest/70 w-48" aria-hidden="true">
+              <div className="mt-8 text-midnight/80 w-48" aria-hidden="true">
                 <Constellation data={cassiopeia} mode="scroll" strokeWidth={0.6} />
               </div>
             </Reveal>

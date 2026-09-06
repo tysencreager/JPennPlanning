@@ -18,9 +18,9 @@
   --foreground: 160 28% 12%;
   --border: 40 18% 85%;
 
-  --card: 40 30% 93%;
+  --card: 110 16% 93%;
   --card-foreground: 160 28% 12%;
-  --card-border: 40 20% 86%;
+  --card-border: 110 14% 85%;
 
   --sidebar: 40 25% 90%;
   --sidebar-foreground: 160 28% 12%;
@@ -59,7 +59,8 @@
   --sage: 145 18% 52%;
   --sage-soft: 145 20% 78%;
   --forest: 158 38% 18%;
-  --midnight: 222 38% 18%;
+  --midnight: 222 46% 24%;
+  --midnight-soft: 220 40% 62%;
   --sky: 162 40% 8%;
   --sky-2: 163 34% 12%;
   --ivory: 40 33% 96%;
@@ -358,9 +359,16 @@
   }
   .sky-gradient {
     background-image:
-      radial-gradient(ellipse 80% 60% at 50% -10%, hsl(var(--midnight) / 0.55), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 100% 100%, hsl(var(--sky-2)), transparent 60%),
+      radial-gradient(ellipse 90% 55% at 50% -12%, hsl(var(--midnight) / 0.85), transparent 65%),
+      radial-gradient(ellipse 50% 40% at 100% 100%, hsl(var(--midnight) / 0.35), transparent 65%),
       linear-gradient(180deg, hsl(var(--sky)) 0%, hsl(var(--sky-2)) 100%);
+  }
+  /* Dusk: the band where night sky meets the ivory ground. */
+  .dusk-to-ground {
+    background-image: linear-gradient(180deg, transparent 0%, hsl(var(--midnight) / 0.45) 45%, hsl(var(--background)) 100%);
+  }
+  .sage-wash {
+    background-color: hsl(var(--sage-soft) / 0.28);
   }
   .eyebrow {
     font-family: var(--font-label);
@@ -407,6 +415,10 @@
 .star--gold {
   background: hsl(var(--gold-soft));
   box-shadow: 0 0 8px 2px hsl(var(--gold) / 0.35);
+}
+.star--blue {
+  background: hsl(var(--midnight-soft));
+  box-shadow: 0 0 8px 2px hsl(var(--midnight-soft) / 0.45);
 }
 @media (prefers-reduced-motion: reduce) {
   .star { animation: none; opacity: var(--star-max, 0.8); }

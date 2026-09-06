@@ -79,9 +79,9 @@ export default function JournalPage() {
       <section className="py-20 md:py-28 bg-background">
         <Container>
           <Reveal className="flex flex-wrap items-center gap-2 mb-12">
-            <Link href="/journal" className={`px-3.5 py-1.5 rounded-full border text-xs font-label tracking-wide transition-colors ${!category ? 'bg-forest text-ivory border-forest' : 'border-border text-foreground/75 hover:border-forest/50'}`}>All</Link>
+            <Link href="/journal" className={`px-3.5 py-1.5 rounded-full border text-xs font-label tracking-wide transition-colors ${!category ? 'bg-midnight text-ivory border-midnight' : 'border-border text-foreground/75 hover:border-midnight/50'}`}>All</Link>
             {journalCategories.map((c) => (
-              <Link key={c} href={`/journal?category=${encodeURIComponent(c)}`} className={`px-3.5 py-1.5 rounded-full border text-xs font-label tracking-wide transition-colors ${category === c ? 'bg-forest text-ivory border-forest' : 'border-border text-foreground/75 hover:border-forest/50'}`}>
+              <Link key={c} href={`/journal?category=${encodeURIComponent(c)}`} className={`px-3.5 py-1.5 rounded-full border text-xs font-label tracking-wide transition-colors ${category === c ? 'bg-midnight text-ivory border-midnight' : 'border-border text-foreground/75 hover:border-midnight/50'}`}>
                 {c}
               </Link>
             ))}
@@ -106,8 +106,14 @@ export default function JournalPage() {
 
       <section className="bg-card border-t border-border/70 py-16">
         <Container size="sm" className="text-center">
-          <p className="font-display text-3xl md:text-4xl font-light text-forest">Want new entries in your inbox?</p>
-          <p className="mt-3 text-muted-foreground">Sign up in the footer below. Occasional notes, never noise.</p>
+          <p className="font-display text-3xl md:text-4xl font-light text-forest">Recognize yourself in any of this?</p>
+          <p className="mt-3 text-muted-foreground">Find out which of your four stars is asking for attention, then sign up in the footer for new entries. Occasional notes, never noise.</p>
+          <Button asChild variant="midnight" className="mt-7 eyebrow" data-testid="button-journal-assessment">
+            <Link href="/assessment">
+              Take the free assessment
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+          </Button>
         </Container>
       </section>
     </Layout>

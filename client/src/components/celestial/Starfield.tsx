@@ -7,6 +7,8 @@ interface StarfieldProps {
   seed?: number;
   /** portion of stars that get a warm gold tint (0..1) */
   goldRatio?: number;
+  /** portion of stars that get a cool midnight-blue tint (0..1) */
+  blueRatio?: number;
   className?: string;
   /** keep stars out of the vertical band [from, to] in % (e.g. behind a headline) */
   clear?: [number, number];
@@ -31,13 +33,14 @@ export default function Starfield({
   count = 70,
   seed = 7,
   goldRatio = 0.12,
+  blueRatio = 0.1,
   className = '',
   clear,
 }: StarfieldProps) {
   const stars = useMemo(() => {
     const rand = mulberry32(seed);
     const out: {
-      x: number; y: number; size: number; delay: number; duration: number; min: number; max: number; gold: boolean;
+      x: number; y: number; size: number; delay: number; duration: number; min: number; max: number; tint: 'ivory' | 'gold' | 'blue';
     }[] = [];
     let guard = 0;
     while (out.length < count && guard < count * 6) {
@@ -47,6 +50,8 @@ export default function Starfield({
       if (clear && y > clear[0] && y < clear[1] && x > 20 && x < 80) continue;
       const r = rand();
       const size = r < 0.75 ? 1 + rand() * 1.2 : 2 + rand() * 1.6;
+      const t = rand();
+      const tint = t < goldRatio ? 'gold' : t < goldRatio + blueRatio ? 'blue' : 'ivory';
       out.push({
         x,
         y,
@@ -55,11 +60,11 @@ export default function Starfield({
         duration: 3.5 + rand() * 5,
         min: 0.15 + rand() * 0.25,
         max: 0.7 + rand() * 0.3,
-        gold: rand() < goldRatio,
+        tint,
       });
     }
     return out;
-  }, [count, seed, goldRatio, clear]);
+  }, [count, seed, goldRatio, blueRatio, clear]);
 
   return (
     <div
@@ -69,7 +74,7 @@ export default function Starfield({
       {stars.map((s, i) => (
         <span
           key={i}
-          className={`star ${s.gold ? 'star--gold' : ''}`}
+          className={`star ${s.tint === 'gold' ? 'star--gold' : s.tint === 'blue' ? 'star--blue' : ''}`}
           style={{
             left: `${s.x}%`,
             top: `${s.y}%`,

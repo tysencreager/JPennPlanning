@@ -84,7 +84,10 @@ export default {
           soft: "hsl(var(--sage-soft) / <alpha-value>)",
         },
         forest: "hsl(var(--forest) / <alpha-value>)",
-        midnight: "hsl(var(--midnight) / <alpha-value>)",
+        midnight: {
+          DEFAULT: "hsl(var(--midnight) / <alpha-value>)",
+          soft: "hsl(var(--midnight-soft) / <alpha-value>)",
+        },
         sky: {
           DEFAULT: "hsl(var(--sky) / <alpha-value>)",
           2: "hsl(var(--sky-2) / <alpha-value>)",

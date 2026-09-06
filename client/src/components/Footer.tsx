@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer className="sky sky-gradient relative overflow-hidden" data-testid="footer">
-      <Starfield count={45} seed={31} />
+      <Starfield count={45} seed={31} blueRatio={0.14} />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr] items-start">
           <div>

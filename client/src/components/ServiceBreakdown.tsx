@@ -16,7 +16,7 @@ const paths = [
 export default function ServiceBreakdown({ id = 'find-your-connection', tone = 'ivory' }: { id?: string; tone?: 'ivory' | 'sky' }) {
   const isSky = tone === 'sky';
   return (
-    <section id={id} className={`${isSky ? 'sky sky-gradient' : 'bg-card'} py-24 md:py-32 scroll-mt-24`}>
+    <section id={id} className={`${isSky ? 'sky sky-gradient' : 'sage-wash'} py-24 md:py-32 scroll-mt-24`}>
       <Container size="md">
         <Reveal className="text-center mb-14">
           <Eyebrow align="center" className="mb-5">Find your connection</Eyebrow>

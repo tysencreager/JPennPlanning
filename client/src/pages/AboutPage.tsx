@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import SEO, { createBreadcrumbSchema } from '@/components/SEO';
 import PageHero from '@/components/PageHero';
 import Constellation from '@/components/celestial/Constellation';
+import Botanical from '@/components/celestial/Botanical';
 import ServiceBreakdown from '@/components/ServiceBreakdown';
 import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
@@ -41,8 +42,11 @@ export default function AboutPage() {
         seed={17}
       />
 
-      <section className="py-24 md:py-32 bg-background">
-        <Container>
+      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+        <div className="absolute -right-8 top-10 w-40 md:w-60 text-sage/50 hidden md:block" aria-hidden="true">
+          <Botanical seed={3} />
+        </div>
+        <Container className="relative">
           <div className="grid md:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 items-start">
             <Reveal className="md:sticky md:top-32">
               <div className="relative">

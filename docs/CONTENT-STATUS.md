@@ -3,6 +3,14 @@
 Legend: ✅ Jessica's own words · ✍️ drafted from our conversation, needs her
 review · ⬜ waiting on Jessica · 🔧 Tysen to configure
 
+## Visual language (from the vision doc)
+- ✅ Dark forest green, warm ivory, muted gold, soft sage (card tone + sage
+  washes), midnight blue touches (dusk band, midnight constellations on ivory,
+  blue-white stars, selected states, secondary buttons)
+- ✅ Botanical/earth element: willow sprig line art (Grandmother Willow)
+- ✅ Organic texture: grain on select sections
+- ⬜ Stock photos for variety — see docs/STOCK-PHOTOS.md for the shot list
+
 ## Site-wide
 - 🔧 Instagram / Facebook URLs — `client/src/data/site.ts` (currently guessed)
 - 🔧 Bad Moms of Utah URL — `client/src/data/site.ts` (currently guessed)
@@ -12,6 +20,9 @@ review · ⬜ waiting on Jessica · 🔧 Tysen to configure
 
 ## Home
 - ✅ "You Belong Here." / "Connection changes everything." / intro paragraph
+- ✍️ "I talk about the unspoken" section (suicidal ideation, miscarriages,
+  postpartum) — written closely from her own words in the meeting; she should
+  read it and make it hers. Includes a 988 crisis line note.
 - ✅ "We are all constellations…" / "Your story. Your people. Your constellation."
 - ✅ Four offering blurbs (Coaching, Events, Speaking, Books & Writing)
 - ✍️ Meet Jessica paragraph
@@ -58,6 +69,11 @@ review · ⬜ waiting on Jessica · 🔧 Tysen to configure
 - ✅ All 16 questions, scoring, four results, four experiments, CTA — verbatim
 - 🔧 Formspree receives assessment sign-ups with `dimmest_star` field; connect
   to MailerLite or the newsletter list
+
+## Ideas she mentioned for later (not on the site yet)
+- Podcast ("You belong here" as the sign-off) — add a section when it exists
+- Brooke Davis-inspired photo series ("mom, wife, business owner… but who are
+  you underneath?") — would replace the Meet Jessica and About photos
 
 ## Kept as-is (light restyle)
 - Privacy Policy, Cancellation Policy, Book page

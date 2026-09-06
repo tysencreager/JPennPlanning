@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { cygnus } from '@/data/constellations';
+import Botanical from '@/components/celestial/Botanical';
 import { site } from '@/data/site';
 
 const reasons = [
@@ -86,7 +87,7 @@ export default function ContactPage() {
                     <legend className="eyebrow text-forest mb-3">What&apos;s this about?</legend>
                     <div className="flex flex-wrap gap-2">
                       {reasons.map((r) => (
-                        <label key={r.value} className={`cursor-pointer px-4 py-2 rounded-full border text-sm transition-colors ${about === r.value ? 'bg-forest text-ivory border-forest' : 'bg-background border-border text-foreground/80 hover:border-forest/50'}`}>
+                        <label key={r.value} className={`cursor-pointer px-4 py-2 rounded-full border text-sm transition-colors ${about === r.value ? 'bg-midnight text-ivory border-midnight' : 'bg-background border-border text-foreground/80 hover:border-midnight/50'}`}>
                           <input type="radio" name="about" value={r.value} checked={about === r.value} onChange={() => setAbout(r.value)} className="sr-only" />
                           {r.label}
                         </label>
@@ -124,7 +125,8 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="bg-card border border-border/70 rounded-sm p-8 space-y-8">
+              <div className="bg-card border border-border/70 rounded-sm p-8 space-y-8 relative overflow-hidden">
+                <div className="absolute -right-6 -bottom-8 w-36 text-sage/50" aria-hidden="true"><Botanical seed={7} /></div>
                 <div>
                   <Eyebrow className="mb-4">Other ways</Eyebrow>
                   <ul className="space-y-4">

@@ -44,7 +44,7 @@ export default function AffinityAstronPage() {
                 <p className="font-display text-2xl text-forest">My role isn&apos;t to become their North Star. It&apos;s to help them remember how brightly it shines.</p>
               </div>
             </Reveal>
-            <div className="text-forest max-w-md w-full mx-auto">
+            <div className="text-midnight max-w-md w-full mx-auto">
               <Constellation data={littleDipper} mode="scroll" strokeWidth={0.45} dim={0.15} />
             </div>
           </div>
