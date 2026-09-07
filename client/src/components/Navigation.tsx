@@ -13,7 +13,6 @@ export const navItems = [
   { href: '/events', label: 'Events' },
   { href: '/speaking', label: 'Speaking' },
   { href: '/writing', label: 'Books & Writing' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 interface NavigationProps {

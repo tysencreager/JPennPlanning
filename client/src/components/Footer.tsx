@@ -30,7 +30,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {navItems
                 .filter((i) => i.href !== '/')
-                .concat([{ href: '/journal', label: 'The Journal' }, { href: '/assessment', label: 'Affinity Astron Assessment' }, { href: '/connections', label: 'People I’ve Connected' }])
+                .concat([{ href: '/journal', label: 'The Journal' }, { href: '/assessment', label: 'Affinity Astron Assessment' }, { href: '/connections', label: 'People I’ve Connected' }, { href: '/contact', label: 'Contact' }])
                 .map((item) => (
                   <li key={item.href}>
                     <Link href={item.href} className="text-ivory/80 hover:text-gold-soft transition-colors" data-testid={`link-footer-${item.href.replace('/', '') || 'home'}`}>
