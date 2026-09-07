@@ -10,6 +10,7 @@ import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { bigDipper } from '@/data/constellations';
 import jessicaPhoto from '@assets/IMG_4461_1759499784524.jpeg';
+import willowPhoto from '@assets/stock/about-story.jpg';
 
 const thread = [
   { role: 'Event planner', note: 'Rooms full of people who came for a party and left with each other.' },
@@ -85,6 +86,21 @@ export default function AboutPage() {
               </Reveal>
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* grandmother willow */}
+      <section className="bg-background pb-8">
+        <Container>
+          <Reveal>
+            <figure className="relative rounded-sm overflow-hidden">
+              <img src={willowPhoto} alt="A woman standing beneath a weeping willow beside still water at sunset" className="w-full aspect-[21/9] object-cover" loading="lazy" />
+              <figcaption className="absolute left-6 bottom-5 md:left-10 md:bottom-8">
+                <p className="font-display italic text-2xl md:text-4xl text-ivory drop-shadow">Grandmother Willow is my spirit animal.</p>
+                <p className="mt-1 eyebrow text-ivory/80">There aren&apos;t many willows left in Utah. I know where one is.</p>
+              </figcaption>
+            </figure>
+          </Reveal>
         </Container>
       </section>
 

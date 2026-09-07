@@ -7,6 +7,7 @@ import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { lyra } from '@/data/constellations';
 import { getAllJournalPosts, journalCategories, type JournalPost } from '@/data/journal';
+import journalWindowPhoto from '@assets/stock/writing-journal-section.jpg';
 
 function JournalCard({ post, index }: { post: JournalPost; index: number }) {
   const date = new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -78,6 +79,12 @@ export default function JournalPage() {
 
       <section className="py-20 md:py-28 bg-background">
         <Container>
+          <Reveal className="mb-14">
+            <div className="relative rounded-sm overflow-hidden">
+              <img src={journalWindowPhoto} alt="A woman writing in a journal by a window at dawn" className="w-full aspect-[21/9] object-cover" />
+              <p className="absolute left-6 bottom-5 font-display italic text-2xl md:text-3xl text-ivory drop-shadow">Ten minutes, every single day.</p>
+            </div>
+          </Reveal>
           <Reveal className="flex flex-wrap items-center gap-2 mb-12">
             <Link href="/journal" className={`px-3.5 py-1.5 rounded-full border text-xs font-label tracking-wide transition-colors ${!category ? 'bg-midnight text-ivory border-midnight' : 'border-border text-foreground/75 hover:border-midnight/50'}`}>All</Link>
             {journalCategories.map((c) => (

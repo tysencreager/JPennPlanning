@@ -51,7 +51,7 @@ export default function WorldAccordingToJessica({ photos }: { photos: string[] }
 
           <Reveal delay={0.16} className="col-span-1 md:col-span-4 md:row-span-2">
             <div className="h-full min-h-[240px] rounded-sm overflow-hidden">
-              <img src={p2} alt="Jessica speaking to a room of women" className="w-full h-full object-cover" loading="lazy" />
+              <img src={p2} alt="A themed tea party table from one of Jessica's events" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </Reveal>
 

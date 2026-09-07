@@ -10,6 +10,7 @@ import { lyra } from '@/data/constellations';
 import { getAllJournalPosts, journalCategories } from '@/data/journal';
 import { site } from '@/data/site';
 import bookCover from '@assets/IMG_4464_1759500798005.jpeg';
+import journalWindowPhoto from '@assets/stock/writing-journal-section.jpg';
 import review1 from '@assets/jpenplanning book review 1.png';
 import review2 from '@assets/jpenplanning book review 2.png';
 import review3 from '@assets/jpenplanning book review 3.png';
@@ -105,8 +106,11 @@ export default function WritingPage() {
                   </Link>
                 ))}
               </div>
-              <div className="mt-10 w-32 text-ivory/50" aria-hidden="true">
-                <Constellation data={lyra} mode="view" strokeWidth={0.6} />
+              <div className="mt-10 relative">
+                <img src={journalWindowPhoto} alt="A woman writing in a journal by a window at dawn" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" />
+                <div className="absolute -top-6 -right-3 w-20 text-ivory/70" aria-hidden="true">
+                  <Constellation data={lyra} mode="view" strokeWidth={0.7} />
+                </div>
               </div>
             </Reveal>
             <div className="space-y-4">

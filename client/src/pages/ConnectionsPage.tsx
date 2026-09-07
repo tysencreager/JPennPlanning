@@ -35,9 +35,9 @@ interface Moment {
 }
 
 const moments: Moment[] = [
-  { src: tsbGroup, alt: 'Group coaching circle at Taking Sexy Back', kind: 'coaching' },
   { src: tsbAshley, alt: 'Ashley stepping into her confidence', kind: 'coaching', tall: true },
-  { src: ev4, alt: 'Jessica speaking to a room of women', kind: 'speaking' },
+  { src: ev4, alt: 'A themed tea party table', kind: 'event' },
+  { src: tsbGroup, alt: 'Jessica speaking to a group of women', kind: 'speaking' },
   { src: ev1, alt: 'Event moment', kind: 'event' },
   { src: tsbBrooke, alt: 'Brooke at Taking Sexy Back', kind: 'coaching', tall: true },
   { src: ev2, alt: 'Event moment', kind: 'event' },

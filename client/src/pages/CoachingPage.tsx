@@ -7,6 +7,7 @@ import Constellation from '@/components/celestial/Constellation';
 import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { littleDipper } from '@/data/constellations';
+import conversationPhoto from '@assets/stock/coaching-how-it-works.jpg';
 
 const formats = [
   {
@@ -95,9 +96,14 @@ export default function CoachingPage() {
                 </Link>
               </Button>
             </Reveal>
-            <div className="text-midnight max-w-md w-full mx-auto">
-              <Constellation data={littleDipper} mode="scroll" strokeWidth={0.45} dim={0.15} />
-            </div>
+            <Reveal delay={0.1}>
+              <div className="relative">
+                <img src={conversationPhoto} alt="Two women in conversation on a bench at dusk, one listening closely" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" />
+                <div className="absolute -bottom-8 -left-4 w-32 text-midnight hidden sm:block" aria-hidden="true">
+                  <Constellation data={littleDipper} mode="scroll" strokeWidth={0.6} dim={0.15} />
+                </div>
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>

@@ -7,7 +7,8 @@ import Constellation from '@/components/celestial/Constellation';
 import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { cassiopeia } from '@/data/constellations';
-import speakingPhoto from '@assets/att.YF06gY-tsr2WYk_B_YTZ4GyDuZQSL8TytYT1UzFEnMU_1760104715531.jpeg';
+import speakingPhoto from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
+import listeningPhoto from '@assets/stock/home-speaking-block-speaking-hero.jpg';
 
 const topics = [
   { title: 'You belong here', copy: 'On connection, belonging, and why we were never meant to do this alone.' },
@@ -56,7 +57,10 @@ export default function SpeakingPage() {
         <Container>
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
             <Reveal>
-              <img src={speakingPhoto} alt="Jessica speaking to a room of women" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" />
+              <div className="relative">
+                <img src={listeningPhoto} alt="A room of women listening in warm lamplight" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" />
+                <img src={speakingPhoto} alt="Jessica speaking to a group of women at Taking Sexy Back" className="absolute -bottom-8 -right-4 w-2/5 aspect-[4/3] object-cover rounded-sm border-4 border-background shadow-lg hidden sm:block" loading="lazy" />
+              </div>
             </Reveal>
             <Reveal delay={0.1}>
               <Eyebrow className="mb-5">What happens in the room</Eyebrow>

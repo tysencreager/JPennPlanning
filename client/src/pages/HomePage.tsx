@@ -14,7 +14,11 @@ import { testimonials } from '@/data/testimonials';
 import { site } from '@/data/site';
 import jessicaPhoto from '@assets/IMG_4461_1759499784524.jpeg';
 import gatheringPhoto from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
-import speakingPhoto from '@assets/att.YF06gY-tsr2WYk_B_YTZ4GyDuZQSL8TytYT1UzFEnMU_1760104715531.jpeg';
+import eventDecorPhoto from '@assets/att.YF06gY-tsr2WYk_B_YTZ4GyDuZQSL8TytYT1UzFEnMU_1760104715531.jpeg';
+import heroSky from '@assets/stock/home-hero-backdrop.jpg';
+import coachingPhoto from '@assets/stock/home-coaching-block.jpg';
+import speakingRoomPhoto from '@assets/stock/home-speaking-block-speaking-hero.jpg';
+import journalPhoto from '@assets/stock/home-books-writing-block.jpg';
 
 interface Offering {
   eyebrow: string;
@@ -36,6 +40,8 @@ const offerings: Offering[] = [
     cta: 'Explore Coaching',
     to: '/coaching',
     constellation: littleDipper,
+    photo: coachingPhoto,
+    photoAlt: 'A woman on a porch step at dusk, holding a mug and looking up at the first stars',
   },
   {
     eyebrow: 'Connect with others',
@@ -59,6 +65,8 @@ const offerings: Offering[] = [
     cta: 'Book Jessica',
     to: '/speaking',
     constellation: cassiopeia,
+    photo: speakingRoomPhoto,
+    photoAlt: 'A living room of women listening closely in warm lamplight',
   },
   {
     eyebrow: 'Connect through story',
@@ -67,6 +75,8 @@ const offerings: Offering[] = [
     cta: 'Explore the Stories',
     to: '/writing',
     constellation: lyra,
+    photo: journalPhoto,
+    photoAlt: 'An open handwritten journal with a fountain pen and coffee in morning light',
   },
 ];
 
@@ -84,7 +94,15 @@ export default function HomePage() {
       {/* HERO — You Belong Here.                                             */}
       {/* ------------------------------------------------------------------ */}
       <section className="sky sky-gradient relative min-h-[100svh] flex items-center overflow-hidden">
-        <Starfield count={110} seed={11} clear={[30, 62]} blueRatio={0.14} />
+        <img
+          src={heroSky}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-bottom opacity-70"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky/70 via-sky/30 to-sky/60 pointer-events-none" aria-hidden="true" />
+        <Starfield count={70} seed={11} clear={[30, 62]} blueRatio={0.14} />
         <div className="absolute inset-x-0 bottom-0 h-56 dusk-to-ground pointer-events-none" aria-hidden="true" />
         <div className="absolute right-[6%] top-[18%] w-40 md:w-64 text-ivory/70 hidden sm:block" aria-hidden="true">
           <Constellation data={littleDipper} mode="view" dim={0.1} strokeWidth={0.4} />
@@ -304,7 +322,7 @@ export default function HomePage() {
       {/* ------------------------------------------------------------------ */}
       {/* THE WORLD ACCORDING TO JESSICA                                      */}
       {/* ------------------------------------------------------------------ */}
-      <WorldAccordingToJessica photos={[jessicaPhoto, speakingPhoto, gatheringPhoto]} />
+      <WorldAccordingToJessica photos={[jessicaPhoto, eventDecorPhoto, gatheringPhoto]} />
 
       {/* ------------------------------------------------------------------ */}
       {/* LEAD GENERATOR — the assessment                                      */}
