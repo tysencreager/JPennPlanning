@@ -8,7 +8,8 @@ import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { pleiades } from '@/data/constellations';
 import { testimonials } from '@/data/testimonials';
-import { site } from '@/data/site';
+import { site, isStaging } from '@/data/site';
+import NoteToJessica from '@/components/NoteToJessica';
 import tsbGroup from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
 import tsbAshley from '@assets/Taking-Sexy-Back-Event/Ashley.jpg';
 import tsbBrooke from '@assets/Taking-Sexy-Back-Event/Brooke.jpg';
@@ -88,23 +89,25 @@ export default function ConnectionsPage() {
       <section className="py-24 md:py-32 bg-background">
         <Container>
           <div className="grid lg:grid-cols-3 gap-6">
-            <Reveal className="lg:col-span-1">
-              <div className="h-full sky sky-gradient rounded-sm p-8 flex flex-col justify-between min-h-[320px]">
-                <div>
-                  <Eyebrow className="mb-4">In their words</Eyebrow>
-                  <p className="font-display text-3xl text-ivory leading-snug">A spoken testimonial belongs here.</p>
-                  <p className="mt-4 text-ivory/70 text-sm leading-relaxed">
-                    Video testimonials are performing best on pages like this. Once Jessica records or collects one, it drops into this space.
-                  </p>
+            {isStaging && (
+              <Reveal className="lg:col-span-1">
+                <div className="h-full sky sky-gradient rounded-sm p-8 flex flex-col justify-between min-h-[320px]">
+                  <div>
+                    <Eyebrow className="mb-4">In their words</Eyebrow>
+                    <p className="font-display text-3xl text-ivory leading-snug">A spoken testimonial belongs here.</p>
+                    <NoteToJessica tone="sky" className="mt-4">
+                      Video testimonials perform best on pages like this. Once you record or collect one, it drops into this space. This card only shows on staging.
+                    </NoteToJessica>
+                  </div>
+                  <div className="mt-8 aspect-video rounded-sm border border-dashed border-ivory/25 flex items-center justify-center text-ivory/40 text-xs font-label tracking-widest uppercase">
+                    Video placeholder
+                  </div>
                 </div>
-                <div className="mt-8 aspect-video rounded-sm border border-dashed border-ivory/25 flex items-center justify-center text-ivory/40 text-xs font-label tracking-widest uppercase">
-                  Video placeholder
-                </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            )}
             {testimonials.map((t, i) => (
               <Reveal key={t.id} delay={i * 0.08}>
-                <figure className="h-full bg-card border border-border/70 rounded-sm p-8 flex flex-col">
+                <figure className="h-full bg-card border border-border/70 rounded-sm p-8 flex flex-col lift">
                   <p className="eyebrow text-gold">{t.title}</p>
                   <blockquote className="mt-4 text-foreground/85 leading-relaxed whitespace-pre-line text-[15px]">{t.content}</blockquote>
                   <figcaption className="mt-auto pt-6 eyebrow text-forest/80">

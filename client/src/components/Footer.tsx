@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { Facebook, Instagram, Mail, Users } from 'lucide-react';
 import Constellation from '@/components/celestial/Constellation';
 import Starfield from '@/components/celestial/Starfield';
+import Aurora from '@/components/celestial/Aurora';
 import NewsletterForm from '@/components/NewsletterForm';
 import { littleDipper } from '@/data/constellations';
 import { site } from '@/data/site';
@@ -12,7 +13,8 @@ export default function Footer() {
 
   return (
     <footer className="sky sky-gradient relative overflow-hidden" data-testid="footer">
-      <Starfield count={45} seed={31} blueRatio={0.14} />
+      <Aurora intensity={0.6} />
+      <Starfield count={50} seed={31} blueRatio={0.14} goldRatio={0.16} />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr] items-start">
           <div>

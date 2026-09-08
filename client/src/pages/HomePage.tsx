@@ -1,10 +1,14 @@
+import { useRef } from 'react';
 import { Link } from 'wouter';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowDown, ArrowUpRight } from 'lucide-react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import Starfield from '@/components/celestial/Starfield';
 import Constellation from '@/components/celestial/Constellation';
-import Botanical from '@/components/celestial/Botanical';
+import Aurora from '@/components/celestial/Aurora';
+import ShootingStars from '@/components/celestial/ShootingStars';
+import Motes from '@/components/celestial/Motes';
 import ServiceBreakdown from '@/components/ServiceBreakdown';
 import WorldAccordingToJessica from '@/components/WorldAccordingToJessica';
 import { Container, Eyebrow, Reveal } from '@/components/Section';
@@ -81,6 +85,15 @@ const offerings: Offering[] = [
 ];
 
 export default function HomePage() {
+  // Hero parallax: the backdrop, the stars and the constellation drift at
+  // different speeds as you scroll away, so the sky has depth.
+  const heroRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const backdropY = useTransform(scrollYProgress, [0, 1], ['0%', reduced ? '0%' : '18%']);
+  const starsY = useTransform(scrollYProgress, [0, 1], ['0%', reduced ? '0%' : '30%']);
+  const constellationY = useTransform(scrollYProgress, [0, 1], ['0%', reduced ? '0%' : '45%']);
+
   return (
     <Layout onSky>
       <SEO
@@ -93,25 +106,30 @@ export default function HomePage() {
       {/* ------------------------------------------------------------------ */}
       {/* HERO — You Belong Here.                                             */}
       {/* ------------------------------------------------------------------ */}
-      <section className="sky sky-gradient relative min-h-[100svh] flex items-center overflow-hidden">
-        <img
+      <section ref={heroRef} className="sky sky-gradient relative min-h-[100svh] flex items-center overflow-hidden">
+        <motion.img
           src={heroSky}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-bottom opacity-70"
+          className="absolute -inset-y-[12%] inset-x-0 w-full h-[124%] object-cover object-bottom opacity-70"
+          style={{ y: backdropY }}
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-sky/70 via-sky/30 to-sky/60 pointer-events-none" aria-hidden="true" />
-        <Starfield count={70} seed={11} clear={[30, 62]} blueRatio={0.14} />
-        <div className="absolute inset-x-0 bottom-0 h-56 dusk-to-ground pointer-events-none" aria-hidden="true" />
-        <div className="absolute right-[6%] top-[18%] w-40 md:w-64 text-ivory/70 hidden sm:block" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-b from-sky/70 via-sky/25 to-sky/55 pointer-events-none" aria-hidden="true" />
+        <Aurora intensity={1.15} />
+        <motion.div className="absolute inset-0" style={{ y: starsY }} aria-hidden="true">
+          <Starfield count={80} seed={11} clear={[30, 62]} blueRatio={0.14} goldRatio={0.16} />
+        </motion.div>
+        <ShootingStars count={3} seed={4} />
+        <div className="absolute inset-x-0 bottom-0 h-64 dusk-to-ground pointer-events-none" aria-hidden="true" />
+        <motion.div className="absolute right-[6%] top-[18%] w-40 md:w-64 text-ivory/70 hidden sm:block" style={{ y: constellationY }} aria-hidden="true">
           <Constellation data={littleDipper} mode="view" dim={0.1} strokeWidth={0.4} />
-        </div>
+        </motion.div>
         <Container className="relative pt-40 pb-32 text-center">
           <Reveal>
             <p className="eyebrow text-gold mb-8">J Penn Planning</p>
-            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-ivory leading-[0.95] tracking-tight" data-testid="text-hero-title">
-              You Belong Here.
+            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light leading-[0.95] tracking-tight" data-testid="text-hero-title">
+              <span className="shimmer-text">You Belong Here.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.25}>
@@ -141,21 +159,21 @@ export default function HomePage() {
       {/* ------------------------------------------------------------------ */}
       {/* MEET JESSICA                                                         */}
       {/* ------------------------------------------------------------------ */}
-      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
-        <div className="absolute -right-6 -bottom-10 w-44 md:w-64 text-sage/60 hidden sm:block" aria-hidden="true">
-          <Botanical seed={2} />
-        </div>
+      <section className="py-24 md:py-32 bg-background ground-glow relative overflow-hidden">
+        <Motes count={16} seed={2} />
         <Container className="relative">
           <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
             <Reveal>
               <div className="relative">
                 <div className="absolute -inset-3 border border-gold/30 rounded-sm translate-x-3 translate-y-3" aria-hidden="true" />
-                <img
-                  src={jessicaPhoto}
-                  alt="Jessica Pennington"
-                  className="relative w-full rounded-sm object-cover aspect-[4/5]"
-                  data-testid="img-jessica"
-                />
+                <div className="zoom-frame relative rounded-sm">
+                  <img
+                    src={jessicaPhoto}
+                    alt="Jessica Pennington"
+                    className="w-full rounded-sm object-cover aspect-[4/5]"
+                    data-testid="img-jessica"
+                  />
+                </div>
               </div>
             </Reveal>
             <Reveal delay={0.15}>
@@ -184,9 +202,6 @@ export default function HomePage() {
       {/* THE UNSPOKEN — vulnerability, in her words                          */}
       {/* ------------------------------------------------------------------ */}
       <section className="sage-wash relative overflow-hidden py-24 md:py-32">
-        <div className="absolute -left-8 -top-6 w-40 md:w-56 text-sage/50" aria-hidden="true">
-          <Botanical seed={5} flip />
-        </div>
         <Container size="sm" className="relative">
           <Reveal>
             <Eyebrow className="mb-6">I talk about the unspoken</Eyebrow>
@@ -218,7 +233,9 @@ export default function HomePage() {
       {/* WE ARE ALL CONSTELLATIONS (scroll-illuminating Little Dipper)       */}
       {/* ------------------------------------------------------------------ */}
       <section className="sky sky-gradient relative overflow-hidden py-28 md:py-40">
-        <Starfield count={80} seed={23} />
+        <Aurora intensity={0.8} />
+        <Starfield count={90} seed={23} goldRatio={0.16} />
+        <ShootingStars count={2} seed={23} />
         <Container className="relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1 text-ivory/90 max-w-xl mx-auto w-full">
@@ -299,7 +316,7 @@ export default function HomePage() {
                 <div className={`${i % 2 === 1 ? 'md:order-1' : ''}`}>
                   {o.photo ? (
                     <div className="relative">
-                      <img src={o.photo} alt={o.photoAlt} className="w-full aspect-[5/4] object-cover rounded-sm" loading="lazy" />
+                      <div className="zoom-frame rounded-sm"><img src={o.photo} alt={o.photoAlt} className="w-full aspect-[5/4] object-cover rounded-sm" loading="lazy" /></div>
                       <div className="absolute -bottom-6 -right-4 w-28 text-midnight/80 hidden sm:block" aria-hidden="true">
                         <Constellation data={o.constellation} mode="view" strokeWidth={0.6} />
                       </div>
@@ -328,7 +345,9 @@ export default function HomePage() {
       {/* LEAD GENERATOR — the assessment                                      */}
       {/* ------------------------------------------------------------------ */}
       <section className="sky sky-gradient relative overflow-hidden py-28 md:py-36">
-        <Starfield count={70} seed={41} clear={[25, 75]} />
+        <Aurora intensity={1} />
+        <Starfield count={80} seed={41} clear={[25, 75]} goldRatio={0.18} />
+        <ShootingStars count={2} seed={41} />
         <Container size="md" className="relative text-center">
           <Reveal>
             <Eyebrow align="center" className="mb-6">Free 5-minute assessment</Eyebrow>
@@ -356,8 +375,9 @@ export default function HomePage() {
       {/* ------------------------------------------------------------------ */}
       {/* PEOPLE I'VE HAD THE PRIVILEGE OF CONNECTING                          */}
       {/* ------------------------------------------------------------------ */}
-      <section className="py-24 md:py-32 bg-background">
-        <Container>
+      <section className="py-24 md:py-32 bg-background ground-glow relative overflow-hidden">
+        <Motes count={10} seed={31} />
+        <Container className="relative">
           <Reveal className="max-w-2xl mb-14">
             <Eyebrow className="mb-5">People I&apos;ve had the privilege of connecting</Eyebrow>
             <h2 className="font-display text-4xl md:text-5xl font-light text-forest">Laughing, hugging, creating, or just listening.</h2>
@@ -365,7 +385,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.slice(0, 3).map((t, i) => (
               <Reveal key={t.id} delay={i * 0.08}>
-                <figure className="h-full bg-card border border-border/70 rounded-sm p-8 flex flex-col">
+                <figure className="h-full bg-card border border-border/70 rounded-sm p-8 flex flex-col lift">
                   <span className="text-gold text-3xl font-display leading-none" aria-hidden="true">“</span>
                   <blockquote className="mt-3 text-foreground/85 leading-relaxed line-clamp-6">{t.content.split('\n')[0]}</blockquote>
                   <figcaption className="mt-auto pt-6 eyebrow text-forest/80">

@@ -82,7 +82,7 @@ export default function Navigation({ onSky = false }: NavigationProps) {
               asChild
               size="sm"
               variant={light ? 'outline' : 'default'}
-              className={`ml-3 eyebrow ${light ? 'border-gold/70 text-ivory bg-transparent hover:bg-ivory/10' : ''}`}
+              className={`ml-3 eyebrow glow-gold ${light ? 'border-gold/70 text-ivory bg-transparent hover:bg-ivory/10' : ''}`}
               data-testid="button-lets-connect"
             >
               <Link href="/contact">Let&apos;s Connect</Link>

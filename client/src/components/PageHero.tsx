@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import Starfield from '@/components/celestial/Starfield';
 import Constellation from '@/components/celestial/Constellation';
+import Aurora from '@/components/celestial/Aurora';
+import ShootingStars from '@/components/celestial/ShootingStars';
 import type { Constellation as ConstellationData } from '@/data/constellations';
 import { Container, Eyebrow, Reveal } from '@/components/Section';
 
@@ -19,7 +21,9 @@ interface PageHeroProps {
 export default function PageHero({ eyebrow, title, lede, constellation, children, seed = 3 }: PageHeroProps) {
   return (
     <section className="sky sky-gradient relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28">
-      <Starfield count={60} seed={seed} />
+      <Aurora intensity={0.9} />
+      <Starfield count={70} seed={seed} goldRatio={0.16} />
+      <ShootingStars count={2} seed={seed} />
       <Container className="relative">
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
           <Reveal>

@@ -58,7 +58,7 @@ export default function SpeakingPage() {
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
             <Reveal>
               <div className="relative">
-                <img src={listeningPhoto} alt="A room of women listening in warm lamplight" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" />
+                <div className="zoom-frame rounded-sm"><img src={listeningPhoto} alt="A room of women listening in warm lamplight" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" /></div>
                 <img src={speakingPhoto} alt="Jessica speaking to a group of women at Taking Sexy Back" className="absolute -bottom-8 -right-4 w-2/5 aspect-[4/3] object-cover rounded-sm border-4 border-background shadow-lg hidden sm:block" loading="lazy" />
               </div>
             </Reveal>

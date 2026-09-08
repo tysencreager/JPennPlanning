@@ -4,7 +4,8 @@ import Layout from '@/components/Layout';
 import SEO, { createBreadcrumbSchema } from '@/components/SEO';
 import PageHero from '@/components/PageHero';
 import Constellation from '@/components/celestial/Constellation';
-import Botanical from '@/components/celestial/Botanical';
+import Motes from '@/components/celestial/Motes';
+import NoteToJessica from '@/components/NoteToJessica';
 import ServiceBreakdown from '@/components/ServiceBreakdown';
 import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
@@ -43,10 +44,8 @@ export default function AboutPage() {
         seed={17}
       />
 
-      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
-        <div className="absolute -right-8 top-10 w-40 md:w-60 text-sage/50 hidden md:block" aria-hidden="true">
-          <Botanical seed={3} />
-        </div>
+      <section className="py-24 md:py-32 bg-background ground-glow relative overflow-hidden">
+        <Motes count={14} seed={3} />
         <Container className="relative">
           <div className="grid md:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20 items-start">
             <Reveal className="md:sticky md:top-32">
@@ -54,7 +53,7 @@ export default function AboutPage() {
                 <div className="absolute -inset-3 border border-gold/30 rounded-sm -translate-x-3 translate-y-3" aria-hidden="true" />
                 <img src={jessicaPhoto} alt="Jessica Pennington" className="relative w-full rounded-sm object-cover aspect-[4/5]" data-testid="img-jessica" />
               </div>
-              <p className="mt-6 text-xs text-muted-foreground">Photo to be updated with the new series.</p>
+              <NoteToJessica className="mt-6">Photo to be swapped for one from your new series when it arrives.</NoteToJessica>
             </Reveal>
 
             <div className="space-y-8 text-lg leading-relaxed text-foreground/85">
@@ -80,9 +79,7 @@ export default function AboutPage() {
                 </p>
               </Reveal>
               <Reveal>
-                <p className="text-sm text-muted-foreground border-l-2 border-gold/50 pl-4">
-                  Draft copy written from our conversation. Jessica&apos;s own telling of this story will replace it when it arrives.
-                </p>
+                <NoteToJessica className="border-l-2 border-gold/50 pl-4">This story is drafted from our conversation. Your own telling of it will replace this draft.</NoteToJessica>
               </Reveal>
             </div>
           </div>

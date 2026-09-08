@@ -107,7 +107,7 @@ export default function WritingPage() {
                 ))}
               </div>
               <div className="mt-10 relative">
-                <img src={journalWindowPhoto} alt="A woman writing in a journal by a window at dawn" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" />
+                <div className="zoom-frame rounded-sm"><img src={journalWindowPhoto} alt="A woman writing in a journal by a window at dawn" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" /></div>
                 <div className="absolute -top-6 -right-3 w-20 text-ivory/70" aria-hidden="true">
                   <Constellation data={lyra} mode="view" strokeWidth={0.7} />
                 </div>

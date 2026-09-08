@@ -14,7 +14,7 @@ function JournalCard({ post, index }: { post: JournalPost; index: number }) {
   return (
     <Reveal delay={(index % 2) * 0.08}>
       <article className="group h-full">
-        <Link href={`/journal/${post.slug}`} className="block h-full bg-card border border-border/70 rounded-sm overflow-hidden hover:border-gold/60 transition-colors" data-testid={`link-journal-${post.slug}`}>
+        <Link href={`/journal/${post.slug}`} className="block h-full bg-card border border-border/70 rounded-sm overflow-hidden lift" data-testid={`link-journal-${post.slug}`}>
           {post.featuredImage && (
             <div className="aspect-[16/10] overflow-hidden">
               <img src={post.featuredImage} alt={post.imageAlt || post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" />

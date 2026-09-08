@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { cygnus } from '@/data/constellations';
-import Botanical from '@/components/celestial/Botanical';
 import porchPhoto from '@assets/stock/contact.jpg';
 import { site } from '@/data/site';
 
@@ -126,9 +125,8 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <img src={porchPhoto} alt="Two porch chairs facing each other at dusk with a lantern between them and the door open" className="w-full aspect-[4/3] object-cover rounded-sm mb-6" loading="lazy" />
+              <div className="zoom-frame rounded-sm mb-6"><img src={porchPhoto} alt="Two porch chairs facing each other at dusk with a lantern between them and the door open" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" /></div>
               <div className="bg-card border border-border/70 rounded-sm p-8 space-y-8 relative overflow-hidden">
-                <div className="absolute -right-6 -bottom-8 w-36 text-sage/50" aria-hidden="true"><Botanical seed={7} /></div>
                 <div>
                   <Eyebrow className="mb-4">Other ways</Eyebrow>
                   <ul className="space-y-4">

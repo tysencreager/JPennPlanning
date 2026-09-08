@@ -5,6 +5,7 @@ import SEO, { createBreadcrumbSchema, createServiceSchema } from '@/components/S
 import PageHero from '@/components/PageHero';
 import Constellation from '@/components/celestial/Constellation';
 import { Container, Eyebrow, Reveal } from '@/components/Section';
+import Motes from '@/components/celestial/Motes';
 import { Button } from '@/components/ui/button';
 import { coronaBorealis, pleiades } from '@/data/constellations';
 import { site } from '@/data/site';
@@ -12,6 +13,15 @@ import gatheringPhoto from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
 import teaPartyPhoto from '@assets/b0220067d6c11c56ab7402ac4bd92c06_1759533682929.jpg';
 import girlsNightPhoto from '@assets/stock/events-your-gathering.jpg';
 import coffeePhoto from '@assets/stock/events-coffee-compliments.jpg';
+
+// The Bad Moms of Utah photo: upload it as attached_assets/stock/events-bad-moms.jpg
+// and it is picked up automatically on the next build. Until then the tea-party
+// photo stands in.
+const uploadedBadMoms = import.meta.glob('../../../attached_assets/stock/events-bad-moms.{jpg,jpeg,png,webp}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+const badMomsPhoto = Object.values(uploadedBadMoms)[0] ?? teaPartyPhoto;
 
 export default function EventsPage() {
   const schema = {
@@ -57,8 +67,8 @@ export default function EventsPage() {
         <Container>
           <div className="grid lg:grid-cols-3 gap-6">
             <Reveal className="lg:col-span-2">
-              <div className="h-full grid md:grid-cols-2 bg-card border border-border/70 rounded-sm overflow-hidden">
-                <img src={teaPartyPhoto} alt="A themed tea party table" className="w-full h-full object-cover min-h-[260px]" loading="lazy" />
+              <div className="h-full grid md:grid-cols-2 bg-card border border-border/70 rounded-sm overflow-hidden lift">
+                <div className="zoom-frame min-h-[260px]"><img src={badMomsPhoto} alt="A group of women laughing together for a selfie at a backyard gathering at golden hour" className="w-full h-full object-cover min-h-[260px]" loading="lazy" /></div>
                 <div className="p-8 md:p-10 flex flex-col">
                   <div className="flex items-center gap-2 text-gold"><Users className="w-4 h-4" /><span className="eyebrow">Every month</span></div>
                   <h2 className="mt-4 font-display text-3xl md:text-4xl text-forest leading-tight">Bad Moms of Utah</h2>
@@ -72,7 +82,7 @@ export default function EventsPage() {
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="h-full sky rounded-sm flex flex-col relative overflow-hidden min-h-[420px]">
+              <div className="h-full sky rounded-sm flex flex-col relative overflow-hidden min-h-[420px] lift">
                 <img src={coffeePhoto} alt="Three women laughing and clinking coffee cups at a café table" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                 <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(180deg, hsl(var(--midnight) / 0.15) 0%, hsl(var(--sky) / 0.55) 45%, hsl(var(--sky) / 0.95) 100%)' }} aria-hidden="true" />
                 <div className="absolute -right-6 top-4 w-32 text-ivory/40" aria-hidden="true">
@@ -93,8 +103,9 @@ export default function EventsPage() {
       </section>
 
       {/* your event */}
-      <section className="bg-card py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-card ground-glow py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 grain" aria-hidden="true" />
+        <Motes count={12} seed={19} />
         <Container className="relative">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <Reveal>
@@ -129,8 +140,8 @@ export default function EventsPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <div className="grid grid-cols-2 gap-4">
-                <img src={gatheringPhoto} alt="Women gathered for a coaching circle" className="w-full aspect-[3/4] object-cover rounded-sm" loading="lazy" />
-                <img src={girlsNightPhoto} alt="A backyard girls' night under string lights with sparklers" className="w-full aspect-[3/4] object-cover rounded-sm mt-8" loading="lazy" />
+                <div className="zoom-frame rounded-sm"><img src={gatheringPhoto} alt="Women gathered for a coaching circle" className="w-full aspect-[3/4] object-cover rounded-sm" loading="lazy" /></div>
+                <div className="zoom-frame rounded-sm mt-8"><img src={girlsNightPhoto} alt="A backyard girls' night under string lights with sparklers" className="w-full aspect-[3/4] object-cover rounded-sm" loading="lazy" /></div>
               </div>
             </Reveal>
           </div>

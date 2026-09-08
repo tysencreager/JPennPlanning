@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import Layout from '@/components/Layout';
+import NoteToJessica from '@/components/NoteToJessica';
 import SEO, { createBreadcrumbSchema, createServiceSchema } from '@/components/SEO';
 import PageHero from '@/components/PageHero';
 import Constellation from '@/components/celestial/Constellation';
@@ -98,7 +99,7 @@ export default function CoachingPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <div className="relative">
-                <img src={conversationPhoto} alt="Two women in conversation on a bench at dusk, one listening closely" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" />
+                <div className="zoom-frame rounded-sm"><img src={conversationPhoto} alt="Two women in conversation on a bench at dusk, one listening closely" className="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy" /></div>
                 <div className="absolute -bottom-8 -left-4 w-32 text-midnight hidden sm:block" aria-hidden="true">
                   <Constellation data={littleDipper} mode="scroll" strokeWidth={0.6} dim={0.15} />
                 </div>
@@ -119,7 +120,7 @@ export default function CoachingPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {formats.map((f, i) => (
               <Reveal key={f.title} delay={i * 0.08}>
-                <div className="h-full bg-background border border-border/70 rounded-sm p-8 flex flex-col">
+                <div className="h-full bg-background border border-border/70 rounded-sm p-8 flex flex-col lift">
                   <span className="text-gold text-2xl" aria-hidden="true">✦</span>
                   <h3 className="mt-4 font-display text-2xl text-forest leading-snug">{f.title}</h3>
                   <p className="mt-4 text-foreground/80 leading-relaxed">{f.copy}</p>
@@ -128,7 +129,7 @@ export default function CoachingPage() {
             ))}
           </div>
           <Reveal className="mt-8">
-            <p className="text-sm text-muted-foreground">Pricing, session length and packages to be confirmed with Jessica before launch.</p>
+            <NoteToJessica>Pricing, session length and packages still need to be confirmed before launch.</NoteToJessica>
           </Reveal>
         </Container>
       </section>
@@ -144,7 +145,7 @@ export default function CoachingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {hope.map((h, i) => (
               <Reveal key={h.letter} delay={i * 0.08}>
-                <div className="h-full border border-ivory/15 rounded-sm p-7 bg-sky-2/40 backdrop-blur-sm">
+                <div className="h-full border border-ivory/15 rounded-sm p-7 bg-sky-2/40 backdrop-blur-sm lift">
                   <p className="font-display text-6xl text-gold leading-none">{h.letter}</p>
                   <p className="mt-4 eyebrow text-ivory">{h.word}</p>
                   <p className="mt-3 text-ivory/70 leading-relaxed text-sm">{h.copy}</p>
@@ -153,7 +154,7 @@ export default function CoachingPage() {
             ))}
           </div>
           <Reveal className="mt-10 text-center">
-            <p className="text-xs text-ivory/50">Framework descriptions are placeholders for Jessica to refine.</p>
+            <NoteToJessica tone="sky">Framework descriptions are placeholders for you to refine.</NoteToJessica>
           </Reveal>
         </Container>
       </section>

@@ -93,6 +93,12 @@ export default {
           2: "hsl(var(--sky-2) / <alpha-value>)",
         },
         ivory: "hsl(var(--ivory) / <alpha-value>)",
+        twilight: {
+          DEFAULT: "hsl(var(--twilight) / <alpha-value>)",
+          soft: "hsl(var(--twilight-soft) / <alpha-value>)",
+        },
+        aurora: "hsl(var(--aurora) / <alpha-value>)",
+        rose: "hsl(var(--rose) / <alpha-value>)",
         status: {
           online: "rgb(34 197 94)",
           away: "rgb(245 158 11)",

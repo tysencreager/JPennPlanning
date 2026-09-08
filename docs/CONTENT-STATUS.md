@@ -7,9 +7,16 @@ review · ⬜ waiting on Jessica · 🔧 Tysen to configure
 - ✅ Dark forest green, warm ivory, muted gold, soft sage (card tone + sage
   washes), midnight blue touches (dusk band, midnight constellations on ivory,
   blue-white stars, selected states, secondary buttons)
-- ✅ Botanical/earth element: willow sprig line art (Grandmother Willow)
+- ✅ Earth element: warm ground-glow washes, gold motes, sage cards (the willow line art was retired as unpolished)
 - ✅ Organic texture: grain on select sections
-- ⬜ Stock photos for variety — see docs/STOCK-PHOTOS.md for the shot list
+- ✅ Stock photos for variety — ten placed; see docs/STOCK-PHOTOS.md
+- ⬜ Bad Moms of Utah photo (the golden-hour group selfie) — upload it as
+  `attached_assets/stock/events-bad-moms.jpg`; the Events page picks it up
+  automatically on the next build (tea-party photo stands in until then)
+- ⬜ Feedbucket snippet — paste into `feedbackWidget` in `client/src/data/site.ts`
+- ℹ️ Review notes for Jessica use the `NoteToJessica` component: bold
+  "Note to Jessica:" then the note. They render on staging hosts only and
+  never on the live site.
 
 ## Site-wide
 - 🔧 Instagram / Facebook URLs — `client/src/data/site.ts` (currently guessed)
