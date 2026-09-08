@@ -10,10 +10,9 @@ review · ⬜ waiting on Jessica · 🔧 Tysen to configure
 - ✅ Earth element: warm ground-glow washes, gold motes, sage cards (the willow line art was retired as unpolished)
 - ✅ Organic texture: grain on select sections
 - ✅ Stock photos for variety — ten placed; see docs/STOCK-PHOTOS.md
-- ⬜ Bad Moms of Utah photo (the golden-hour group selfie) — upload it as
-  `attached_assets/stock/events-bad-moms.jpg`; the Events page picks it up
-  automatically on the next build (tea-party photo stands in until then)
-- ⬜ Feedbucket snippet — paste into `feedbackWidget` in `client/src/data/site.ts`
+- ✅ Bad Moms of Utah photo (the golden-hour group selfie) in
+  `attached_assets/stock/events-bad-moms.jpg`, compressed to 220 KB
+- ✅ Feedbucket widget wired (staging hosts only)
 - ℹ️ Review notes for Jessica use the `NoteToJessica` component: bold
   "Note to Jessica:" then the note. They render on staging hosts only and
   never on the live site.

@@ -48,7 +48,10 @@ export const site = {
  *   -> src: 'https://cdn.feedbucket.app/assets/feedbucket.js', attrs: { 'data-feedbucket': 'XXXX' }
  * Leave `null` to disable.
  */
-export const feedbackWidget: { src: string; attrs?: Record<string, string> } | null = null;
+export const feedbackWidget: { src: string; attrs?: Record<string, string> } | null = {
+  src: 'https://cdn.feedbucket.app/assets/feedbucket.js',
+  attrs: { 'data-feedbucket': 'dvF7QYnJo7vNRSE9dp3E' },
+};
 
 /**
  * Staging detection. True when built with VITE_STAGING=true, or when served

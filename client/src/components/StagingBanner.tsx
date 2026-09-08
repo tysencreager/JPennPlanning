@@ -8,23 +8,27 @@ import { isStaging, feedbackWidget } from '@/data/site';
 export default function StagingBanner() {
   useEffect(() => {
     if (!isStaging) return;
-    const meta = document.createElement('meta');
+    // Replace the index.html "index, follow" tag rather than adding a second one.
+    const existing = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    const previous = existing?.content ?? null;
+    const meta = existing ?? document.createElement('meta');
     meta.name = 'robots';
     meta.content = 'noindex, nofollow';
-    document.head.appendChild(meta);
+    if (!existing) document.head.appendChild(meta);
 
     // Feedback widget (Feedbucket etc.) — staging only.
     let script: HTMLScriptElement | null = null;
     if (feedbackWidget && !document.querySelector(`script[src="${feedbackWidget.src}"]`)) {
       script = document.createElement('script');
       script.src = feedbackWidget.src;
-      script.async = true;
+      script.defer = true;
       for (const [k, v] of Object.entries(feedbackWidget.attrs ?? {})) script.setAttribute(k, v);
-      document.body.appendChild(script);
+      document.head.appendChild(script);
     }
 
     return () => {
-      meta.remove();
+      if (previous !== null) meta.content = previous;
+      else meta.remove();
       // keep the widget script; removing it mid-session would break its UI
     };
   }, []);
