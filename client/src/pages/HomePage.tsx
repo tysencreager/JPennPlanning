@@ -315,12 +315,7 @@ export default function HomePage() {
                 </div>
                 <div className={`${i % 2 === 1 ? 'md:order-1' : ''}`}>
                   {o.photo ? (
-                    <div className="relative">
-                      <div className="zoom-frame rounded-sm"><img src={o.photo} alt={o.photoAlt} className="w-full aspect-[5/4] object-cover rounded-sm" loading="lazy" /></div>
-                      <div className="absolute -bottom-6 -right-4 w-28 text-midnight/80 hidden sm:block" aria-hidden="true">
-                        <Constellation data={o.constellation} mode="view" strokeWidth={0.6} />
-                      </div>
-                    </div>
+                    <div className="zoom-frame rounded-sm"><img src={o.photo} alt={o.photoAlt} className="w-full aspect-[5/4] object-cover rounded-sm" loading="lazy" /></div>
                   ) : (
                     <div className="relative aspect-[5/4] rounded-sm bg-card border border-border/70 overflow-hidden flex items-center justify-center">
                       <div className="absolute inset-0 grain" aria-hidden="true" />
