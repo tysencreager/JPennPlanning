@@ -82,6 +82,16 @@ Feedbucket.
 Push changes to the revamp branch → preview redeploys. Keep iterating until
 Jessica says "this is it."
 
+**If a push doesn't redeploy.** Cloudflare Pages occasionally skips a build
+when two pushes land a few minutes apart (the PR's Cloudflare comment keeps
+showing the previous commit and no check run appears for the new one). To
+confirm, compare the `assets/index-*.js` filename in the staging page source
+with a local `npx vite build`; if they differ, the head commit never built.
+Fix: in the Cloudflare dashboard open Workers & Pages → jpennplanning →
+Deployments, find the latest deployment for the branch and choose
+**Retry deployment**, or push any real change to the branch. Never push an
+empty commit just to kick the build.
+
 ## Go-live checklist
 
 1. Fill in every item in `docs/CONTENT-STATUS.md` (social links, Bad Moms URL,
