@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import Layout from '@/components/Layout';
 
 export default function CancellationPolicy() {
   useEffect(() => {
@@ -12,8 +11,7 @@ export default function CancellationPolicy() {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <Layout>
       
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-4xl mx-auto">
@@ -73,8 +71,6 @@ export default function CancellationPolicy() {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }

@@ -1,51 +1,69 @@
-import { useEffect } from "react";
-import { Switch, Route, Redirect, useLocation } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import WelcomePopup from "@/components/WelcomePopup";
-import HomePage from "@/pages/HomePage";
-import AboutPage from "@/pages/AboutPage";
-import ServicesPage from "@/pages/ServicesPage";
-import EventsPage from "@/pages/EventsPage";
-import GalleryPage from "@/pages/GalleryPage";
-import QuizPage from "@/pages/QuizPage";
-import BookPage from "@/pages/BookPage";
-import ContactPage from "@/pages/ContactPage";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import CancellationPolicy from "@/pages/CancellationPolicy";
-import SaltLakeCityPage from "@/pages/SaltLakeCityPage";
-import OgdenPage from "@/pages/OgdenPage";
-import TestimonialsPage from "@/pages/TestimonialsPage";
-import BlogPage from "@/pages/BlogPage";
-import BlogPostPage from "@/pages/BlogPostPage";
-import NotFound from "@/pages/not-found";
+import { useEffect } from 'react';
+import { Switch, Route, Redirect, useLocation, useParams } from 'wouter';
+import { queryClient } from './lib/queryClient';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from '@/components/ui/toaster';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import HomePage from '@/pages/HomePage';
+import AboutPage from '@/pages/AboutPage';
+import CoachingPage from '@/pages/CoachingPage';
+import EventsPage from '@/pages/EventsPage';
+import SpeakingPage from '@/pages/SpeakingPage';
+import WritingPage from '@/pages/WritingPage';
+import JournalPage from '@/pages/JournalPage';
+import JournalPostPage from '@/pages/JournalPostPage';
+import ConnectionsPage from '@/pages/ConnectionsPage';
+import AssessmentPage from '@/pages/AssessmentPage';
+import AffinityAstronPage from '@/pages/AffinityAstronPage';
+import ContactPage from '@/pages/ContactPage';
+import BookPage from '@/pages/BookPage';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import CancellationPolicy from '@/pages/CancellationPolicy';
+import NotFound from '@/pages/not-found';
+
+/** Old blog URLs keep working: /blog/:slug -> /journal/:slug */
+function BlogPostRedirect() {
+  const { slug } = useParams<{ slug: string }>();
+  return <Redirect to={`/journal/${slug}`} replace />;
+}
 
 function Router() {
   const [location] = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // in-page anchors (e.g. #find-your-connection) handle their own scroll
+    if (!window.location.hash) window.scrollTo(0, 0);
   }, [location]);
 
   return (
     <Switch>
       <Route path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
-      <Route path="/services" component={ServicesPage} />
+      <Route path="/coaching" component={CoachingPage} />
       <Route path="/events" component={EventsPage} />
-      <Route path="/gallery" component={GalleryPage} />
-      <Route path="/quiz" component={QuizPage} />
-      <Route path="/book" component={BookPage} />
-      <Route path="/testimonials" component={TestimonialsPage} />
+      <Route path="/speaking" component={SpeakingPage} />
+      <Route path="/writing" component={WritingPage} />
+      <Route path="/journal" component={JournalPage} />
+      <Route path="/journal/:slug" component={JournalPostPage} />
+      <Route path="/connections" component={ConnectionsPage} />
+      <Route path="/assessment" component={AssessmentPage} />
+      <Route path="/affinity-astron" component={AffinityAstronPage} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/book" component={BookPage} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/cancellation-policy" component={CancellationPolicy} />
-      <Route path="/salt-lake-city" component={SaltLakeCityPage} />
-      <Route path="/ogden" component={OgdenPage} />
-      <Route path="/blog" component={BlogPage} />
-      <Route path="/blog/:slug" component={BlogPostPage} />
+
+      {/* Redirects from the previous site's URLs */}
+      <Route path="/services">{() => <Redirect to="/coaching" replace />}</Route>
+      <Route path="/quiz">{() => <Redirect to="/assessment" replace />}</Route>
+      <Route path="/gallery">{() => <Redirect to="/connections" replace />}</Route>
+      <Route path="/testimonials">{() => <Redirect to="/connections" replace />}</Route>
+      <Route path="/blog">{() => <Redirect to="/journal" replace />}</Route>
+      <Route path="/blog/:slug" component={BlogPostRedirect} />
+      {/* Retired event-planning location pages; any future location pages will be coaching-based */}
+      <Route path="/salt-lake-city">{() => <Redirect to="/coaching" replace />}</Route>
+      <Route path="/ogden">{() => <Redirect to="/coaching" replace />}</Route>
+
       <Route component={NotFound} />
     </Switch>
   );
@@ -56,7 +74,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <WelcomePopup />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

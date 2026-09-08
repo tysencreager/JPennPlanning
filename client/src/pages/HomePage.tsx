@@ -1,211 +1,418 @@
+import { useRef } from 'react';
 import { Link } from 'wouter';
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import TestimonialsCarousel from '@/components/TestimonialsCarousel';
-import Footer from '@/components/Footer';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { ArrowRight, ArrowDown, ArrowUpRight } from 'lucide-react';
+import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
-import { Card, CardContent } from '@/components/ui/card';
+import Starfield from '@/components/celestial/Starfield';
+import Constellation from '@/components/celestial/Constellation';
+import Aurora from '@/components/celestial/Aurora';
+import ShootingStars from '@/components/celestial/ShootingStars';
+import Motes from '@/components/celestial/Motes';
+import ServiceBreakdown from '@/components/ServiceBreakdown';
+import WorldAccordingToJessica from '@/components/WorldAccordingToJessica';
+import { Container, Eyebrow, Reveal } from '@/components/Section';
 import { Button } from '@/components/ui/button';
-import { Calendar, MessageCircle, Heart, ArrowRight, Sparkles, Users } from 'lucide-react';
-import featuredEventImage from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
+import { littleDipper, coronaBorealis, cassiopeia, lyra, pleiades } from '@/data/constellations';
+import { testimonials } from '@/data/testimonials';
+import { site } from '@/data/site';
+import jessicaPhoto from '@assets/IMG_4461_1759499784524.jpeg';
+import gatheringPhoto from '@assets/Taking-Sexy-Back-Event/Group Coaching.jpg';
+import eventDecorPhoto from '@assets/att.YF06gY-tsr2WYk_B_YTZ4GyDuZQSL8TytYT1UzFEnMU_1760104715531.jpeg';
+import heroSky from '@assets/stock/home-hero-backdrop.jpg';
+import coachingPhoto from '@assets/stock/home-coaching-block.jpg';
+import speakingRoomPhoto from '@assets/stock/home-speaking-block-speaking-hero.jpg';
+import journalPhoto from '@assets/stock/home-books-writing-block.jpg';
+
+interface Offering {
+  eyebrow: string;
+  title: string;
+  copy: string;
+  cta: string;
+  to: string;
+  constellation: typeof littleDipper;
+  photo?: string;
+  photoAlt?: string;
+  extras?: { label: string; href: string; external?: boolean }[];
+}
+
+const offerings: Offering[] = [
+  {
+    eyebrow: 'Connect with yourself',
+    title: 'Connection Coaching',
+    copy: "For the woman who knows something needs to change - but doesn't necessarily know what comes next. You do not have to travel the Universe alone. I am here.",
+    cta: 'Explore Coaching',
+    to: '/coaching',
+    constellation: littleDipper,
+    photo: coachingPhoto,
+    photoAlt: 'A woman on a porch step at dusk, holding a mug and looking up at the first stars',
+  },
+  {
+    eyebrow: 'Connect with others',
+    title: 'Events & Experiences',
+    copy: 'Gatherings designed to create something much more meaningful than another night out.',
+    cta: 'Explore Events',
+    to: '/events',
+    constellation: pleiades,
+    photo: gatheringPhoto,
+    photoAlt: 'Women gathered in a circle during a group coaching session',
+    extras: [
+      { label: 'This month with Bad Moms of Utah', href: site.social.badMomsOfUtah, external: true },
+      { label: 'Coffee & Compliments · coming soon', href: '/contact?about=coffee-and-compliments' },
+      { label: 'Message me about your event', href: '/contact?about=events' },
+    ],
+  },
+  {
+    eyebrow: 'Connect through words',
+    title: 'Speaking',
+    copy: "Conversations about connection, courage, belonging. Grief, resilience, and the things we don't always say out loud.",
+    cta: 'Book Jessica',
+    to: '/speaking',
+    constellation: cassiopeia,
+    photo: speakingRoomPhoto,
+    photoAlt: 'A living room of women listening closely in warm lamplight',
+  },
+  {
+    eyebrow: 'Connect through story',
+    title: 'Books & Writing',
+    copy: 'Stories, ideas, and experiences designed to make you feel something - and maybe recognize a little bit of yourself.',
+    cta: 'Explore the Stories',
+    to: '/writing',
+    constellation: lyra,
+    photo: journalPhoto,
+    photoAlt: 'An open handwritten journal with a fountain pen and coffee in morning light',
+  },
+];
 
 export default function HomePage() {
-
-  const services = [
-    {
-      icon: Calendar,
-      title: 'Event Planning',
-      description: 'From intimate gatherings to grand celebrations, we craft unforgettable experiences that bring people together in meaningful ways.'
-    },
-    {
-      icon: MessageCircle,
-      title: 'Connection Coaching and Consulting',
-      description: 'Personalized guidance to help individuals and organizations build deeper, more meaningful relationships and connections.'
-    }
-  ];
-
-  const values = [
-    {
-      icon: Heart,
-      title: 'Connection First',
-      description: 'Every event is designed with human connection at its core, creating spaces where authentic relationships flourish.'
-    },
-    {
-      icon: Sparkles,
-      title: 'Intentional Design',
-      description: 'Thoughtful details and curated experiences transform ordinary moments into extraordinary memories.'
-    },
-    {
-      icon: Users,
-      title: 'Community Focused',
-      description: 'Building lasting communities through events that bring people together and foster genuine belonging.'
-    }
-  ];
+  // Hero parallax: the backdrop, the stars and the constellation drift at
+  // different speeds as you scroll away, so the sky has depth.
+  const heroRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const backdropY = useTransform(scrollYProgress, [0, 1], ['0%', reduced ? '0%' : '18%']);
+  const starsY = useTransform(scrollYProgress, [0, 1], ['0%', reduced ? '0%' : '30%']);
+  const constellationY = useTransform(scrollYProgress, [0, 1], ['0%', reduced ? '0%' : '45%']);
 
   return (
-    <div className="min-h-screen">
+    <Layout onSky>
       <SEO
-        title="J Penn Planning - Themed Events & Community Building"
-        description="J Penn Planning specializes in themed events infused with creativity and connection. Led by Jessica Pennington, we create experiences that help you celebrate loved ones, feel belonging, and thrive in this chaotic world."
+        title="J Penn Planning | You Belong Here"
+        description="Connection changes everything. Jessica Pennington helps women reconnect with themselves, their people, their community and their purpose through Connection Coaching, gatherings, speaking and writing."
         path="/"
-        keywords="event planning, themed events, community building, Jessica Pennington, Utah event planner, party planning, connection coaching"
+        keywords="connection coaching, Affinity Astron, Jessica Pennington, women's coaching Utah, women's events Utah, speaker on belonging"
       />
-      <Navigation />
-      <HeroSection />
-      
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary mb-6" data-testid="text-what-we-do-heading">
-            Creating Moments That Matter
-          </h2>
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-            At J Penn Planning, we believe the magic of life lies in our connections — to ourselves, to each other, and to our communities. We specialize in themed events infused with creativity and connection, creating experiences where people feel like they belong, celebrate their loved ones, and thrive in this chaotic world.
-          </p>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Led by Jessica Pennington, a published author, public speaker, and experienced event planner, we guide you every step of the way — turning ordinary moments into extraordinary ones.
-          </p>
-          <p className="text-base italic text-muted-foreground mt-8 leading-relaxed">
-            "In a world of algorithms, hashtags & followers, know the true importance of Human Connection." - Simi Fromen
-          </p>
-        </div>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* HERO — You Belong Here.                                             */}
+      {/* ------------------------------------------------------------------ */}
+      <section ref={heroRef} className="sky sky-gradient relative min-h-[100svh] flex items-center overflow-hidden">
+        <motion.img
+          src={heroSky}
+          alt=""
+          aria-hidden="true"
+          className="absolute -inset-y-[12%] inset-x-0 w-full h-[124%] object-cover object-bottom opacity-70"
+          style={{ y: backdropY }}
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-sky/70 via-sky/25 to-sky/55 pointer-events-none" aria-hidden="true" />
+        <Aurora intensity={1.15} />
+        <motion.div className="absolute inset-0" style={{ y: starsY }} aria-hidden="true">
+          <Starfield count={80} seed={11} clear={[30, 62]} blueRatio={0.14} goldRatio={0.16} />
+        </motion.div>
+        <ShootingStars count={3} seed={4} />
+        <div className="absolute inset-x-0 bottom-0 h-64 dusk-to-ground pointer-events-none" aria-hidden="true" />
+        <motion.div className="absolute right-[6%] top-[18%] w-40 md:w-64 text-ivory/70 hidden sm:block" style={{ y: constellationY }} aria-hidden="true">
+          <Constellation data={littleDipper} mode="view" dim={0.1} strokeWidth={0.4} />
+        </motion.div>
+        <Container className="relative pt-40 pb-32 text-center">
+          <Reveal>
+            <p className="eyebrow text-gold mb-8">J Penn Planning</p>
+            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light leading-[0.95] tracking-tight" data-testid="text-hero-title">
+              <span className="shimmer-text">You Belong Here.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.25}>
+            <p className="font-display italic text-2xl md:text-3xl text-gold-soft mt-8">Connection changes everything.</p>
+          </Reveal>
+          <Reveal delay={0.4}>
+            <p className="mt-8 max-w-2xl mx-auto text-ivory/80 text-lg md:text-xl leading-relaxed text-balance">
+              I believe we&apos;re not meant to navigate this life alone. Whether you&apos;re building a business, gathering a community, finding yourself again, or simply looking for your people - I&apos;m here to help you create meaningful connection.
+            </p>
+          </Reveal>
+          <Reveal delay={0.55}>
+            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="eyebrow h-12 px-8" data-testid="button-find-your-connection">
+                <a href="#find-your-connection">
+                  Find Your Connection
+                  <ArrowDown className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="eyebrow h-12 px-8 border-ivory/30 text-ivory bg-transparent hover:bg-ivory/10" data-testid="button-hero-assessment">
+                <Link href="/assessment">Take the free assessment</Link>
+              </Button>
+            </div>
+          </Reveal>
+        </Container>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-primary rounded-2xl overflow-hidden shadow-xl">
-            <div className="grid md:grid-cols-2 gap-0 items-stretch">
-              <div className="p-10 md:p-12 flex flex-col justify-center space-y-6">
-                <p className="text-ring text-sm font-medium uppercase tracking-wider">Featured Event</p>
-                <h3 className="font-serif text-2xl md:text-3xl font-medium text-primary-foreground">
-                  Taking Sexy Back
-                </h3>
-                <p className="text-sm text-primary-foreground/70">Women's History Month 2026</p>
-                <p className="text-primary-foreground/90 leading-relaxed">
-                  Taking Sexy Back invited women to step outside their comfort zones and into their confidence through Connection Coaching and a guided photoshoot experience — creating not just stunning images, but real, lasting transformation.
-                </p>
-                <p className="text-primary-foreground/70 leading-relaxed text-sm">
-                  Through a guided blend of photoshoot experiences and Connection Coaching, each woman was seen, celebrated, and supported. They didn't just leave with beautiful photos — they left with deeper confidence, meaningful connections, and a renewed sense of self.
-                </p>
-                <div>
-                  <Button asChild size="lg" variant="secondary">
-                    <Link href="/blog/taking-sexy-back-womens-history-month-2026" className="inline-flex items-center gap-2">
-                      Read More
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </Button>
+      {/* ------------------------------------------------------------------ */}
+      {/* MEET JESSICA                                                         */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="py-24 md:py-32 bg-background ground-glow relative overflow-hidden">
+        <Motes count={16} seed={2} />
+        <Container className="relative">
+          <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
+            <Reveal>
+              <div className="relative">
+                <div className="absolute -inset-3 border border-gold/30 rounded-sm translate-x-3 translate-y-3" aria-hidden="true" />
+                <div className="zoom-frame relative rounded-sm">
+                  <img
+                    src={jessicaPhoto}
+                    alt="Jessica Pennington"
+                    className="w-full rounded-sm object-cover aspect-[4/5]"
+                    data-testid="img-jessica"
+                  />
                 </div>
               </div>
-              <div className="relative min-h-[300px] md:min-h-0">
-                <img
-                  src={featuredEventImage}
-                  alt="Group coaching session at the Taking Sexy Back event"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  data-testid="img-featured-event"
-                />
-              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <Eyebrow className="mb-6">Meet Jessica</Eyebrow>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-forest leading-[1.05]">
+                Event planner. Community builder. Speaker. Author. Coach.
+              </h2>
+              <p className="mt-7 text-lg text-foreground/80 leading-relaxed">
+                Seemingly different things, with one thread running through all of them: connection. I care about it so much that it&apos;s this whole site. I&apos;ve been through the seasons that make women feel alone, and I&apos;ve learned that the way out is never alone. That&apos;s why I do this.
+              </p>
+              <p className="mt-5 text-lg text-foreground/80 leading-relaxed">
+                I don&apos;t believe people are broken and need to be fixed. I believe you already contain all of the stars you need. Sometimes you just need someone to help you notice them.
+              </p>
+              <Button asChild variant="link" className="mt-6 px-0 eyebrow text-forest" data-testid="link-about">
+                <Link href="/about">
+                  Read my story
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* THE UNSPOKEN — vulnerability, in her words                          */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="sage-wash relative overflow-hidden py-24 md:py-32">
+        <Container size="sm" className="relative">
+          <Reveal>
+            <Eyebrow className="mb-6">I talk about the unspoken</Eyebrow>
+            <p className="font-display text-3xl md:text-5xl font-light text-forest leading-[1.1] text-balance">
+              I have experienced suicidal ideation. I have survived, and you can too.
+            </p>
+            <div className="mt-8 space-y-5 text-lg text-foreground/85 leading-relaxed">
+              <p>
+                I&apos;ve lived through multiple miscarriages, and postpartum depression that showed up months after my baby was born, when I thought something was seriously wrong with me. Nobody told me it could arrive that late, or take that long to heal.
+              </p>
+              <p>
+                I have no shame about any of it. I say it here because this stuff isn&apos;t talked about enough, and because a coach who has never sat in the dark can&apos;t really walk you out of it. Connection is what carried me. Connection Coaching is how I help guide you to where you need to be.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+              <Button asChild variant="midnight" className="eyebrow" data-testid="button-unspoken-coaching">
+                <Link href="/coaching">
+                  Connection Coaching
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+              <p className="text-sm text-muted-foreground">If you are in crisis right now, call or text 988 (US). You matter.</p>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* WE ARE ALL CONSTELLATIONS (scroll-illuminating Little Dipper)       */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="sky sky-gradient relative overflow-hidden py-28 md:py-40">
+        <Aurora intensity={0.8} />
+        <Starfield count={90} seed={23} goldRatio={0.16} />
+        <ShootingStars count={2} seed={23} />
+        <Container className="relative">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1 text-ivory/90 max-w-xl mx-auto w-full">
+              <Constellation data={littleDipper} mode="scroll" strokeWidth={0.4} />
+            </div>
+            <div className="order-1 lg:order-2">
+              <Reveal>
+                <Eyebrow className="mb-6">Affinity Astron</Eyebrow>
+                <h2 className="font-display text-5xl md:text-6xl font-light text-ivory leading-[1.02]">
+                  We are all constellations.
+                </h2>
+                <p className="mt-7 font-display text-2xl md:text-3xl text-ivory/85 leading-snug">
+                  Individual stars are beautiful; but connect them…<br />and suddenly there&apos;s a story.
+                </p>
+                <p className="mt-8 eyebrow text-gold-soft tracking-[0.32em]">Your story. Your people. Your constellation.</p>
+                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+                  {[
+                    ['Connection Coaching', '/coaching'],
+                    ['Events', '/events'],
+                    ['Speaking', '/speaking'],
+                    ['Writing', '/writing'],
+                  ].map(([label, to]) => (
+                    <Link key={to} href={to} className="eyebrow text-ivory/80 hover:text-gold transition-colors border-b border-ivory/20 hover:border-gold pb-1" data-testid={`link-constellation-${to.replace('/', '')}`}>
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+                <Button asChild variant="link" className="mt-8 px-0 eyebrow text-gold-soft" data-testid="link-affinity-astron">
+                  <Link href="/affinity-astron">
+                    What is Affinity Astron?
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </Reveal>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary mb-6" data-testid="text-values-heading">
-              Our Approach
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Every event we create is guided by core values that ensure meaningful, transformational experiences
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <div key={index} className="text-center space-y-4" data-testid={`card-value-${index}`}>
-                  <div className="w-16 h-16 rounded-full bg-ring/10 flex items-center justify-center mx-auto">
-                    <Icon className="w-8 h-8 text-ring" />
-                  </div>
-                  <h3 className="font-serif text-xl font-medium text-primary" data-testid={`text-value-title-${index}`}>
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed" data-testid={`text-value-description-${index}`}>
-                    {value.description}
-                  </p>
+      {/* ------------------------------------------------------------------ */}
+      {/* FOUR WAYS TO CONNECT                                                 */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="bg-background py-12 md:py-20">
+        <Container>
+          {offerings.map((o, i) => (
+            <Reveal key={o.to}>
+              <div className={`grid md:grid-cols-2 gap-10 lg:gap-20 items-center py-16 md:py-20 ${i > 0 ? 'border-t border-border/70' : ''}`}>
+                <div className={i % 2 === 1 ? 'md:order-2' : ''}>
+                  <Eyebrow className="mb-5">{o.eyebrow}</Eyebrow>
+                  <h3 className="font-display text-4xl md:text-5xl font-light text-forest leading-[1.05]">{o.title}</h3>
+                  <p className="mt-6 text-lg text-foreground/80 leading-relaxed max-w-lg">{o.copy}</p>
+                  <Button asChild className="mt-8 eyebrow" data-testid={`button-${o.to.replace('/', '')}`}>
+                    <Link href={o.to}>
+                      {o.cta}
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                  {o.extras && (
+                    <ul className="mt-6 space-y-2">
+                      {o.extras.map((x) =>
+                        x.external ? (
+                          <li key={x.label}>
+                            <a href={x.href} target="_blank" rel="noopener noreferrer" className="eyebrow text-midnight hover:text-forest inline-flex items-center gap-2" data-testid={`link-extra-${x.label.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
+                              {x.label} <ArrowUpRight className="w-3.5 h-3.5" />
+                            </a>
+                          </li>
+                        ) : (
+                          <li key={x.label}>
+                            <Link href={x.href} className="eyebrow text-midnight hover:text-forest inline-flex items-center gap-2" data-testid={`link-extra-${x.label.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
+                              {x.label} <ArrowRight className="w-3.5 h-3.5" />
+                            </Link>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  )}
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary mb-6" data-testid="text-services-preview-heading">
-              What We Offer
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Elevating connections through thoughtfully designed experiences
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <Card key={index} className="hover-elevate transition-all duration-300" data-testid={`card-service-preview-${index}`}>
-                  <CardContent className="p-8 space-y-4">
-                    <div className="w-12 h-12 rounded-md bg-ring/10 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-ring" />
+                <div className={`${i % 2 === 1 ? 'md:order-1' : ''}`}>
+                  {o.photo ? (
+                    <div className="zoom-frame rounded-sm"><img src={o.photo} alt={o.photoAlt} className="w-full aspect-[5/4] object-cover rounded-sm" loading="lazy" /></div>
+                  ) : (
+                    <div className="relative aspect-[5/4] rounded-sm bg-card border border-border/70 overflow-hidden flex items-center justify-center">
+                      <div className="absolute inset-0 grain" aria-hidden="true" />
+                      <div className="w-3/4 max-w-xs text-midnight" aria-hidden="true">
+                        <Constellation data={o.constellation} mode="scroll" strokeWidth={0.5} dim={0.15} />
+                      </div>
                     </div>
-                    <h3 className="font-serif text-2xl font-medium text-primary" data-testid={`text-service-preview-title-${index}`}>
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed" data-testid={`text-service-preview-description-${index}`}>
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-          <div className="text-center">
-            <Button asChild size="lg" data-testid="button-view-services">
-              <Link href="/services" className="inline-flex items-center gap-2">
-                View All Services
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
+                  )}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </Container>
       </section>
 
-      <TestimonialsCarousel />
+      {/* ------------------------------------------------------------------ */}
+      {/* THE WORLD ACCORDING TO JESSICA                                      */}
+      {/* ------------------------------------------------------------------ */}
+      <WorldAccordingToJessica photos={[jessicaPhoto, eventDecorPhoto, gatheringPhoto]} />
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary/5">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-primary mb-6" data-testid="text-cta-heading">
-            Ready to Create Something Extraordinary?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Whether you're planning an intimate gathering or a grand celebration, we're here to help you create meaningful connections and unforgettable memories.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" data-testid="button-cta-contact">
-              <Link href="/contact">
-                Get in Touch
+      {/* ------------------------------------------------------------------ */}
+      {/* LEAD GENERATOR — the assessment                                      */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="sky sky-gradient relative overflow-hidden py-28 md:py-36">
+        <Aurora intensity={1} />
+        <Starfield count={80} seed={41} clear={[25, 75]} goldRatio={0.18} />
+        <ShootingStars count={2} seed={41} />
+        <Container size="md" className="relative text-center">
+          <Reveal>
+            <Eyebrow align="center" className="mb-6">Free 5-minute assessment</Eyebrow>
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-light text-ivory leading-[1]">
+              What&apos;s missing from your constellation?
+            </h2>
+            <p className="mt-7 text-lg md:text-xl text-ivory/75 max-w-2xl mx-auto leading-relaxed">
+              Take the free Affinity Astron assessment and discover the area of connection that&apos;s asking for your attention: Self, People, Community, or Purpose.
+            </p>
+            <Button asChild size="lg" className="mt-10 eyebrow h-12 px-8" data-testid="button-assessment">
+              <Link href="/assessment">
+                Find your dimmest star
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" data-testid="button-cta-events">
-              <Link href="/events">
-                View Upcoming Events
-              </Link>
-            </Button>
-          </div>
-        </div>
+          </Reveal>
+        </Container>
       </section>
 
-      <Footer />
-    </div>
+      {/* ------------------------------------------------------------------ */}
+      {/* FIND YOUR CONNECTION — problem → solution                            */}
+      {/* ------------------------------------------------------------------ */}
+      <ServiceBreakdown />
+
+      {/* ------------------------------------------------------------------ */}
+      {/* PEOPLE I'VE HAD THE PRIVILEGE OF CONNECTING                          */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="py-24 md:py-32 bg-background ground-glow relative overflow-hidden">
+        <Motes count={10} seed={31} />
+        <Container className="relative">
+          <Reveal className="max-w-2xl mb-14">
+            <Eyebrow className="mb-5">People I&apos;ve had the privilege of connecting</Eyebrow>
+            <h2 className="font-display text-4xl md:text-5xl font-light text-forest">Laughing, hugging, creating, or just listening.</h2>
+          </Reveal>
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.slice(0, 3).map((t, i) => (
+              <Reveal key={t.id} delay={i * 0.08}>
+                <figure className="h-full bg-card border border-border/70 rounded-sm p-8 flex flex-col lift">
+                  <span className="text-gold text-3xl font-display leading-none" aria-hidden="true">“</span>
+                  <blockquote className="mt-3 text-foreground/85 leading-relaxed line-clamp-6">{t.content.split('\n')[0]}</blockquote>
+                  <figcaption className="mt-auto pt-6 eyebrow text-forest/80">
+                    {t.author}
+                    {t.company && <span className="block normal-case tracking-normal font-sans text-xs text-muted-foreground mt-1">{t.company}</span>}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-10">
+            <Button asChild variant="link" className="px-0 eyebrow text-forest" data-testid="link-connections">
+              <Link href="/connections">
+                See the faces and stories
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* small invitation before the footer */}
+      <section className="bg-card border-t border-border/70 py-16">
+        <Container size="sm" className="text-center">
+          <p className="font-display text-3xl md:text-4xl font-light text-forest">Not sure where to start? Just say hello.</p>
+          <p className="mt-3 text-muted-foreground">No pressure, no pitch. I answer every message myself, usually within a day.</p>
+          <Button asChild className="mt-8 eyebrow" data-testid="button-say-hello">
+            <Link href="/contact">Let&apos;s Connect</Link>
+          </Button>
+          <p className="mt-6 text-xs text-muted-foreground">{site.email} · {site.phone}</p>
+        </Container>
+      </section>
+    </Layout>
   );
 }

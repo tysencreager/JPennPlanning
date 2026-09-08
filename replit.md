@@ -2,7 +2,7 @@
 
 ## Overview
 
-J Penn Planning is a modern web application showcasing an elegant event planning and community building service led by Jessica Pennington. The platform serves as a digital presence to highlight services, share portfolio work, and facilitate client connections. Built with a focus on luxury aesthetics and warm, welcoming user experience, the site emphasizes human connection through sophisticated design and thoughtful content presentation.
+J Penn Planning is Jessica Pennington's site for Connection Coaching, events, speaking and writing. The 2026 revamp ("You belong here.") is built around her Affinity Astron concept: the client is the North Star and the site's visual language is earth + sky — warm ivory ground sections, deep-green night-sky sections, antique gold accents, and constellations that illuminate as you scroll. See `docs/STAGING.md` for the staging/go-live workflow and `docs/CONTENT-STATUS.md` for what copy is final vs. drafted.
 
 ## User Preferences
 
@@ -21,20 +21,16 @@ Preferred communication style: Simple, everyday language.
 - **Build Tool:** Vite for fast development and optimized production builds
 
 **Design System:**
-- Custom color palette centered around forest green, gold accents, and warm neutrals
-- Typography: Playfair Display (headings), Inter (body), Cormorant Garamond (decorative)
-- Spacing system using Tailwind's consistent 4px-based scale
-- Component theming through CSS variables for light/dark mode support
-- Luxury-focused aesthetic drawing inspiration from high-end hospitality brands
+- Palette tokens in `client/src/index.css`: ivory background, forest text/primary, gold ring/accents, midnight blue touches, `--sky` night-sky scope (`.sky` class flips tokens for dark sections)
+- Typography: Cormorant Garamond (display), Lora (body), Figtree (uppercase labels via `.eyebrow`)
+- Celestial components in `client/src/components/celestial/`: `Starfield` (twinkle) and `Constellation` (scroll-linked illumination; presets in `client/src/data/constellations.ts`, one per page)
+- Shared layout: `Layout` (nav + footer + staging badge), `PageHero`, `Section` helpers (`Reveal`, `Eyebrow`, `Container`)
 
 **Page Structure:**
-- Home page with hero section featuring inspirational quote
-- Dedicated About, Services, Events, Quiz, Book, and Contact pages
-- Gallery page combines gallery images and testimonials in a single view
-- Modular component architecture allowing section reuse across pages
-- Responsive design with mobile-first approach
-- /testimonials route redirects to /gallery for unified content experience
-- Navigation logo: 128px height in 144px navbar for prominent branding
+- `/` Home, `/about`, `/coaching`, `/events`, `/speaking`, `/writing`, `/journal`, `/journal/:slug`, `/connections` (testimonials + moments), `/assessment` (Affinity Astron quiz, client-side scoring), `/affinity-astron`, `/contact`, `/book`, and policies
+- Redirects from the old site: `/services→/coaching`, `/quiz→/assessment`, `/gallery` & `/testimonials→/connections`, `/blog→/journal`, `/salt-lake-city` & `/ogden→/coaching`
+- Content data in `client/src/data/` (site links, assessment, journal posts, quotes, testimonials)
+- `VITE_STAGING=true` builds show a "Staging preview" badge and add a noindex meta tag
 
 **Key Architectural Decisions:**
 - Single Page Application (SPA) architecture for smooth navigation

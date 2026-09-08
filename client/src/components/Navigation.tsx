@@ -1,290 +1,139 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, ChevronDown, Compass, Briefcase, BookOpen } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
-} from "@/components/ui/dropdown-menu";
 import logo from '@assets/2_1759530723887.png';
+import logoLight from '@assets/2_1759530633522.png';
 
-export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/coaching', label: 'Connection Coaching' },
+  { href: '/events', label: 'Events' },
+  { href: '/speaking', label: 'Speaking' },
+  { href: '/writing', label: 'Books & Writing' },
+];
+
+interface NavigationProps {
+  /** true when the page opens with a night-sky hero, so the bar starts transparent + light */
+  onSky?: boolean;
+}
+
+/**
+ * Simple, uncluttered navigation. Direct access to each way of connecting,
+ * plus one warm call to action: "Let's Connect".
+ */
+export default function Navigation({ onSky = false }: NavigationProps) {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    setOpen(false);
   }, [location]);
 
-  const isActive = (path: string) => location === path;
+  const light = onSky && !scrolled && !open;
+  const isActive = (href: string) =>
+    href === '/' ? location === '/' : location === href || location.startsWith(`${href}/`);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || location !== '/'
-          ? 'bg-background shadow-md'
-          : 'bg-transparent'
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        light
+          ? 'bg-transparent'
+          : 'bg-background/90 backdrop-blur-md border-b border-border/70 shadow-[0_1px_0_0_hsl(var(--gold)/0.15)]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-36">
-          <Link 
-            href="/"
-            className="transition-opacity hover:opacity-80 py-3"
-            data-testid="button-logo"
-          >
-            <img 
-              src={logo} 
-              alt="J Penn Planning" 
-              className="h-32 w-auto"
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-20' : 'h-24 md:h-28'}`}>
+          <Link href="/" className="flex items-center gap-3 py-2" data-testid="button-logo" aria-label="J Penn Planning home">
+            <img
+              src={light ? logoLight : logo}
+              alt="J Penn Planning"
+              className={`w-auto transition-all duration-500 ${scrolled ? 'h-14' : 'h-16 md:h-20'}`}
             />
           </Link>
 
-          <div className="hidden md:flex items-center gap-2">
-            {/* Home */}
-            <Link
-              href="/"
-              className={`transition-colors hover-elevate px-3 py-2 rounded-md ${
-                isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-              } ${isActive('/') ? 'font-semibold' : ''}`}
-              data-testid="link-home"
-            >
-              Home
-            </Link>
-
-            {/* Explore Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                className={`flex items-center gap-1 transition-colors hover-elevate px-3 py-2 rounded-md ${
-                  isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-                } ${['/about', '/gallery', '/quiz', '/book', '/testimonials', '/salt-lake-city', '/ogden', '/blog'].some(p => isActive(p) || location.startsWith('/blog')) ? 'font-semibold' : ''}`}
-                data-testid="dropdown-explore"
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`eyebrow px-3 py-2 rounded-sm transition-colors relative ${
+                  light ? 'text-ivory/85 hover:text-ivory' : 'text-foreground/75 hover:text-foreground'
+                } ${isActive(item.href) ? (light ? 'text-ivory' : 'text-foreground') : ''}`}
+                data-testid={`link-${item.label.toLowerCase().replace(/[^a-z]+/g, '-')}`}
               >
-                <Compass className="w-4 h-4" />
-                Explore
-                <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="w-52">
-                <DropdownMenuItem asChild>
-                  <Link href="/about" className="w-full cursor-pointer">
-                    About Jessica
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuLabel className="text-xs text-muted-foreground">Service Areas</DropdownMenuLabel>
-                <DropdownMenuItem asChild>
-                  <Link href="/salt-lake-city" className="w-full cursor-pointer">
-                    Salt Lake City, UT
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/ogden" className="w-full cursor-pointer">
-                    Ogden, UT
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/gallery" className="w-full cursor-pointer">
-                    Gallery
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/testimonials" className="w-full cursor-pointer">
-                    Testimonials
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/blog" className="w-full cursor-pointer flex items-center gap-2">
-                    <BookOpen className="w-4 h-4" />
-                    Blog
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/quiz" className="w-full cursor-pointer">
-                    Connection Quiz
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/book" className="w-full cursor-pointer">
-                    My Book
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Services Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                className={`flex items-center gap-1 transition-colors hover-elevate px-3 py-2 rounded-md ${
-                  isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'
-                } ${isActive('/services') || isActive('/events') ? 'font-semibold' : ''}`}
-                data-testid="dropdown-services"
-              >
-                <Briefcase className="w-4 h-4" />
-                Services
-                <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="w-48">
-                <DropdownMenuItem asChild>
-                  <Link href="/services" className="w-full cursor-pointer">
-                    Our Services
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/events" className="w-full cursor-pointer">
-                    Upcoming Events
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Contact Button */}
+                {item.label}
+                {isActive(item.href) && (
+                  <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-gold" aria-hidden="true" />
+                )}
+              </Link>
+            ))}
             <Button
               asChild
-              variant={isScrolled || location !== '/' ? 'default' : 'outline'}
-              className={isScrolled || location !== '/' ? '' : 'bg-background/20 backdrop-blur-sm border-primary-foreground text-primary-foreground'}
-              data-testid="button-contact"
+              size="sm"
+              variant={light ? 'outline' : 'default'}
+              className={`ml-3 eyebrow glow-gold ${light ? 'border-gold/70 text-ivory bg-transparent hover:bg-ivory/10' : ''}`}
+              data-testid="button-lets-connect"
             >
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">Let&apos;s Connect</Link>
             </Button>
-          </div>
+          </nav>
 
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden ${isScrolled || location !== '/' ? 'text-foreground' : 'text-primary-foreground'}`}
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className={`lg:hidden p-2 -mr-2 ${light ? 'text-ivory' : 'text-foreground'}`}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
             data-testid="button-mobile-menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border">
-          <div className="px-4 py-6 space-y-2">
-            {/* Home */}
-            <Link
-              href="/"
-              className={`block w-full text-left py-2 text-foreground hover-elevate px-3 rounded-md ${isActive('/') ? 'font-semibold' : ''}`}
-              data-testid="link-home-mobile"
-            >
-              Home
-            </Link>
-
-            {/* Explore Section */}
-            <div className="border-t border-border pt-2 mt-2">
-              <p className="text-sm text-muted-foreground py-2 px-3 flex items-center gap-1 font-medium">
-                <Compass className="w-4 h-4" />
-                Explore
-              </p>
-              <Link
-                href="/about"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm ${isActive('/about') ? 'font-semibold' : ''}`}
-                data-testid="link-about-mobile"
-              >
-                About Jessica
-              </Link>
-              <p className="text-xs text-muted-foreground py-1 px-6">Service Areas</p>
-              <Link
-                href="/salt-lake-city"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-8 rounded-md text-sm ${isActive('/salt-lake-city') ? 'font-semibold' : ''}`}
-                data-testid="link-salt-lake-city-mobile"
-              >
-                Salt Lake City, UT
-              </Link>
-              <Link
-                href="/ogden"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-8 rounded-md text-sm ${isActive('/ogden') ? 'font-semibold' : ''}`}
-                data-testid="link-ogden-mobile"
-              >
-                Ogden, UT
-              </Link>
-              <Link
-                href="/gallery"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm ${isActive('/gallery') ? 'font-semibold' : ''}`}
-                data-testid="link-gallery-mobile"
-              >
-                Gallery
-              </Link>
-              <Link
-                href="/testimonials"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm ${isActive('/testimonials') ? 'font-semibold' : ''}`}
-                data-testid="link-testimonials-mobile"
-              >
-                Testimonials
-              </Link>
-              <Link
-                href="/blog"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm flex items-center gap-2 ${isActive('/blog') || location.startsWith('/blog') ? 'font-semibold' : ''}`}
-                data-testid="link-blog-mobile"
-              >
-                <BookOpen className="w-4 h-4" />
-                Blog
-              </Link>
-              <Link
-                href="/quiz"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm ${isActive('/quiz') ? 'font-semibold' : ''}`}
-                data-testid="link-quiz-mobile"
-              >
-                Connection Quiz
-              </Link>
-              <Link
-                href="/book"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm ${isActive('/book') ? 'font-semibold' : ''}`}
-                data-testid="link-book-mobile"
-              >
-                My Book
-              </Link>
-            </div>
-
-            {/* Services Section */}
-            <div className="border-t border-border pt-2 mt-2">
-              <p className="text-sm text-muted-foreground py-2 px-3 flex items-center gap-1 font-medium">
-                <Briefcase className="w-4 h-4" />
-                Services
-              </p>
-              <Link
-                href="/services"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm ${isActive('/services') ? 'font-semibold' : ''}`}
-                data-testid="link-services-mobile"
-              >
-                Our Services
-              </Link>
-              <Link
-                href="/events"
-                className={`block w-full text-left py-2 text-foreground hover-elevate px-6 rounded-md text-sm ${isActive('/events') ? 'font-semibold' : ''}`}
-                data-testid="link-events-mobile"
-              >
-                Upcoming Events
-              </Link>
-            </div>
-
-            {/* Contact Button */}
-            <div className="border-t border-border pt-4 mt-2">
-              <Button
-                asChild
-                className="w-full"
-                data-testid="button-contact-mobile"
-              >
-                <Link href="/contact">Contact</Link>
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-background border-t border-border"
+            aria-label="Primary"
+          >
+            <div className="px-6 py-6 flex flex-col gap-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`font-display text-2xl py-2.5 border-b border-border/60 ${
+                    isActive(item.href) ? 'text-forest' : 'text-foreground/80'
+                  }`}
+                  data-testid={`link-${item.label.toLowerCase().replace(/[^a-z]+/g, '-')}-mobile`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Button asChild size="lg" className="mt-5 eyebrow" data-testid="button-lets-connect-mobile">
+                <Link href="/contact">Let&apos;s Connect</Link>
               </Button>
             </div>
-          </div>
-        </div>
-      )}
-    </nav>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

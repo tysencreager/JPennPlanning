@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE */
+/* LIGHT MODE — "earth": warm ivory ground, deep forest text, antique gold accents */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
@@ -14,72 +14,73 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 0 0% 99%;
+  --background: 40 33% 96%;
+  --foreground: 160 28% 12%;
+  --border: 40 18% 85%;
 
-  --foreground: 0 0% 15%;
+  --card: 110 16% 93%;
+  --card-foreground: 160 28% 12%;
+  --card-border: 110 14% 85%;
 
-  --border: 0 0% 90%;
-
-  --card: 40 15% 95%;
-
-  --card-foreground: 0 0% 15%;
-
-  --card-border: 40 12% 88%;
-
-  --sidebar: 40 25% 88%;
-
-  --sidebar-foreground: 0 0% 15%;
-
+  --sidebar: 40 25% 90%;
+  --sidebar-foreground: 160 28% 12%;
   --sidebar-border: 40 20% 82%;
+  --sidebar-primary: 158 38% 18%;
+  --sidebar-primary-foreground: 40 33% 96%;
+  --sidebar-accent: 40 25% 84%;
+  --sidebar-accent-foreground: 160 28% 12%;
+  --sidebar-ring: 42 45% 54%;
 
-  --sidebar-primary: 150 45% 25%;
+  --popover: 40 30% 95%;
+  --popover-foreground: 160 28% 12%;
+  --popover-border: 40 20% 84%;
 
-  --sidebar-primary-foreground: 40 15% 95%;
+  --primary: 158 38% 18%;
+  --primary-foreground: 40 33% 96%;
 
-  --sidebar-accent: 40 25% 82%;
+  --secondary: 145 18% 84%;
+  --secondary-foreground: 160 28% 14%;
 
-  --sidebar-accent-foreground: 0 0% 15%;
+  --muted: 40 22% 90%;
+  --muted-foreground: 160 12% 36%;
 
-  --sidebar-ring: 43 65% 52%;
+  --accent: 145 20% 86%;
+  --accent-foreground: 160 28% 14%;
 
-  --popover: 40 20% 90%;
-
-  --popover-foreground: 0 0% 15%;
-
-  --popover-border: 40 18% 84%;
-
-  --primary: 150 45% 25%;
-
-  --primary-foreground: 40 15% 95%;
-
-  --secondary: 40 22% 85%;
-
-  --secondary-foreground: 0 0% 15%;
-
-  --muted: 40 18% 87%;
-
-  --muted-foreground: 0 0% 40%;
-
-  --accent: 40 20% 85%;
-
-  --accent-foreground: 0 0% 15%;
-
-  --destructive: 0 65% 30%;
-
+  --destructive: 0 55% 32%;
   --destructive-foreground: 0 0% 98%;
 
-  --input: 0 0% 70%;
-  --ring: 43 65% 52%;
-  --chart-1: 150 50% 20%;
-  --chart-2: 43 65% 52%;
-  --chart-3: 150 25% 45%;
-  --chart-4: 40 25% 75%;
-  --chart-5: 150 45% 35%;
+  --input: 40 15% 72%;
+  --ring: 42 45% 54%;
 
-  --font-sans: 'Lora', serif;
-  --font-serif: 'Playfair Display', serif;
+  /* Affinity Astron palette */
+  --gold: 42 45% 54%;
+  --gold-soft: 42 45% 72%;
+  --sage: 145 18% 52%;
+  --sage-soft: 145 20% 78%;
+  --forest: 158 38% 18%;
+  --midnight: 222 46% 24%;
+  --midnight-soft: 220 40% 62%;
+  --sky: 162 40% 8%;
+  --sky-2: 163 34% 12%;
+  --ivory: 40 33% 96%;
+  /* whimsy: dusk violet, aurora teal, blush rose */
+  --twilight: 258 34% 40%;
+  --twilight-soft: 262 40% 72%;
+  --aurora: 176 42% 42%;
+  --rose: 352 48% 72%;
+
+  --chart-1: 158 38% 18%;
+  --chart-2: 42 45% 54%;
+  --chart-3: 145 18% 52%;
+  --chart-4: 222 38% 18%;
+  --chart-5: 158 30% 35%;
+
+  --font-sans: 'Lora', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-label: 'Figtree', system-ui, sans-serif;
   --font-mono: 'Courier New', monospace;
-  --radius: .5rem; /* 8px */
+  --radius: .375rem; /* 6px */
   --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   --shadow-sm: 0px 2px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 2px -1px rgba(0, 0, 0, 0.04);
@@ -122,9 +123,11 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
-.dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+/* NIGHT SKY — used for `.dark` and `.sky` scopes: deep green night sky, ivory text, gold primary */
+.dark,
+.sky {
+  --button-outline: rgba(255,255,255, .12);
+  --badge-outline: rgba(255,255,255, .06);
 
   --opaque-button-border-intensity: 9;  /* In terms of percentages */
 
@@ -132,67 +135,50 @@
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
 
-  --background: 150 20% 12%;
+  --background: 162 40% 8%;
+  --foreground: 40 33% 94%;
+  --border: 160 20% 20%;
 
-  --foreground: 40 10% 92%;
+  --card: 163 34% 12%;
+  --card-foreground: 40 33% 94%;
+  --card-border: 160 22% 18%;
 
-  --border: 150 18% 22%;
+  --sidebar: 163 30% 12%;
+  --sidebar-foreground: 40 33% 94%;
+  --sidebar-border: 160 20% 22%;
+  --sidebar-primary: 42 45% 54%;
+  --sidebar-primary-foreground: 162 40% 8%;
+  --sidebar-accent: 160 20% 18%;
+  --sidebar-accent-foreground: 40 33% 94%;
+  --sidebar-ring: 42 45% 60%;
 
-  --card: 150 15% 18%;
+  --popover: 163 30% 13%;
+  --popover-foreground: 40 33% 94%;
+  --popover-border: 160 20% 22%;
 
-  --card-foreground: 40 10% 92%;
+  --primary: 42 45% 54%;
+  --primary-foreground: 162 40% 8%;
 
-  --card-border: 150 15% 24%;
+  --secondary: 160 18% 20%;
+  --secondary-foreground: 40 33% 94%;
 
-  --sidebar: 150 15% 22%;
+  --muted: 160 18% 16%;
+  --muted-foreground: 40 18% 72%;
 
-  --sidebar-foreground: 40 10% 92%;
+  --accent: 160 16% 20%;
+  --accent-foreground: 40 33% 94%;
 
-  --sidebar-border: 150 14% 28%;
-
-  --sidebar-primary: 150 45% 25%;
-
-  --sidebar-primary-foreground: 40 15% 95%;
-
-  --sidebar-accent: 150 12% 26%;
-
-  --sidebar-accent-foreground: 40 10% 92%;
-
-  --sidebar-ring: 43 65% 52%;
-
-  --popover: 150 14% 26%;
-
-  --popover-foreground: 40 10% 92%;
-
-  --popover-border: 150 13% 32%;
-
-  --primary: 150 45% 25%;
-
-  --primary-foreground: 40 15% 95%;
-
-  --secondary: 150 12% 30%;
-
-  --secondary-foreground: 40 10% 92%;
-
-  --muted: 150 10% 28%;
-
-  --muted-foreground: 40 8% 65%;
-
-  --accent: 150 8% 28%;
-
-  --accent-foreground: 40 10% 92%;
-
-  --destructive: 0 65% 30%;
-
+  --destructive: 0 55% 40%;
   --destructive-foreground: 0 0% 98%;
 
-  --input: 150 14% 35%;
-  --ring: 43 65% 60%;
-  --chart-1: 150 55% 75%;
-  --chart-2: 43 65% 60%;
-  --chart-3: 150 35% 65%;
-  --chart-4: 40 25% 55%;
-  --chart-5: 150 45% 55%;
+  --input: 160 16% 30%;
+  --ring: 42 45% 60%;
+
+  --chart-1: 42 45% 60%;
+  --chart-2: 145 25% 65%;
+  --chart-3: 40 33% 94%;
+  --chart-4: 222 40% 60%;
+  --chart-5: 158 30% 50%;
 
   --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
   --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.40);
@@ -350,4 +336,205 @@
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+}
+/* ---------------------------------------------------------------------------
+ * Affinity Astron — celestial utilities
+ * "Earth + sky": ivory ground sections, deep-green night-sky sections.
+ * ------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: hsl(var(--gold) / 0.35);
+  }
+}
+
+@layer utilities {
+  .font-label {
+    font-family: var(--font-label);
+  }
+  .sky {
+    background-color: hsl(var(--sky));
+    color: hsl(var(--foreground));
+  }
+  .sky-gradient {
+    background-image:
+      radial-gradient(ellipse 90% 55% at 50% -12%, hsl(var(--midnight) / 0.9), transparent 65%),
+      radial-gradient(ellipse 45% 45% at 6% 85%, hsl(var(--twilight) / 0.38), transparent 65%),
+      radial-gradient(ellipse 50% 40% at 100% 100%, hsl(var(--aurora) / 0.22), transparent 65%),
+      linear-gradient(180deg, hsl(var(--sky)) 0%, hsl(var(--sky-2)) 100%);
+  }
+  /* Dusk: the band where night sky meets the ivory ground. Violet, then a blush of rose, then morning. */
+  .dusk-to-ground {
+    background-image: linear-gradient(180deg, transparent 0%, hsl(var(--twilight) / 0.35) 35%, hsl(var(--rose) / 0.4) 68%, hsl(var(--background)) 100%);
+  }
+  /* Ivory sections get soft pools of rose, sage and gold light in the corners. */
+  .ground-glow {
+    background-image:
+      radial-gradient(ellipse 55% 50% at 0% 0%, hsl(var(--rose) / 0.22), transparent 62%),
+      radial-gradient(ellipse 50% 45% at 100% 100%, hsl(var(--sage-soft) / 0.5), transparent 62%),
+      radial-gradient(ellipse 40% 35% at 88% 8%, hsl(var(--gold) / 0.16), transparent 60%);
+  }
+  /* Cards rise and catch a little gold light on hover. */
+  .lift {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+  }
+  .lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 44px -20px hsl(var(--forest) / 0.4), 0 0 0 1px hsl(var(--gold) / 0.45);
+  }
+  /* Photos breathe slowly on hover. */
+  .zoom-frame {
+    overflow: hidden;
+  }
+  .zoom-frame img {
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .zoom-frame:hover img {
+    transform: scale(1.045);
+  }
+  /* A slow gold sheen sweeping through display text. */
+  .shimmer-text {
+    background-image: linear-gradient(100deg, hsl(var(--ivory)) 0%, hsl(var(--ivory)) 42%, hsl(var(--gold-soft)) 50%, hsl(var(--ivory)) 58%, hsl(var(--ivory)) 100%);
+    background-size: 260% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 9s ease-in-out infinite;
+  }
+  .glow-gold {
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+  }
+  .glow-gold:hover {
+    box-shadow: 0 0 28px hsl(var(--gold) / 0.5);
+  }
+  .sage-wash {
+    background-color: hsl(var(--sage-soft) / 0.28);
+  }
+  .eyebrow {
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .prose-ivory {
+    color: hsl(var(--foreground) / 0.85);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .gold-rule {
+    width: 3rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Star twinkle — subtle, never distracting. */
+@keyframes twinkle {
+  0%, 100% { opacity: var(--star-min, 0.25); transform: scale(0.9); }
+  50%      { opacity: var(--star-max, 1);    transform: scale(1.15); }
+}
+.star {
+  position: absolute;
+  border-radius: 9999px;
+  background: hsl(var(--ivory));
+  box-shadow: 0 0 6px 1px hsl(var(--ivory) / 0.35);
+  animation: twinkle var(--star-duration, 4s) ease-in-out infinite;
+  animation-delay: var(--star-delay, 0s);
+  will-change: opacity, transform;
+}
+.star--gold {
+  background: hsl(var(--gold-soft));
+  box-shadow: 0 0 8px 2px hsl(var(--gold) / 0.35);
+}
+.star--blue {
+  background: hsl(var(--midnight-soft));
+  box-shadow: 0 0 8px 2px hsl(var(--midnight-soft) / 0.45);
+}
+/* Aurora — slow drifting colour behind the stars. */
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  33%  { transform: translate3d(7%, -5%, 0) scale(1.12); }
+  66%  { transform: translate3d(-6%, 6%, 0) scale(0.94); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  mix-blend-mode: screen;
+  animation: aurora-drift var(--aurora-duration, 26s) ease-in-out infinite;
+  animation-delay: var(--aurora-delay, 0s);
+  will-change: transform;
+}
+
+/* Shooting stars — a streak every so often, then quiet. */
+@keyframes shoot {
+  0%   { transform: translate3d(-20%, 0, 0); opacity: 0; }
+  3%   { opacity: 1; }
+  9%   { transform: translate3d(60vw, 0, 0); opacity: 0; }
+  100% { transform: translate3d(60vw, 0, 0); opacity: 0; }
+}
+.shooting-star-track {
+  position: absolute;
+  transform-origin: left center;
+}
+.shooting-star {
+  display: block;
+  height: 1.5px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent 0%, hsl(var(--gold-soft) / 0.7) 55%, hsl(var(--ivory)) 100%);
+  filter: drop-shadow(0 0 4px hsl(var(--ivory) / 0.8));
+  opacity: 0;
+  animation: shoot var(--shoot-period, 14s) ease-out infinite;
+  animation-delay: var(--shoot-delay, 0s);
+  will-change: transform, opacity;
+}
+
+/* Motes — gold fireflies rising through the ivory sections. */
+@keyframes mote {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  18%  { opacity: var(--mote-max, 0.6); }
+  82%  { opacity: var(--mote-max, 0.6); }
+  100% { transform: translate3d(var(--mote-sway, 12px), -140px, 0); opacity: 0; }
+}
+.mote {
+  position: absolute;
+  border-radius: 9999px;
+  background: hsl(var(--gold));
+  box-shadow: 0 0 8px 2px hsl(var(--gold) / 0.45);
+  opacity: 0;
+  animation: mote var(--mote-duration, 14s) ease-in-out infinite;
+  animation-delay: var(--mote-delay, 0s);
+  will-change: transform, opacity;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 130% 0; }
+  100% { background-position: -130% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; opacity: var(--star-max, 0.8); }
+  .aurora-blob, .mote { animation: none; }
+  .mote { opacity: var(--mote-max, 0.5); }
+  .shooting-star { animation: none; opacity: 0; }
+  .shimmer-text { animation: none; color: hsl(var(--ivory)); background-image: none; }
+  .lift:hover, .zoom-frame:hover img { transform: none; }
+  html { scroll-behavior: auto; }
 }
